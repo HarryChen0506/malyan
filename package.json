@@ -1,5 +1,5 @@
 {
-  "name": "zebra",
+  "name": "@harrychen0506/zebra.js",
   "version": "0.0.1",
   "description": "a canvas library",
   "main": "index.js",
@@ -15,5 +15,7 @@
   "bugs": {
     "url": "https://github.com/HarryChen0506/zebra/issues"
   },
-  "homepage": "https://github.com/HarryChen0506/zebra#readme"
+  "homepage": "https://github.com/HarryChen0506/zebra#readme",
+  "dependencies": {
+  }
 }

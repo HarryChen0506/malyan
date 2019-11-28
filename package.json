@@ -1,5 +1,5 @@
 {
-  "name": "@harrychen0506/zebra.js",
+  "name": "malyan",
   "version": "0.0.1",
   "description": "a canvas library",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HarryChen0506/zebra.git"
+    "url": "git+https://github.com/HarryChen0506/malyan.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HarryChen0506/zebra/issues"
+    "url": "https://github.com/HarryChen0506/malyan/issues"
   },
-  "homepage": "https://github.com/HarryChen0506/zebra#readme",
+  "homepage": "https://github.com/HarryChen0506/malyan#readme",
   "dependencies": {
   }
 }

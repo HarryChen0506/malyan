@@ -15,7 +15,8 @@ const config = {
       amd: "malyan",
       root: 'Malyan'
     },
-    libraryTarget: "window",
+    libraryTarget: "umd",
+    libraryExport: "default",
     path: path.resolve(__dirname, './dist'),
     umdNamedDefine: true
   },

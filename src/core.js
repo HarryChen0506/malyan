@@ -1,5 +1,16 @@
+import Scene from './Scene'
+
 export class Malyan {
-  demo() {
-    console.log(123)
+  constructor() {
+    this.scene = new Scene()
+  }
+  add(object) {
+    console.log('add')
+    this.scene.add(object)
+  }
+  render() {
+    console.log('render')
   }
 }
+
+export default Malyan

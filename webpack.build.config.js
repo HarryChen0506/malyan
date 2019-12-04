@@ -1,9 +1,7 @@
-const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
-const webpack = require('webpack');
-const version = require("./package.json").version;
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const version = require("./package.json").version
 const banner =
   "/**\n" +
   " * malyan v" + version + "\n" +
@@ -17,51 +15,26 @@ const config = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'lib'),
-    library: "Malyan",
-    libraryTarget: "var"
+    library: {
+      commonjs: "malyan",
+      amd: "malyan",
+      root: 'Malyan'
+    },
+    libraryTarget: "umd",
+    libraryExport: "default",
   },
   externals: [],
   mode: 'production',
   module: {
-    rules: [{
-        test: /\.(js|jsx)$/,
+    rules: [
+      {
+        test: /\.(js)$/,
         loader: "babel-loader",
       },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader'
-        ]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
-          },
-          'postcss-loader',
-          'less-loader'
-        ]
-      },
-      {
-        test: /\.(png|svg|jpg|gif|eot|woff|ttf)$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 20000,
-          }
-        }]
-      }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js'],
   },
   plugins: [
     new CleanWebpackPlugin(['lib']),
@@ -70,6 +43,6 @@ const config = {
       raw: false
     }),
   ],
-};
+}
 
-module.exports = config;
+module.exports = config

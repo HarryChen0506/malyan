@@ -1,15 +1,10 @@
 
-// import { Malyan } from './core'
+import Malyan from './core'
+import Line from './shapes/Line'
 
-class Malyan {
-  demo() {
-    console.log(123)
-  }
+Malyan.Line = Line
+
+export {
+  Malyan
 }
-
-
-const malyan = {
- demo: 1234
-}
-
-export default malyan
+export default Malyan

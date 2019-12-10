@@ -1,11 +1,11 @@
 
-import Malyan from './core'
+import Malyan from './Malyan'
 import Line from './shapes/Line'
+
 
 Malyan.Line = Line
 
-
 export {
-  Malyan
+  Malyan,
 }
 export default Malyan

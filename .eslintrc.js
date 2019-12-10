@@ -41,6 +41,7 @@ module.exports = {
     require: false,
     __dirname: false,
     process: false,
-    Promise: false
+    Promise: false,
+    Reflect: false
   }
 }

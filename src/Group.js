@@ -1,5 +1,15 @@
-export class Group {
+
+import { mix } from './utils/extend'
+
+class Demo {
+  demo() {
+    console.log('demo')
+  }
+}
+
+export class Group extends mix(Demo) {
   constructor() {
+    super()
     this.children = []
     this.rotation = 0
     this.translation = { x: 0, y: 0 }

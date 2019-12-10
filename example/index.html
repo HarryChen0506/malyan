@@ -16,13 +16,20 @@
       id: '1',
     })
     var line = new Malyan.Line()
+    line.on('click', function() {
+      console.log('line')
+    })
+
+    // setTimeout(function() {
+    //   line.fire('click')
+    // }, 1000)
 
     canvas.add(line)
 
     canvas.render()
 
     console.log('canvas', canvas)
-    console.log('line', line)
+
   </script>
 </body>
 </html>

@@ -12,5 +12,4 @@ export class Malyan {
     console.log('render')
   }
 }
-
 export default Malyan

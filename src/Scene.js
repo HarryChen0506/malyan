@@ -1,8 +1,12 @@
 import Group from './Group'
 
+
 export class Scene extends Group{
-  constructor() {
-    super()
+  constructor(...args) {
+    super(...args)
+  }
+  render() {
+    console.log('Scene')
   }
 }
 

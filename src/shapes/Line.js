@@ -6,16 +6,21 @@ import { mix } from '../utils/extend'
 export class Line extends mix(EventTarget) {
   constructor(options = {}) {
     super()
-    const { x1, y1, x2, y2 } = options
+    const { name, x1, y1, x2, y2 } = options
+    this.name = name
     this.rotation = 0
     this.translation = { x: 0, y: 0 }
     this.scale = 1
     this.matrix = []
     this.color = '#000'
-    this.lineWidth = 1;
+    this.lineWidth = 1
   }
-  draw() {
-    console.log('line')
+  render(ctx) {
+    console.log('line render', ctx)
+    ctx.beginPath()
+    ctx.moveTo(0, 0)
+    ctx.lineTo(50, 50)
+    ctx.stroke()
   }
   on(type, callback) {
     this.addEventListener(type, callback)

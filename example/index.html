@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,55 @@
   <title>malyan demo</title>
   <script src='../dist/malyan.js'></script>
   <!-- <script src='../lib/index.js'></script> -->
+  <style>
+    .canvas-wrap {
+      margin: 20px auto;
+    }
+    canvas {
+      border: 1px solid #333;
+    }
+  </style>
 </head>
-<body>    
-  <div id="root">123</div>
+
+<body>
+  <div id="root">
+    <h3>malyan demo</h3>
+    <div class='canvas-wrap'>
+      <canvas id='canvas'></canvas>
+    </div>
+  </div>
   <script>
-   
+
     var canvas = new Malyan({
-      id: '1',
+      id: 'canvas',
     })
-    var line = new Malyan.Line()
-    line.on('click', function() {
+
+    var line = new Malyan.Line({name: 'line'})
+    line.on('click', function () {
       console.log('line')
     })
-
-    // setTimeout(function() {
-    //   line.fire('click')
-    // }, 1000)
-
     canvas.add(line)
+
+    var group_2_1 = new Malyan.Group({ name: '2-1' })
+    var group_2_2 = new Malyan.Group({ name: '2-2' })
+    canvas.add(group_2_1)
+    canvas.add(group_2_2)
+
+    var group_2_1_1 = new Malyan.Group({ name: '2-1-1' })
+    var group_2_1_2 = new Malyan.Group({ name: '2-1-2' })
+
+    group_2_1.add(group_2_1_1)
+    group_2_1.add(group_2_1_2)
+
+    function demo() {
+      canvas.tree.traverseDF_preOrder(function(node) {
+        console.log('node', node.name)
+      })
+    }
+
+    setTimeout(function () {
+      // demo()
+    }, 1000)
 
     canvas.render()
 
@@ -32,4 +64,5 @@
 
   </script>
 </body>
+
 </html>

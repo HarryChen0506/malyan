@@ -4,6 +4,7 @@ import Line from './shapes/Line'
 
 Malyan.Line = Line
 
+
 export {
   Malyan
 }

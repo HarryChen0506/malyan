@@ -1,12 +1,13 @@
 
-
-export class Group {
+import Shape from './Shape'
+import { mix } from './utils/extend'
+export class Group extends mix(Shape) {
   constructor({ name }) {
+    super()
     this.children = []
     this.parent = null
     this.name = name
-    this.translation = { x: 0, y: 0 }
-    this.scale = {x: 1, y: 1}
+    this.scale = { x: 1, y: 1 }
     this.rotation = 0
     this.matrix = []
   }
@@ -28,7 +29,6 @@ export class Group {
   render(ctx) {
     ctx.save()
     if (this.translation.x !== 0 || this.translation.y !== 0) {
-      console.log('123')
       ctx.translate(this.translation.x, this.translation.y)
     }
     if (this.scale.x !== 1 || this.scale.y !== 1) {
@@ -38,7 +38,7 @@ export class Group {
       ctx.rotate(this.rotation)
     }
     console.log('group render')
-    for(let i =0; i< this.children.length; i++) {
+    for (let i = 0; i < this.children.length; i++) {
       this.children[i] && this.children[i].render(ctx)
     }
     ctx.restore()

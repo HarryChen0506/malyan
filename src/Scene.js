@@ -5,9 +5,12 @@ export class Scene extends Group{
   constructor(...args) {
     super(...args)
   }
-  render() {
-    console.log('Scene')
-  }
+  // render(ctx) {
+  //   console.log('scene render')
+  //   for(let i =0; i< this.children.length; i++) {
+  //     this.children[i] && this.children[i].render(ctx)
+  //   }
+  // }
 }
 
 export default Scene

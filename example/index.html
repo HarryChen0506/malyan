@@ -29,24 +29,36 @@
 
     var canvas = new Malyan({
       id: 'canvas',
+      width: 400,
+      height: 400
     })
+
+    var group = new Malyan.Group({ name: 'g-1' })
+    group.translation = {x: 20, y: 40}
+
+    var group2 = new Malyan.Group({ name: 'g-2' })
+    group2.translation = {x: 40, y: 20}
+
 
     var line = new Malyan.Line({name: 'line'})
-    line.on('click', function () {
-      console.log('line')
-    })
-    canvas.add(line)
+    var line2 = new Malyan.Line({name: 'line'})
 
-    var group_2_1 = new Malyan.Group({ name: '2-1' })
-    var group_2_2 = new Malyan.Group({ name: '2-2' })
-    canvas.add(group_2_1)
-    canvas.add(group_2_2)
+    group.add(line)
+    group2.add(line2)
 
-    var group_2_1_1 = new Malyan.Group({ name: '2-1-1' })
-    var group_2_1_2 = new Malyan.Group({ name: '2-1-2' })
+    canvas.add(group)
+    canvas.add(group2)
 
-    group_2_1.add(group_2_1_1)
-    group_2_1.add(group_2_1_2)
+    // var group_2_1 = new Malyan.Group({ name: '2-1' })
+    // var group_2_2 = new Malyan.Group({ name: '2-2' })
+    // canvas.add(group_2_1)
+    // canvas.add(group_2_2)
+
+    // var group_2_1_1 = new Malyan.Group({ name: '2-1-1' })
+    // var group_2_1_2 = new Malyan.Group({ name: '2-1-2' })
+
+    // group_2_1.add(group_2_1_1)
+    // group_2_1.add(group_2_1_2)
 
     function demo() {
       canvas.tree.traverseDF_preOrder(function(node) {

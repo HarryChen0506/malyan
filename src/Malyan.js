@@ -4,13 +4,16 @@ import Tree from './utils/Tree'
 export class Malyan {
   constructor(options = {}) {
     this.ctx = null
-    this.scene = new Scene({name: 'root_group'})
+    this.scene = new Scene({ name: 'root_group' })
     this.tree = new Tree(this.scene)
     this.init(options)
-    this.initRatio()
   }
   init(options = {}) {
-    let {id, context, dom} = options
+    this.initCtx(options)
+    this.initSize(options)
+  }
+  initCtx(options = {}) {
+    let { id, context, dom } = options
     if (context) {
       this.ctx = context
     } else if (dom) {
@@ -22,31 +25,41 @@ export class Malyan {
       this.ctx = context
     }
     if (!this.ctx) {
-      console.warn('canvas context is null')
+      console.warn('canvas context cannot be null')
     }
   }
-  initRatio() {
-    const context = this.ctx
+  initSize(options = {}) {
+    const { width, height } = options
     const canvas = this.ctx.canvas
-    var devicePixelRatio = window.devicePixelRatio || 1;
-    var backingStoreRatio = context.webkitBackingStorePixelRatio ||
-                        context.mozBackingStorePixelRatio ||
-                        context.msBackingStorePixelRatio ||
-                        context.oBackingStorePixelRatio ||
-                        context.backingStorePixelRatio || 1;
-    var ratio = devicePixelRatio / backingStoreRatio;
-    canvas.width = canvas.width * ratio;
-    canvas.height = canvas.height * ratio;
-    context.scale(ratio, ratio)
+    canvas.width = width || 300
+    canvas.height = height || 150
+    canvas.style.width = width + 'px'
+    canvas.style.height = height + 'px'
+  }
+  initRatio() {
+    // const context = this.ctx
+    // const canvas = this.ctx.canvas
+    // var devicePixelRatio = window.devicePixelRatio || 1;
+    // var backingStoreRatio = context.webkitBackingStorePixelRatio ||
+    //                     context.mozBackingStorePixelRatio ||
+    //                     context.msBackingStorePixelRatio ||
+    //                     context.oBackingStorePixelRatio ||
+    //                     context.backingStorePixelRatio || 1;
+    // var ratio = devicePixelRatio / backingStoreRatio;
+    // canvas.width = canvas.width * ratio;
+    // canvas.height = canvas.height * ratio;
+    // context.scale(ratio, ratio)
   }
   add(object) {
     this.scene.add(object)
   }
   render() {
+    this.scene.render(this.ctx)
+  }
+  traverse() {
     this.tree.traverseDF_preOrder((node) => {
       if (node) {
-        node.render && node.render(this.ctx)
-        // console.log('node', node.name)
+        console.log('node', node.name)
       }
     })
   }

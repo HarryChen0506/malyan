@@ -1,5 +1,6 @@
 
 import Vector from './Vector'
+
 class Shape {
   constructor() {
     this.translation = new Vector({

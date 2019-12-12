@@ -16,7 +16,6 @@ export class Line extends mix(EventTarget) {
     this.lineWidth = 1
   }
   render(ctx) {
-    console.log('line render')
     ctx.beginPath()
     ctx.moveTo(0, 0)
     ctx.lineTo(50, 50)

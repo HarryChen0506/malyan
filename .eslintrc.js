@@ -20,6 +20,7 @@ module.exports = {
     //   'semi': ['error', 'always'],
     'semi': ['error', 'never'],
     'no-return-assign': 0,
+    'no-unused-vars': ['warn'],
     'space-before-function-paren': ['error', {
       'anonymous': 'always',
       'named': 'never',

@@ -19,6 +19,10 @@ class Vector {
     this._y = v
     typeof this.onChange === 'function' && this.onChange(this)
   }
+  set(x, y) {
+    this.x = x
+    this.y = y
+  }
 }
 
 export default Vector

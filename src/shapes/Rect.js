@@ -19,7 +19,6 @@ export class Rect extends mix(EventTarget) {
     this.lineWidth = 1
   }
   render(ctx) {
-    console.log('rect render')
     ctx.save()
     ctx.strokeRect(this.x, this.y, this.width, this.height)
     ctx.restore()

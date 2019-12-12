@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>malyan demo</title>
+  <title>天体运动</title>
   <script src='../dist/malyan.js'></script>
   <!-- <script src='../lib/index.js'></script> -->
   <style>
@@ -21,7 +21,7 @@
 
 <body>
   <div id="root">
-    <h3>malyan demo</h3>
+    <h3>天体运动</h3>
     <div class='canvas-wrap'>
       <canvas id='canvas'></canvas>
     </div>
@@ -33,14 +33,6 @@
       width: 400,
       height: 400
     })
-
-    // var rect = new Malyan.Rect({
-    //   name: 'rect',
-    //   x: 10,
-    //   y: 10,
-    //   width: 1,
-    //   height: 1
-    // })
 
     var group = new Malyan.Group({ name: 'g-1' })
     group.translation = { x: 60, y: 100 }
@@ -56,19 +48,6 @@
     group.add(group2)
 
     canvas.add(group)
-    // canvas.add(group2)
-    // canvas.add(rect)
-
-    // var group_2_1 = new Malyan.Group({ name: '2-1' })
-    // var group_2_2 = new Malyan.Group({ name: '2-2' })
-    // canvas.add(group_2_1)
-    // canvas.add(group_2_2)
-
-    // var group_2_1_1 = new Malyan.Group({ name: '2-1-1' })
-    // var group_2_1_2 = new Malyan.Group({ name: '2-1-2' })
-
-    // group_2_1.add(group_2_1_1)
-    // group_2_1.add(group_2_1_2)
 
     function demo() {
       canvas.tree.traverseDF_preOrder(function (node) {
@@ -76,24 +55,17 @@
       })
     }
 
+    canvas.render()
+
     function animate() {
       var speed = 10
       setInterval(function () {
-        // if (group.translation.x > 200) {
-        //   speed = speed * -1
-        // } else if (group.translation.x < 20) {
-        //   speed = speed * -1
-        // }
-        // group.translation.x = group.translation.x + speed
         group.rotation = group.rotation + 0.1
         group2.rotation = group2.rotation + 0.1
         canvas.render()
       }, 100)
     }
-
     animate()
-
-    canvas.render()
 
   </script>
 </body>

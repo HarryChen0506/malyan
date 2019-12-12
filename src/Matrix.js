@@ -1,6 +1,5 @@
 
 export class Matrix {
-
   constructor() {
     this.elements = []
   }
@@ -66,6 +65,23 @@ export class Matrix {
     const B = Matrix.formatParams(...args)
     this.elements = Matrix.multiply(this.elements, B)
     return this
+  }
+  translate(x, y) {
+    return this.multiply(1, 0, x, 0, 1, y, 0, 0, 1)
+  }
+  rotate(angle) {
+    var c = Math.cos(angle)
+    var s = Math.sin(angle)
+    return this.multiply(c, -s, 0, s, c, 0, 0, 0, 1)
+  }
+  scale(sx, sy) {
+    if (sy === undefined) {
+      sy = sx
+    }
+    return this.multiply(sx, 0, 0, 0, sy, 0, 0, 0, 1)
+  }
+  toString() {
+    return '[' + this.elements.join(',') + ']'
   }
 }
 

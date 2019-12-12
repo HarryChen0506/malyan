@@ -7,9 +7,6 @@ export class Group extends mix(Shape) {
     this.children = []
     this.parent = null
     this.name = name
-    this.scale = { x: 1, y: 1 }
-    this.rotation = 0
-    this.matrix = []
   }
   add(object) {
     if (object) {
@@ -28,16 +25,8 @@ export class Group extends mix(Shape) {
   }
   render(ctx) {
     ctx.save()
-    if (this.translation.x !== 0 || this.translation.y !== 0) {
-      ctx.translate(this.translation.x, this.translation.y)
-    }
-    if (this.scale.x !== 1 || this.scale.y !== 1) {
-      ctx.scale(this.scale.x, this.scale.y)
-    }
-    if (this.rotation !== 0) {
-      ctx.rotate(this.rotation)
-    }
-    console.log('group render')
+    const matrix = this.matrix.elements
+    ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
     for (let i = 0; i < this.children.length; i++) {
       this.children[i] && this.children[i].render(ctx)
     }

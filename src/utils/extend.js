@@ -12,9 +12,9 @@ export function copyProperties(target, source) {
 
 export function mix(...mixins) {
   class Mix {
-    constructor() {
+    constructor(...args) {
       for (let _class of mixins) {
-        copyProperties(this, new _class()) // 拷贝实例属性
+        copyProperties(this, new _class(...args)) // 拷贝实例属性
       }
     }
   }

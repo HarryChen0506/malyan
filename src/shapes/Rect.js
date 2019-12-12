@@ -1,10 +1,11 @@
 import EventTarget from '../events/EventTarget'
+import Shape from '../Shape'
 import triggerEvent from '../events/triggerEvent'
 import { mix } from '../utils/extend'
 
-export class Rect extends mix(EventTarget) {
+export class Rect extends mix(Shape, EventTarget) {
   constructor(options = {}) {
-    super()
+    super(options)
     const { name, x, y, width, height } = options
     this.name = name
     this.x = x || 0
@@ -20,7 +21,9 @@ export class Rect extends mix(EventTarget) {
   }
   render(ctx) {
     ctx.save()
+    this.setCtxProps && this.setCtxProps(ctx)
     ctx.strokeRect(this.x, this.y, this.width, this.height)
+    ctx.fillRect(this.x, this.y, this.width, this.height)
     ctx.restore()
   }
   on(type, callback) {

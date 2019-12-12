@@ -3,7 +3,8 @@ import Vector from './Vector'
 import Matrix from './Matrix'
 
 class Shape {
-  constructor() {
+  constructor(options) {
+    const { fillStyle, strokeStyle, lineWidth } = options || {}
     this.matrix = new Matrix().identity()
     this._translation = new Vector({
       x: 0,
@@ -16,6 +17,9 @@ class Shape {
       onChange: this.onChange.bind(this)
     })
     this._rotation = 0
+    this.fillStyle = fillStyle || '#fff'
+    this.strokeStyle = strokeStyle || '#000'
+    this.lineWidth = lineWidth || 1
   }
   onChange() {
     this.matrix
@@ -24,6 +28,11 @@ class Shape {
       .scale(this.scale.x, this.scale.y)
       .rotate(this.rotation)
     // console.log('onChange transform', transform.toString())
+  }
+  setCtxProps(ctx) {
+    ctx.fillStyle = this.fillStyle
+    ctx.strokeStyle = this.strokeStyle
+    ctx.lineWidth = this.lineWidth
   }
   get translation() {
     return this._translation

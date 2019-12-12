@@ -34,13 +34,15 @@
       height: 400
     })
 
-    // var rect = new Malyan.Rect({
-    //   name: 'rect',
-    //   x: 10,
-    //   y: 10,
-    //   width: 1,
-    //   height: 1
-    // })
+    var rect = new Malyan.Rect({
+      name: 'rect',
+      x: 10,
+      y: 10,
+      width: 10,
+      height: 10,
+      fillStyle: 'red',
+      strokeStyle: 'blue'
+    })
 
     var group = new Malyan.Group({ name: 'g-1' })
     group.translation = { x: 60, y: 100 }
@@ -57,7 +59,7 @@
 
     canvas.add(group)
     // canvas.add(group2)
-    // canvas.add(rect)
+    canvas.add(rect)
 
     // var group_2_1 = new Malyan.Group({ name: '2-1' })
     // var group_2_2 = new Malyan.Group({ name: '2-2' })

@@ -24,6 +24,16 @@ export class Rect extends mix(Shape, EventTarget) {
     this.stroke && ctx.stroke()
     ctx.restore()
   }
+  containPoint(ctx, point = { x: 0, y: 0 }) {
+    // ctx.save()
+    ctx.beginPath()
+    ctx.rect(this.x, this.y, this.width, this.height)
+    // ctx.restore()
+    if (ctx.isPointInPath(point.x, point.y)) {
+      return true
+    }
+    return false
+  }
   on(type, callback) {
     this.addEventListener(type, callback)
   }

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { matrix_invert } from './utils/tool'
+import { matrix_invert } from './utils/math'
 export class Matrix {
   constructor() {
     this.elements = []

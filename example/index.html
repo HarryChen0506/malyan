@@ -28,6 +28,9 @@
   </div>
   <script>
 
+    var ctx = document.getElementById('canvas').getContext('2d')
+    ctx.rect(10,10,30,30)
+
     var canvas = new Malyan({
       id: 'canvas',
       width: 400,
@@ -35,14 +38,27 @@
     })
 
     var rect = new Malyan.Rect({
-      name: 'rect',
+      name: 'rect1',
       x: 10,
       y: 10,
-      width: 10,
-      height: 10,
-      fillStyle: 'red',
-      strokeStyle: 'blue'
+      width: 40,
+      height: 40,
+      fill: false,
+      strokeStyle: 'blue',
+      lineWidth: 1,
     })
+    var rect2 = new Malyan.Rect({
+      name: 'rect2',
+      x: 50,
+      y: 50,
+      width: 40,
+      height: 40,
+      fillStyle: 'green',
+      stroke: false,
+      lineWidth: 3,
+    })
+    
+ 
 
     var group = new Malyan.Group({ name: 'g-1' })
     group.translation = { x: 60, y: 100 }
@@ -51,26 +67,20 @@
     // group2.translation = {x: 40, y: 20}
     group2.translation = { x: 30, y: 30 }
 
-    var line = new Malyan.Line({ name: 'line' })
+    var line = new Malyan.Line({ 
+      name: 'line', 
+      strokeStyle: '#f00'
+    })
     // var line2 = new Malyan.Line({name: 'line'})
+  
 
     group2.add(line)
     group.add(group2)
 
+    canvas.add(rect)
+    canvas.add(rect2)
     canvas.add(group)
     // canvas.add(group2)
-    canvas.add(rect)
-
-    // var group_2_1 = new Malyan.Group({ name: '2-1' })
-    // var group_2_2 = new Malyan.Group({ name: '2-2' })
-    // canvas.add(group_2_1)
-    // canvas.add(group_2_2)
-
-    // var group_2_1_1 = new Malyan.Group({ name: '2-1-1' })
-    // var group_2_1_2 = new Malyan.Group({ name: '2-1-2' })
-
-    // group_2_1.add(group_2_1_1)
-    // group_2_1.add(group_2_1_2)
 
     function demo() {
       canvas.tree.traverseDF_preOrder(function (node) {

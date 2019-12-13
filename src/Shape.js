@@ -1,10 +1,17 @@
 
 import Vector from './Vector'
 import Matrix from './Matrix'
-
+const defaultConfig = {
+  fill: true,
+  stroke: true,
+  fillStyle: '#fff',
+  strokeStyle: '#000',
+  lineWidth: 1
+}
 class Shape {
-  constructor(options) {
-    const { fillStyle, strokeStyle, lineWidth } = options || {}
+  constructor(options = {}) {
+    const config = { ...defaultConfig, ...options }
+    const { fill, stroke, fillStyle, strokeStyle, lineWidth } = config
     this.matrix = new Matrix().identity()
     this._translation = new Vector({
       x: 0,
@@ -17,9 +24,11 @@ class Shape {
       onChange: this.onChange.bind(this)
     })
     this._rotation = 0
-    this.fillStyle = fillStyle || '#fff'
-    this.strokeStyle = strokeStyle || '#000'
-    this.lineWidth = lineWidth || 1
+    this.fill = fill
+    this.stroke = stroke
+    this.fillStyle = fillStyle
+    this.strokeStyle = strokeStyle
+    this.lineWidth = lineWidth
   }
   onChange() {
     this.matrix

@@ -9,7 +9,7 @@ const config = {
   },
   output: {
     filename: '[name].js',
-    library: 'Malyan',
+    // library: 'Malyan',
     library: {
       commonjs: 'malyan',
       amd: 'malyan',

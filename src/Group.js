@@ -2,11 +2,11 @@
 import Shape from './Shape'
 import { mix } from './utils/extend'
 export class Group extends mix(Shape) {
-  constructor({ name }) {
-    super()
+  constructor(options = {}) {
+    super(options)
     this.children = []
     this.parent = null
-    this.name = name
+    this.name = options.name
   }
   add(object) {
     if (object) {

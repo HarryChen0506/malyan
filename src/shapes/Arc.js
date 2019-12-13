@@ -3,23 +3,24 @@ import Shape from '../Shape'
 import triggerEvent from '../events/triggerEvent'
 import { mix } from '../utils/extend'
 
-export class Rect extends mix(Shape, EventTarget) {
+export class Arc extends mix(Shape, EventTarget) {
   constructor(options = {}) {
     super(options)
-    const { name, x, y, width, height } = options
+    const { name, x, y, radius, startAngle, endAngle, anticlockwise} = options
     this.name = name
     this.x = x || 0
     this.y = y || 0
-    this.width = width || 0
-    this.height = height || 0
+    this.radius = radius
+    this.anticlockwise = anticlockwise || false
+    this.startAngle = startAngle || 0
+    this.endAngle = endAngle || Math.PI * 2
   }
   render(ctx) {
     ctx.save()
-    ctx.beginPath()
     this.setCtxProps && this.setCtxProps(ctx)
-    ctx.rect(this.x, this.y, this.width, this.height)
-    this.fill && ctx.fill()
-    this.stroke && ctx.stroke()
+    ctx.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.anticlockwise)
+    ctx.fill()
+    ctx.stroke()
     ctx.restore()
   }
   on(type, callback) {
@@ -30,4 +31,4 @@ export class Rect extends mix(Shape, EventTarget) {
   }
 }
 
-export default Rect
+export default Arc

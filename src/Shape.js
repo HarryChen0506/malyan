@@ -80,6 +80,20 @@ class Shape {
     })
     this.onChange()
   }
+  calcFinalMatrix() {
+    const matrices = [this.matrix]
+    var parent = this.parent
+    while (parent) {
+      matrices.unshift(parent.matrix)
+      parent = parent.parent
+    }
+    let finalMatrix = matrices[0].elements
+    for (let i = 1; i < matrices.length; i++) {
+      finalMatrix = Matrix.multiply(finalMatrix, matrices[i].elements)
+    }
+    // console.log('clacFinalMatrix', matrices, finalMatrix)
+    return finalMatrix
+  }
 }
 
 export default Shape

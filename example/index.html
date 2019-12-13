@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>malyan demo</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.js'></script>
   <script src='../dist/malyan.js'></script>
   <!-- <script src='../lib/index.js'></script> -->
   <style>
@@ -28,9 +29,6 @@
   </div>
   <script>
 
-    var ctx = document.getElementById('canvas').getContext('2d')
-    ctx.rect(10,10,30,30)
-
     var canvas = new Malyan({
       id: 'canvas',
       width: 400,
@@ -39,45 +37,24 @@
 
     var rect = new Malyan.Rect({
       name: 'rect1',
-      x: 10,
-      y: 10,
+      x: 0,
+      y: 0,
       width: 40,
       height: 40,
       fill: false,
       strokeStyle: 'blue',
       lineWidth: 1,
     })
-    var arc = new Malyan.Arc({
-      name: 'rect1',
-      x: 0,
-      y: 0,
-      radius: 40,
-      strokeStyle: 'red',
-      lineWidth: 1,
+    rect.translation = {x: 10, y: 0}
+
+    var group = new Malyan.Group({
+      name: 'group'
     })
-    arc.translation = { x: 0, y: 0 }
-
-    var group = new Malyan.Group({ name: 'g-1' })
-    group.translation = { x: 60, y: 100 }
-
-    var group2 = new Malyan.Group({ name: 'g-2' })
-    // group2.translation = {x: 40, y: 20}
-    group2.translation = { x: 30, y: 30 }
-
-    var line = new Malyan.Line({ 
-      name: 'line', 
-      strokeStyle: '#f00'
-    })
-    // var line2 = new Malyan.Line({name: 'line'})
-  
-
-    group2.add(line)
-    group.add(group2)
-
-    canvas.add(rect)
-    canvas.add(arc)
+    group.translation = {x: 20, y: 20}
+   
+    group.add(rect)
     canvas.add(group)
-    // canvas.add(group2)
+    canvas.render()
 
     function demo() {
       canvas.tree.traverseDF_preOrder(function (node) {
@@ -94,15 +71,15 @@
         //   speed = speed * -1
         // }
         // group.translation.x = group.translation.x + speed
-        group.rotation = group.rotation + 0.1
-        group2.rotation = group2.rotation + 0.1
+        // group.rotation = group.rotation + 0.1
+        // group2.rotation = group2.rotation + 0.1
         canvas.render()
       }, 100)
     }
 
-    animate()
+    // animate()
 
-    canvas.render()
+   
 
   </script>
 </body>

@@ -18,6 +18,6 @@ export {
   Line,
   Rect,
   Arc,
-  Matrix
+  Matrix,
 }
 export default Malyan

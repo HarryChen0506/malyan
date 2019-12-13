@@ -1,4 +1,5 @@
-
+/* eslint-disable */
+import { matrix_invert } from './utils/tool'
 export class Matrix {
   constructor() {
     this.elements = []
@@ -51,6 +52,24 @@ export class Matrix {
       }
       res[index] = v
     })
+    return res
+  }
+  static invert = function (M) {
+    if (!Array.isArray(M)) {
+      console.error('matrix invert params must be n * n array')
+      return
+    }
+    const rows = Math.sqrt(M.length)
+    const origin = []
+    for (let i = 0; i < rows; i++) {
+      const item = M.slice(i * rows, i * rows + rows)
+      origin.push(item)
+    }
+    const temp = matrix_invert(origin) || []
+    let res = []
+    for (let i = 0; i < temp.length; i++) {
+      res = [...res, ...temp[i]]
+    }
     return res
   }
   set(...args) {

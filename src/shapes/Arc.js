@@ -17,10 +17,14 @@ export class Arc extends mix(Shape, EventTarget) {
   }
   render(ctx) {
     ctx.save()
+    const matrix = this.matrix.elements
+    ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
+    ctx.beginPath()
     this.setCtxProps && this.setCtxProps(ctx)
     ctx.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.anticlockwise)
-    ctx.fill()
-    ctx.stroke()
+    this.close && ctx.closePath()
+    this.fill && ctx.fill()
+    this.stroke && ctx.stroke()
     ctx.restore()
   }
   on(type, callback) {

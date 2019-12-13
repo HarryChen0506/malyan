@@ -34,36 +34,100 @@
       height: 400
     })
 
-    var group = new Malyan.Group({ name: 'g-1' })
-    group.translation = { x: 60, y: 100 }
+    var group = new Malyan.Group({
+      name: 'group-1'
+    })
+    group.translation = { x: 200, y: 200 }
 
-    var group2 = new Malyan.Group({ name: 'g-2' })
-    // group2.translation = {x: 40, y: 20}
-    group2.translation = { x: 30, y: 30 }
+    var sunOrbit = new Malyan.Arc({
+      name: 'sun-orbit',
+      x: 0,
+      y: 0,
+      radius: 100,
+      fill: false,
+      strokeStyle: '#ccc',
+      lineWidth: 1,
+    })
+    var earthOrbit = new Malyan.Arc({
+      name: 'earth-orbit',
+      x: 0,
+      y: 0,
+      radius: 50,
+      fill: false,
+      strokeStyle: '#ccc',
+      lineWidth: 1,
+    })
 
-    var line = new Malyan.Line({ name: 'line' })
-    // var line2 = new Malyan.Line({name: 'line'})
+    var sun = new Malyan.Arc({
+      name: 'sun',
+      x: 0,
+      y: 0,
+      radius: 30,
+      fillStyle: function (ctx) {
+        var radgrad = ctx.createRadialGradient(0, 0, 10, 0, 0, 100);
+        radgrad.addColorStop(0, '#A7D30C');
+        radgrad.addColorStop(0.9, '#019F62');
+        radgrad.addColorStop(1, 'rgba(1,159,98,0)');
+        return radgrad
+      },
+      stroke: false,
+      lineWidth: 1,
+    })
 
-    group2.add(line)
+    group.add(sunOrbit)
+    group.add(sun)
+
+
+    var group2 = new Malyan.Group({
+      name: 'group-2'
+    })
+    group2.translation = { x: -100, y: 0 }
+
+    var earth = new Malyan.Arc({
+      name: 'earth',
+      x: 0,
+      y: 0,
+      radius: 20,
+      fillStyle: 'blue',
+      strokeStyle: 'blue',
+      lineWidth: 1,
+    })
+
+
+    group2.add(earth)
+    group2.add(earthOrbit)
     group.add(group2)
 
+    var group3 = new Malyan.Group({
+      name: 'group-3'
+    })
+    group3.translation = { x: -50, y: 0 }
+
+    var moon = new Malyan.Arc({
+      name: 'moon',
+      x: 0,
+      y: 0,
+      radius: 10,
+      fillStyle: 'gray',
+      strokeStyle: 'gray',
+      lineWidth: 1,
+    })
+
+    group3.add(moon)
+    group2.add(group3)
+
     canvas.add(group)
-
-    function demo() {
-      canvas.tree.traverseDF_preOrder(function (node) {
-        console.log('node', node.name)
-      })
-    }
-
     canvas.render()
 
     function animate() {
       var speed = 10
       setInterval(function () {
-        group.rotation = group.rotation + 0.1
-        group2.rotation = group2.rotation + 0.1
+        sun.rotation = sun.rotation + 0.005
+        group.rotation = group.rotation + 0.005
+        group2.rotation = group2.rotation + 0.02
+        group3.rotation = group3.rotation + 0.01
         canvas.render()
-      }, 100)
+      }, 16)
     }
     animate()
 

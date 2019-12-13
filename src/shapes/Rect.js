@@ -15,6 +15,8 @@ export class Rect extends mix(Shape, EventTarget) {
   }
   render(ctx) {
     ctx.save()
+    const matrix = this.matrix.elements
+    ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
     ctx.beginPath()
     this.setCtxProps && this.setCtxProps(ctx)
     ctx.rect(this.x, this.y, this.width, this.height)

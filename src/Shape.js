@@ -4,6 +4,7 @@ import Matrix from './Matrix'
 const defaultConfig = {
   fill: true,
   stroke: true,
+  close: false,
   fillStyle: '#fff',
   strokeStyle: '#000',
   lineWidth: 1
@@ -11,7 +12,7 @@ const defaultConfig = {
 class Shape {
   constructor(options = {}) {
     const config = { ...defaultConfig, ...options }
-    const { fill, stroke, fillStyle, strokeStyle, lineWidth } = config
+    const { fill, stroke, close, fillStyle, strokeStyle, lineWidth } = config
     this.matrix = new Matrix().identity()
     this._translation = new Vector({
       x: 0,
@@ -26,6 +27,7 @@ class Shape {
     this._rotation = 0
     this.fill = fill
     this.stroke = stroke
+    this.close = close
     this.fillStyle = fillStyle
     this.strokeStyle = strokeStyle
     this.lineWidth = lineWidth
@@ -39,8 +41,16 @@ class Shape {
     // console.log('onChange transform', transform.toString())
   }
   setCtxProps(ctx) {
-    ctx.fillStyle = this.fillStyle
-    ctx.strokeStyle = this.strokeStyle
+    if (typeof this.fillStyle === 'function') {
+      ctx.fillStyle = this.fillStyle(ctx)
+    } else {
+      ctx.fillStyle = this.fillStyle
+    }
+    if (typeof this.strokeStyle === 'function') {
+      ctx.strokeStyle = this.strokeStyle(ctx)
+    } else {
+      ctx.strokeStyle = this.strokeStyle
+    }
     ctx.lineWidth = this.lineWidth
   }
   get translation() {

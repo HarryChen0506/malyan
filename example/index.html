@@ -47,18 +47,15 @@
       strokeStyle: 'blue',
       lineWidth: 1,
     })
-    var rect2 = new Malyan.Rect({
-      name: 'rect2',
-      x: 50,
-      y: 50,
-      width: 40,
-      height: 40,
-      fillStyle: 'green',
-      stroke: false,
-      lineWidth: 3,
+    var arc = new Malyan.Arc({
+      name: 'rect1',
+      x: 0,
+      y: 0,
+      radius: 40,
+      strokeStyle: 'red',
+      lineWidth: 1,
     })
-    
- 
+    arc.translation = { x: 0, y: 0 }
 
     var group = new Malyan.Group({ name: 'g-1' })
     group.translation = { x: 60, y: 100 }
@@ -78,7 +75,7 @@
     group.add(group2)
 
     canvas.add(rect)
-    canvas.add(rect2)
+    canvas.add(arc)
     canvas.add(group)
     // canvas.add(group2)
 

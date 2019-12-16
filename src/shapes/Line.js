@@ -1,7 +1,7 @@
 /* eslint-disable */
 import EventTarget from '../events/EventTarget'
-import Shape from '../Shape'
 import triggerEvent from '../events/triggerEvent'
+import Shape from '../Shape'
 import { mix } from '../utils/extend'
 
 export class Line extends mix(Shape, EventTarget) {

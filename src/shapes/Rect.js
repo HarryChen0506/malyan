@@ -19,17 +19,23 @@ export class Rect extends mix(Shape, EventTarget) {
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
     ctx.beginPath()
     this.setCtxProps && this.setCtxProps(ctx)
-    ctx.rect(this.x, this.y, this.width, this.height)
-    this.fill && ctx.fill()
-    this.stroke && ctx.stroke()
+    // ctx.rect(this.x, this.y, this.width, this.height)
+    // this.fill && ctx.fill()
+    // this.stroke && ctx.stroke()
+    const path = new Path2D()
+    path.rect(this.x, this.y, this.width, this.height)
+    this.fill && ctx.fill(path)
+    this.stroke && ctx.stroke(path)
     ctx.restore()
   }
   containPoint(ctx, point = { x: 0, y: 0 }) {
     // ctx.save()
-    ctx.beginPath()
-    ctx.rect(this.x, this.y, this.width, this.height)
+    // ctx.beginPath()
+    // ctx.rect(this.x, this.y, this.width, this.height)
     // ctx.restore()
-    if (ctx.isPointInPath(point.x, point.y)) {
+    const path = new Path2D()
+    path.rect(this.x, this.y, this.width, this.height)
+    if (ctx.isPointInPath(path, point.x, point.y)) {
       return true
     }
     return false

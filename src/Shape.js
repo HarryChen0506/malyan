@@ -82,7 +82,7 @@ class Shape {
   }
   calcFinalMatrix() {
     const matrices = [this.matrix]
-    var parent = this.parent
+    let parent = this.parent
     while (parent) {
       matrices.unshift(parent.matrix)
       parent = parent.parent
@@ -93,6 +93,17 @@ class Shape {
     }
     // console.log('clacFinalMatrix', matrices, finalMatrix)
     return finalMatrix
+  }
+  getRoot() {
+    let parent = this.parent
+    while (parent.parent) {
+      parent = parent.parent
+    }
+    if (!parent) {
+      console.error('scene has not root property', parent)
+      return
+    }
+    return parent.root
   }
 }
 

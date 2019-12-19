@@ -1,6 +1,3 @@
-// event manager
-import EventTarget from '../events/EventTarget'
-// import triggerEvent from '../events/triggerEvent'
 
 function triggerEvent(el, type, event, detail = null) {
   // 如果有event, 则直接使用现有的event
@@ -19,19 +16,18 @@ function triggerEvent(el, type, event, detail = null) {
   return el.dispatchEvent(event)
 }
 
-export class EventManager extends EventTarget {
-  constructor(element) {
-    super()
+export class EventManager {
+  constructor({element, root}) {
     this.element = element
+    this.root = root
     this.init()
   }
   init = () => {
     this.element.addEventListener('click', (e) => {
       console.log('event', e)
-      triggerEvent(this, 'click', e)
+      triggerEvent(this.root, 'click', e)
     }, false)
   }
 }
 
 export default EventManager
-

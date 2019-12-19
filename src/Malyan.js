@@ -1,14 +1,16 @@
 import Scene from './Scene'
 import Tree from './utils/Tree'
 import Matrix from './Matrix'
-import EventManager from './EventManager'
+import EventManager from './events/EventManager'
+import EventTarget from './events/EventTarget'
 import _ from './utils/tool'
 /* eslint-disable */
 
-export class Malyan {
+export class Malyan extends EventTarget {
   constructor(options = {}) {
+    super(options)
     this.ctx = null
-    this.scene = new Scene({ name: 'root_group' })
+    this.scene = new Scene({ name: 'root_group', root: this })
     this.tree = new Tree(this.scene)
     this.init(options)
   }
@@ -72,8 +74,11 @@ export class Malyan {
     if (!this.ctx) {
       return
     }
-    this.eventManager = new EventManager(this.ctx.canvas)
-    this.eventManager.addEventListener('click', (e) => {
+    this.eventManager = new EventManager({
+      element: this.ctx.canvas,
+      root: this
+    })
+    this.addEventListener('click', (e) => {
       // console.log('this.eventManager.addEventListener', e)
       const mouse = _.getEventPosition(e, this.ctx.canvas)
       this.tree.traverseDF_preOrder((node) => {

@@ -6,6 +6,9 @@ import EventTarget from './EventTarget'
 
 export const EVENTS = {
   SAVE_DATA: 'save_data',
+  CLICK: 'click',
+  ROOT_CLICK: 'root:click',
+  OBJECT_MOVE: 'object:moving'
 }
 
 export const events = new EventTarget()

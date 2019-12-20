@@ -2,6 +2,7 @@
 
 import { EVENTS } from '../events'
 import triggerEvent from '../triggerEvent'
+
 let isClickEvent = true
 let preventClickTimeout
 const clickDelay = 200
@@ -24,7 +25,6 @@ function mouseDown(e) {
     if (isClickEvent) {
       eventType = EVENTS.ROOT_CLICK
     }
-    console.log('eventType', eventType)
 
     const eventData = {
       event: e,

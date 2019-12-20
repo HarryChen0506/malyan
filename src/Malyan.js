@@ -1,14 +1,12 @@
 import Scene from './Scene'
 import Tree from './utils/Tree'
 import EventManager from './events/EventManager'
-import EventTarget from './events/EventTarget'
 // import Matrix from './Matrix'
 // import _ from './utils/tool'
 /* eslint-disable */
 
-export class Malyan extends EventTarget {
+export class Malyan {
   constructor(options = {}) {
-    super(options)
     this.ctx = null
     this.scene = new Scene({ name: 'root_group', root: this })
     this.tree = new Tree(this.scene)
@@ -78,19 +76,6 @@ export class Malyan extends EventTarget {
       element: this.ctx.canvas,
       root: this
     })
-    // this.addEventListener('click', (e) => {
-    //   const mouse = _.getEventPosition(e, this.ctx.canvas)
-    //   this.tree.traverseDF_preOrder((node) => {
-    //     if (node) {
-    //       // console.log('node', node.name, node.calcFinalMatrix())
-    //       const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
-    //       const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
-    //       console.log('relativePos', relativePos)
-    //       const isInPath = node.containPoint && node.containPoint(this.ctx, relativePos)
-    //       console.log('isInPath', isInPath)
-    //     }
-    //   })
-    // })
   }
   on(eventType, callback) {
     this.eventManager.on(eventType, callback)

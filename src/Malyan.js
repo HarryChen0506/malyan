@@ -1,6 +1,6 @@
 import Scene from './Scene'
 import Tree from './utils/Tree'
-import EventManager from './events/EventManager'
+import { EventManager } from './events/index'
 // import Matrix from './Matrix'
 // import _ from './utils/tool'
 /* eslint-disable */

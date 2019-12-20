@@ -45,27 +45,30 @@
       strokeStyle: 'blue',
       lineWidth: 1,
     })
-    rect.translation = {x: 10, y: 0}
+    rect.translation = { x: 10, y: 0 }
     rect.rotation = Math.PI * 0.25
+    rect.on('click', function (e) {
+      console.log('rect click', e)
+    })
 
     var group = new Malyan.Group({
       name: 'group'
     })
-    group.translation = {x: 20, y: 20}
-   
+    group.translation = { x: 20, y: 20 }
+
     group.add(rect)
     canvas.add(group)
     canvas.render()
 
-    canvas.on('root:click', function(e) {
-      // console.log('canvas click', e)
+    canvas.on('object:click', function (e) {
+      console.log('canvas object:click', e)
     })
 
-    function demo() {
-      canvas.tree.traverseDF_preOrder(function (node) {
-        console.log('node', node.name)
-      })
-    }
+    // function demo() {
+    //   canvas.tree.traverseDF_preOrder(function (node) {
+    //     console.log('node', node.name)
+    //   })
+    // }
 
     function animate() {
       var speed = 10
@@ -84,7 +87,7 @@
 
     animate()
 
-   
+
 
   </script>
 </body>

@@ -1,6 +1,6 @@
 
 
-import { EVENTS } from '../events'
+import EVENTS from '../EVENTS'
 import triggerEvent from '../triggerEvent'
 
 let isClickEvent = true
@@ -18,12 +18,14 @@ function mouseDown(e) {
   this.removeEventListener('mousemove', mouseMove)
 
   const onMouseMove = function () {
+    // console.log('onMouseMove')
   }
   const onMouseUp = function () {
+    // console.log('onMouseUp')
     clearTimeout(preventClickTimeout)
     let eventType = EVENTS.MOUSE_UP
     if (isClickEvent) {
-      eventType = EVENTS.ROOT_CLICK
+      eventType = EVENTS.ROOT_CLICK_PRIVATE
     }
 
     const eventData = {

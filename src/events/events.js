@@ -1,20 +1,11 @@
 
-import EventTarget from './EventTarget'
-// Safari just doesn't allow you to use the EventTarget interface in your own objects other than DOM elements. 
-// So I simply replicated the class to do it.
-// const EventTarget = window.EventTarget ? window.EventTarget : CustomEventTarget
-
-export const EVENTS = {
+const EVENTS = {
   SAVE_DATA: 'saveData',
   CLICK: 'click',
   MOUSE_UP: 'mouseup',
-  ROOT_CLICK: 'root:click',
-  OBJECT_MOVE: 'object:moving'
+  ROOT_CLICK_PRIVATE: 'root:click:private',
+  OBJECT_CLICK: 'object:click',
+  OBJECT_MOVE: 'object:move',
 }
 
-export const events = new EventTarget()
-
-export default {
-  EVENTS,
-  events,
-}
+export default EVENTS

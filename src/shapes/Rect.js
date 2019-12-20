@@ -1,6 +1,5 @@
-import EventTarget from '../events/EventTarget'
+import { EventTarget, triggerEvent } from '../events'
 import Shape from '../Shape'
-import triggerEvent from '../events/triggerEvent'
 import { mix } from '../utils/extend'
 
 export class Rect extends mix(Shape, EventTarget) {
@@ -43,8 +42,8 @@ export class Rect extends mix(Shape, EventTarget) {
   on(type, callback) {
     this.addEventListener(type, callback)
   }
-  fire(type) {
-    triggerEvent(this, type)
+  fire(type, detail) {
+    triggerEvent(this, type, detail)
   }
 }
 

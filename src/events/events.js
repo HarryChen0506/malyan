@@ -5,8 +5,9 @@ import EventTarget from './EventTarget'
 // const EventTarget = window.EventTarget ? window.EventTarget : CustomEventTarget
 
 export const EVENTS = {
-  SAVE_DATA: 'save_data',
+  SAVE_DATA: 'saveData',
   CLICK: 'click',
+  MOUSE_UP: 'mouseup',
   ROOT_CLICK: 'root:click',
   OBJECT_MOVE: 'object:moving'
 }

@@ -2,23 +2,8 @@
 import Matrix from '../Matrix'
 import _ from '../utils/tool'
 import { EVENTS } from './events'
-
-function triggerEvent(el, type, detail = null, originEvent = null) {
-  let event
-  if (typeof window.CustomEvent === 'function') {
-    event = new CustomEvent(type, {
-      detail,
-      cancelable: true
-    })
-  } else {
-    event = document.createEvent('CustomEvent')
-    event.initCustomEvent(type, true, true, detail)
-  }
-  if (originEvent) {
-    event.originEvent = originEvent
-  }
-  return el.dispatchEvent(event)
-}
+import mouseEventListeners from './eventListeners/mouseEventListeners'
+import triggerEvent from './triggerEvent'
 
 export class EventManager {
   constructor({ element, root }) {
@@ -27,16 +12,22 @@ export class EventManager {
     this.init()
   }
   init = () => {
-    this.bindListeners()
-    this.bindDispathers()
+    // 注册鼠标事件
+    mouseEventListeners.enable(this.element)
+  }
+  on = (eventType, callback) => {
+    this.element.addEventListener(eventType, callback)
+  }
+  off = (eventType, callback) => {
+    this.element.removeEventListener(eventType, callback)
   }
   bindListeners = () => {
     this.element.addEventListener('click', (e) => {
       console.log('event', e)
-      triggerEvent(this.root, EVENTS.ROOT_CLICK, null, e)
+      triggerEvent(this.root, EVENTS.ROOT_CLICK, {event: e})
     }, false)
   }
-  bindDispathers = () => {
+  bindDispatchers = () => {
     this.root.addEventListener(EVENTS.ROOT_CLICK, (e) => {
       console.log('EVENTS.ROOT_CLICK', e)
       const mouse = _.getEventPosition(e, this.root.ctx.canvas)

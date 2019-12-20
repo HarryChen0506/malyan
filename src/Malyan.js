@@ -92,5 +92,11 @@ export class Malyan extends EventTarget {
     //   })
     // })
   }
+  on(eventType, callback) {
+    this.eventManager.on(eventType, callback)
+  }
+  off(eventType, callback) {
+    this.eventManager.off(eventType, callback)
+  }
 }
 export default Malyan

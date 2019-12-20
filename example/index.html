@@ -57,6 +57,10 @@
     canvas.add(group)
     canvas.render()
 
+    canvas.on('root:click', function(e) {
+      console.log('canvas click', e)
+    })
+
     function demo() {
       canvas.tree.traverseDF_preOrder(function (node) {
         console.log('node', node.name)

@@ -48,7 +48,8 @@
       rect.on('click', function(e) {
         // console.log('rect click', e)
       })
-      rect.on('mousemove', function(e) {
+      rect.on('mousedrag', function(e) {
+        // console.log('rect mousemove', e.detail.deltaPoint.canvas)
         // console.log('rect mousemove', e)
         rect.translation = {
           x: rect.translation.x + e.detail.deltaPoint.canvas.x,
@@ -72,8 +73,14 @@
         // console.log('canvas object:mousedown', e)
       })
       canvas.on('object:mousedrag', function(e) {
-        // console.log('canvas object:mousedrag', e.detail.deltaPoint.canvas)
+        // console.log('canvas object:mousedrag', e.detail.deltaPoint.canvas, e.detail.target)
         // console.log('canvas object:mousedrag', e)
+        // if (e.detail.target === rect) {
+        //   rect.translation = {
+        //     x: rect.translation.x + e.detail.deltaPoint.canvas.x,
+        //     y: rect.translation.y + e.detail.deltaPoint.canvas.y
+        //   }
+        // }
       })
       canvas.on('object:mouseup', function(e) {
         // console.log('canvas object:mouseup', e)
@@ -98,7 +105,7 @@
           // group.rotation = group.rotation + 0.1
           // group2.rotation = group2.rotation + 0.1
           canvas.render()
-        }, 100)
+        }, 10)
       }
 
       animate()

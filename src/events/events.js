@@ -4,6 +4,7 @@ const EVENTS = {
   MOUSE_MOVE: 'mousemove',
   MOUSE_DOWN: 'mousedown',
   MOUSE_UP: 'mouseup',
+  MOUSE_DRAG: 'mousedrag',
   ROOT_CLICK_PRIVATE: 'root:click:private',
   ROOT_MOUSE_DOWN_PRIVATE: 'root:mousedown:private',
   ROOT_MOUSE_MOVE_PRIVATE: 'root:mousemove:private',

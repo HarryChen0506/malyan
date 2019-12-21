@@ -7,6 +7,7 @@ export default class MouseDispatchers {
   constructor({ element, root }) {
     this.element = element
     this.root = root
+    this.target = null
     this.enable()
   }
   mouseClick = (e) => {
@@ -37,12 +38,12 @@ export default class MouseDispatchers {
     })
   }
   mouseMove = (e) => {
-    // console.log('MouseDispatchers', this, e)
+    // console.log('MouseDispatchers mouseMove', e.detail.event.clientX)
     const mouse = e.detail.currentPoint.canvas
+    // const canvas = math.pageToCanvas(this.element, e.detail.event.clientX, e.detail.event.clientY)
     let object = null
     this.root.tree.traverseDF_preOrder((node) => {
       if (node) {
-        // console.log('node', node.name, node.calcFinalMatrix())
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
         const isInPath = node.containPoint && node.containPoint(this.root.ctx, relativePos)
@@ -57,16 +58,42 @@ export default class MouseDispatchers {
       }
     })
     // root event
-    triggerEvent(this.element, EVENTS.OBJECT_MOUSE_DRAG, {
-      ...e.detail,
-      target: object
-    })
     triggerEvent(this.element, EVENTS.OBJECT_MOUSE_MOVE, {
       ...e.detail,
       target: object
     })
+
+    if (this.target) {
+      this.target.fire(EVENTS.MOUSE_DRAG, {
+        ...e.detail,
+        target: this.target
+      })
+      this.target.fire(EVENTS.MOUSE_MOVE, {
+        ...e.detail,
+        target: this.target
+      })
+      triggerEvent(this.element, EVENTS.OBJECT_MOUSE_DRAG, {
+        ...e.detail,
+        target: this.target
+      })
+    }
   }
   mouseDown = (e) => {
+    // console.log('mouseDown', e)
+    const mouse = e.detail.startPoint.canvas
+    let object = null
+    this.root.tree.traverseDF_preOrder((node) => {
+      if (node) {
+        // console.log('node', node.name, node.calcFinalMatrix())
+        const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
+        const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
+        const isInPath = node.containPoint && node.containPoint(this.root.ctx, relativePos)
+        if (isInPath) {
+          object = node
+        }
+      }
+    })
+    this.target = object
     triggerEvent(this.element, EVENTS.OBJECT_MOUSE_DOWN, {
       ...e.detail
     })

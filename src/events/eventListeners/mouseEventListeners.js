@@ -41,7 +41,7 @@ function mouseDown(e) {
     },
     type: EVENTS.OBJECT_MOUSE_DOWN
   }
-  triggerEvent(eventData.element, EVENTS.OBJECT_MOUSE_DOWN, eventData)
+  triggerEvent(eventData.element, EVENTS.ROOT_MOUSE_DOWN_PRIVATE, eventData)
 
   const onMouseMove = function (e) {
     // console.log('onMouseMove')

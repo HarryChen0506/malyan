@@ -116,7 +116,17 @@ export function pageToCanvas(element, clientX, clientY) {
   }
 }
 
+export const point = {
+  subtract: function (lhs, rhs) {
+    return {
+      x: lhs.x - rhs.x,
+      y: lhs.y - rhs.y
+    }
+  }
+}
+
 export default {
   matrix_invert,
-  pageToCanvas
+  pageToCanvas,
+  point
 }

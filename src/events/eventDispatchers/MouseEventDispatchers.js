@@ -1,6 +1,7 @@
 import { EVENTS, triggerEvent} from '../index'
 import Matrix from '../../Matrix'
-import _ from '../../utils/tool'
+// import _ from '../../utils/tool'
+import math from '../../utils/math'
 
 export default class MouseDispatchers {
   constructor({ element, root }) {
@@ -12,7 +13,7 @@ export default class MouseDispatchers {
     // console.log('MouseDispatchers', this, e)
    
     // ROOT_CLICK
-    const mouse = _.getEventPosition(e.detail.event, this.root.ctx.canvas)
+    const mouse = math.pageToCanvas( this.root.ctx.canvas, e.detail.event.clientX,  e.detail.event.clientY)
     let object = null
     this.root.tree.traverseDF_preOrder((node) => {
       if (node) {
@@ -23,7 +24,7 @@ export default class MouseDispatchers {
         if (isInPath) {
           object = node
           node.fire && node.fire(EVENTS.CLICK, {
-            event: e.detail.event,
+            ...e.detail,
             target: node
           })
         }
@@ -31,7 +32,7 @@ export default class MouseDispatchers {
     })
     // emit root click event
     triggerEvent(this.element, EVENTS.OBJECT_CLICK, {
-      event: e.detail.event,
+      ...e.detail,
       target: object
     })
 

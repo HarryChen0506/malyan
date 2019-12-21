@@ -48,7 +48,7 @@
     rect.translation = { x: 20, y: 0 }
     rect.rotation = Math.PI * 0.25
     rect.on('click', function (e) {
-      console.log('rect click', e)
+      // console.log('rect click', e)
     })
 
     var group = new Malyan.Group({
@@ -61,7 +61,13 @@
     canvas.render()
 
     canvas.on('object:click', function (e) {
-      console.log('canvas object:click', e)
+      // console.log('canvas object:click', e)
+    })
+    canvas.on('object:mousedown', function (e) {
+      console.log('canvas object:mousedown', e)
+    })
+    canvas.on('object:mousedrag', function (e) {
+      console.log('canvas object:mousedrag', e.detail.deltaPoint.canvas)
     })
 
     // function demo() {

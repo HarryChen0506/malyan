@@ -28,12 +28,13 @@ function mouseDown(e) {
     canvas: math.pageToCanvas(element, e.clientX, e.clientY)
   }
   let lastPoint = _.cloneDeep(startPoint)
+  const currentPoint = _.cloneDeep(startPoint)
   const eventData = {
     event: e,
     element,
     startPoint,
     lastPoint,
-    currentPoint: startPoint,
+    currentPoint,
     deltaPoint: {
       x: 0,
       y: 0
@@ -44,7 +45,7 @@ function mouseDown(e) {
 
   const onMouseMove = function (e) {
     // console.log('onMouseMove')
-    const eventType = EVENTS.OBJECT_MOUSE_DRAG
+    const eventType = EVENTS.ROOT_MOUSE_MOVE_PRIVATE
     const currentPoint = {
       client: {
         x: e.clientX,
@@ -61,7 +62,7 @@ function mouseDown(e) {
     const deltaPoint = {
       client: math.point.subtract(currentPoint.client, lastPoint.client),
       page: math.point.subtract(currentPoint.page, lastPoint.page),
-      canvas: math.point.subtract(currentPoint.canvas, lastPoint.canvas),
+      canvas: math.point.subtract(currentPoint.canvas, lastPoint.canvas)
     }
 
     const eventData = {
@@ -71,24 +72,36 @@ function mouseDown(e) {
       lastPoint,
       currentPoint,
       deltaPoint,
-      type: eventType,
+      type: eventType
     }
     triggerEvent(eventData.element, eventType, eventData)
-    lastPoint =  _.cloneDeep(currentPoint)
+    lastPoint = _.cloneDeep(currentPoint)
   }
-  const onMouseUp = function () {
+  const onMouseUp = function (e) {
     // console.log('onMouseUp')
     clearTimeout(preventClickTimeout)
-    let eventType = EVENTS.MOUSE_UP
+    let eventType = EVENTS.ROOT_MOUSE_UP_PRIVATE
     if (isClickEvent) {
       eventType = EVENTS.ROOT_CLICK_PRIVATE
+    }
+    const currentPoint = {
+      client: {
+        x: e.clientX,
+        y: e.clientY
+      },
+      page: {
+        x: e.pageX,
+        y: e.pageY
+      },
+      canvas: math.pageToCanvas(element, e.clientX, e.clientY)
     }
 
     const eventData = {
       event: e,
       element,
       type: eventType,
-      startPoint
+      startPoint,
+      currentPoint
     }
 
     triggerEvent(element, eventType, eventData)

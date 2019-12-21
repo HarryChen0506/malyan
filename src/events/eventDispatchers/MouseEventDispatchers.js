@@ -1,7 +1,7 @@
-import { EVENTS, triggerEvent} from '../index'
+import { EVENTS, triggerEvent } from '../index'
 import Matrix from '../../Matrix'
 // import _ from '../../utils/tool'
-import math from '../../utils/math'
+// import math from '../../utils/math'
 
 export default class MouseDispatchers {
   constructor({ element, root }) {
@@ -10,10 +10,9 @@ export default class MouseDispatchers {
     this.enable()
   }
   mouseClick = (e) => {
-    // console.log('MouseDispatchers', this, e)
-   
+    // console.log('MouseDispatchers click', this, e)
     // ROOT_CLICK
-    const mouse = math.pageToCanvas( this.root.ctx.canvas, e.detail.event.clientX,  e.detail.event.clientY)
+    const mouse = e.detail.startPoint.canvas
     let object = null
     this.root.tree.traverseDF_preOrder((node) => {
       if (node) {
@@ -23,10 +22,11 @@ export default class MouseDispatchers {
         const isInPath = node.containPoint && node.containPoint(this.root.ctx, relativePos)
         if (isInPath) {
           object = node
-          node.fire && node.fire(EVENTS.CLICK, {
-            ...e.detail,
-            target: node
-          })
+          node.fire &&
+            node.fire(EVENTS.CLICK, {
+              ...e.detail,
+              target: node
+            })
         }
       }
     })
@@ -35,12 +35,57 @@ export default class MouseDispatchers {
       ...e.detail,
       target: object
     })
-
+  }
+  mouseMove = (e) => {
+    // console.log('MouseDispatchers', this, e)
+    const mouse = e.detail.currentPoint.canvas
+    let object = null
+    this.root.tree.traverseDF_preOrder((node) => {
+      if (node) {
+        // console.log('node', node.name, node.calcFinalMatrix())
+        const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
+        const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
+        const isInPath = node.containPoint && node.containPoint(this.root.ctx, relativePos)
+        if (isInPath) {
+          object = node
+          node.fire &&
+            node.fire(EVENTS.MOUSE_MOVE, {
+              ...e.detail,
+              target: node
+            })
+        }
+      }
+    })
+    // root event
+    triggerEvent(this.element, EVENTS.OBJECT_MOUSE_DRAG, {
+      ...e.detail,
+      target: object
+    })
+    triggerEvent(this.element, EVENTS.OBJECT_MOUSE_MOVE, {
+      ...e.detail,
+      target: object
+    })
+  }
+  mouseDown = (e) => {
+    triggerEvent(this.element, EVENTS.OBJECT_MOUSE_DOWN, {
+      ...e.detail
+    })
+  }
+  mouseUp = (e) => {
+    triggerEvent(this.element, EVENTS.OBJECT_MOUSE_UP, {
+      ...e.detail
+    })
   }
   enable() {
     this.element.addEventListener(EVENTS.ROOT_CLICK_PRIVATE, this.mouseClick)
+    this.element.addEventListener(EVENTS.ROOT_MOUSE_DOWN_PRIVATE, this.mouseDown)
+    this.element.addEventListener(EVENTS.ROOT_MOUSE_MOVE_PRIVATE, this.mouseMove)
+    this.element.addEventListener(EVENTS.ROOT_MOUSE_UP_PRIVATE, this.mouseUp)
   }
   disable() {
     this.element.removeEventListener(EVENTS.ROOT_CLICK_PRIVATE, this.mouseClick)
+    this.element.removeEventListener(EVENTS.ROOT_MOUSE_DOWN_PRIVATE, this.mouseDown)
+    this.element.removeEventListener(EVENTS.ROOT_MOUSE_MOVE_PRIVATE, this.mouseMove)
+    this.element.removeEventListener(EVENTS.ROOT_MOUSE_UP_PRIVATE, this.mouseUp)
   }
 }

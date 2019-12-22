@@ -31,6 +31,8 @@ class Shape {
     this.fillStyle = fillStyle
     this.strokeStyle = strokeStyle
     this.lineWidth = lineWidth
+    this.isCurrentMouseIn = false // is mouse in shape currently
+    this.isLastMouseIn = false // is mouse in shape last time
   }
   onChange() {
     this.matrix

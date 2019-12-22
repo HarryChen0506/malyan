@@ -45,7 +45,7 @@ function mouseDown(e) {
 
   const onMouseMove = function (e) {
     // console.log('onMouseMove')
-    const eventType = EVENTS.ROOT_MOUSE_MOVE_PRIVATE
+    const eventType = EVENTS.ROOT_MOUSE_DRAG_PRIVATE
     const currentPoint = {
       client: {
         x: e.clientX,
@@ -117,8 +117,27 @@ function mouseDown(e) {
   document.addEventListener('mouseup', onMouseUp)
 }
 
-function mouseMove() {
-  // console.log('mouseMove')
+function mouseMove(e) {
+  const eventType = EVENTS.ROOT_MOUSE_MOVE_PRIVATE
+  const element = this
+  const currentPoint = {
+    client: {
+      x: e.clientX,
+      y: e.clientY
+    },
+    page: {
+      x: e.pageX,
+      y: e.pageY
+    },
+    canvas: math.pageToCanvas(element, e.clientX, e.clientY)
+  }
+  const eventData = {
+    event: e,
+    element,
+    currentPoint,
+    type: eventType
+  }
+  triggerEvent(eventData.element, eventType, eventData)
 }
 
 function mouseDoubleClick() {

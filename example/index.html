@@ -48,6 +48,19 @@
       rect.on('click', function(e) {
         // console.log('rect click', e)
       })
+      rect.on('mousemove', function(e) {
+        // console.log('rect mousemove', e)
+      })
+      rect.on('mouseenter', function(e) {
+        // console.log('rect mouseenter', e)
+        rect.fill = true
+        rect.fillStyle = 'blue'
+      })
+      rect.on('mouseleave', function(e) {
+        // console.log('rect mouseleave', e)
+        rect.fill = false
+        rect.fillStyle = ''
+      })
       rect.on('mousedrag', function(e) {
         // console.log('rect mousemove', e.detail.deltaPoint.canvas)
         // console.log('rect mousemove', e)
@@ -75,12 +88,15 @@
       canvas.on('object:mousedrag', function(e) {
         // console.log('canvas object:mousedrag', e.detail.deltaPoint.canvas, e.detail.target)
         // console.log('canvas object:mousedrag', e)
-        // if (e.detail.target === rect) {
-        //   rect.translation = {
-        //     x: rect.translation.x + e.detail.deltaPoint.canvas.x,
-        //     y: rect.translation.y + e.detail.deltaPoint.canvas.y
-        //   }
-        // }
+      })
+      canvas.on('object:mousemove', function(e) {
+        // console.log('canvas object:mousemove', e.detail.currentPoint.canvas, e.detail.target)
+        if (e.detail.target) {
+          canvas.ctx.canvas.style.cursor = 'move'
+        } else {
+          canvas.ctx.canvas.style.cursor = ''
+        }
+        // console.log('rect', rect.isCurrentMouseIn)
       })
       canvas.on('object:mouseup', function(e) {
         // console.log('canvas object:mouseup', e)

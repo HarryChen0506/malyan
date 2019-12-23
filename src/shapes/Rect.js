@@ -1,8 +1,6 @@
-import { EventTarget, triggerEvent } from '../events'
 import Shape from '../Shape'
-import { mix } from '../utils/extend'
 
-export class Rect extends mix(Shape, EventTarget) {
+export class Rect extends Shape {
   constructor(options = {}) {
     super(options)
     const { name, x, y, width, height } = options
@@ -39,12 +37,7 @@ export class Rect extends mix(Shape, EventTarget) {
     }
     return false
   }
-  on(type, callback) {
-    this.addEventListener(type, callback)
-  }
-  fire(type, detail) {
-    triggerEvent(this, type, detail)
-  }
+ 
 }
 
 export default Rect

@@ -1,6 +1,8 @@
 
 import Vector from './Vector'
 import Matrix from './Matrix'
+import { EventTarget, triggerEvent } from './events'
+
 const defaultConfig = {
   fill: true,
   stroke: true,
@@ -9,8 +11,10 @@ const defaultConfig = {
   strokeStyle: '#000',
   lineWidth: 1
 }
-class Shape {
+
+class Shape extends EventTarget {
   constructor(options = {}) {
+    super(options)
     const config = { ...defaultConfig, ...options }
     const { fill, stroke, close, fillStyle, strokeStyle, lineWidth } = config
     this.matrix = new Matrix().identity()
@@ -106,6 +110,15 @@ class Shape {
       return
     }
     return parent.root
+  }
+  on(type, callback) {
+    this.addEventListener(type, callback)
+  }
+  fire(type, detail) {
+    triggerEvent(this, type, detail)
+  }
+  off(type, callback) {
+    this.removeEventListener(type, callback)
   }
 }
 

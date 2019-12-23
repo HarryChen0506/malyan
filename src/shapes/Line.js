@@ -1,10 +1,7 @@
 /* eslint-disable */
-import EventTarget from '../events/EventTarget'
-import triggerEvent from '../events/triggerEvent'
 import Shape from '../Shape'
-import { mix } from '../utils/extend'
 
-export class Line extends mix(Shape, EventTarget) {
+export class Line extends Shape {
   constructor(options = {}) {
     super(options)
     const { name, x1, y1, x2, y2 } = options
@@ -24,12 +21,6 @@ export class Line extends mix(Shape, EventTarget) {
     ctx.lineTo(this.x2, this.y2)
     this.stroke && ctx.stroke()
     ctx.restore()
-  }
-  on(type, callback) {
-    this.addEventListener(type, callback)
-  }
-  fire(type) {
-    triggerEvent(this, type)
   }
 }
 

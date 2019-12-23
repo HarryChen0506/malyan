@@ -25,7 +25,11 @@ export const cloneDeep = obj => {
   }
   return copy
 }
+export const isNumber = function (value) {
+  return Object.prototype.toString.call(value) === '[object Number]'
+}
 
 export default {
-  cloneDeep
+  cloneDeep,
+  isNumber
 }

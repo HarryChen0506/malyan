@@ -1,130 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>malyan demo</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.js"></script>
-    <script src="../dist/malyan.js"></script>
-    <!-- <script src='../lib/index.js'></script> -->
-    <style>
-      .canvas-wrap {
-        margin: 20px auto;
-      }
 
-      canvas {
-        border: 1px solid #333;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>malyan demo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.js"></script>
+  <script src="../dist/malyan.js"></script>
+  <!-- <script src='../lib/index.js'></script> -->
+  <style>
+    .canvas-wrap {
+      margin: 20px auto;
+    }
 
-  <body>
-    <div id="root">
-      <h3>malyan demo</h3>
-      <div class="canvas-wrap">
-        <canvas id="canvas"></canvas>
-      </div>
+    canvas {
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <h3>malyan demo</h3>
+    <div class="canvas-wrap">
+      <canvas id="canvas"></canvas>
     </div>
-    <script>
-      var canvas = new Malyan({
-        id: 'canvas',
-        width: 400,
-        height: 400
-      })
+  </div>
+  <script>
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 400,
+      height: 400
+    })
 
-      var rect = new Malyan.Rect({
-        name: 'rect1',
-        x: 0,
-        y: 0,
-        width: 40,
-        height: 40,
-        fill: false,
-        strokeStyle: 'blue',
-        lineWidth: 1
-      })
-      rect.translation = { x: 20, y: 0 }
-      rect.rotation = Math.PI * 0.25
-      rect.on('click', function(e) {
-        // console.log('rect click', e)
-      })
-      rect.on('mousemove', function(e) {
-        // console.log('rect mousemove', e)
-      })
-      rect.on('mouseenter', function(e) {
-        // console.log('rect mouseenter', e)
-        rect.fill = true
-        rect.fillStyle = 'blue'
-      })
-      rect.on('mouseleave', function(e) {
-        // console.log('rect mouseleave', e)
-        rect.fill = false
-        rect.fillStyle = ''
-      })
-      rect.on('mousedrag', function(e) {
-        // console.log('rect mousemove', e.detail.deltaPoint.canvas)
-        // console.log('rect mousemove', e)
-        rect.translation = {
-          x: rect.translation.x + e.detail.deltaPoint.canvas.x,
-          y: rect.translation.y + e.detail.deltaPoint.canvas.y
-        }
-      })
-
-      var group = new Malyan.Group({
-        name: 'group'
-      })
-      group.translation = { x: 20, y: 20 }
-
-      group.add(rect)
-      canvas.add(group)
-      canvas.render()
-
-      canvas.on('object:click', function(e) {
-        // console.log('canvas object:click', e)
-      })
-      canvas.on('object:mousedown', function(e) {
-        // console.log('canvas object:mousedown', e)
-      })
-      canvas.on('object:mousedrag', function(e) {
-        // console.log('canvas object:mousedrag', e.detail.deltaPoint.canvas, e.detail.target)
-        // console.log('canvas object:mousedrag', e)
-      })
-      canvas.on('object:mousemove', function(e) {
-        // console.log('canvas object:mousemove', e.detail.currentPoint.canvas, e.detail.target)
-        if (e.detail.target) {
-          canvas.ctx.canvas.style.cursor = 'move'
-        } else {
-          canvas.ctx.canvas.style.cursor = ''
-        }
-        // console.log('rect', rect.isCurrentMouseIn)
-      })
-      canvas.on('object:mouseup', function(e) {
-        // console.log('canvas object:mouseup', e)
-        // console.log('canvas object:mousedrag', e)
-      })
-
-      // function demo() {
-      //   canvas.tree.traverseDF_preOrder(function (node) {
-      //     console.log('node', node.name)
-      //   })
-      // }
-
-      function animate() {
-        var speed = 10
-        setInterval(function() {
-          // if (group.translation.x > 200) {
-          //   speed = speed * -1
-          // } else if (group.translation.x < 20) {
-          //   speed = speed * -1
-          // }
-          // group.translation.x = group.translation.x + speed
-          // group.rotation = group.rotation + 0.1
-          // group2.rotation = group2.rotation + 0.1
-          canvas.render()
-        }, 10)
+    var rect = new Malyan.Rect({
+      name: 'rect1',
+      x: 0,
+      y: 0,
+      width: 40,
+      height: 40,
+      fill: false,
+      strokeStyle: 'blue',
+      lineWidth: 1
+    })
+    rect.translation = { x: 20, y: 0 }
+    rect.rotation = Math.PI * 0.25
+    rect.on('click', function (e) {
+      // console.log('rect click', e)
+    })
+    rect.on('mousemove', function (e) {
+      // console.log('rect mousemove', e)
+    })
+    rect.on('mouseenter', function (e) {
+      // console.log('rect mouseenter', e)
+      rect.fill = true
+      rect.fillStyle = 'blue'
+    })
+    rect.on('mouseleave', function (e) {
+      // console.log('rect mouseleave', e)
+      rect.fill = false
+      rect.fillStyle = ''
+    })
+    rect.on('mousedrag', function (e) {
+      // console.log('rect mousemove', e.detail.deltaPoint.canvas)
+      // console.log('rect mousemove', e)
+      rect.translation = {
+        x: rect.translation.x + e.detail.deltaPoint.canvas.x,
+        y: rect.translation.y + e.detail.deltaPoint.canvas.y
       }
+    })
 
-      animate()
-    </script>
-  </body>
+    var group = new Malyan.Group({
+      name: 'group'
+    })
+    group.translation = { x: 20, y: 20 }
+
+    group.add(rect)
+    canvas.add(group)
+    canvas.render()
+
+    canvas.on('object:click', function (e) {
+      // console.log('canvas object:click', e)
+    })
+    canvas.on('object:mousedown', function (e) {
+      // console.log('canvas object:mousedown', e)
+    })
+    canvas.on('object:mousedrag', function (e) {
+      // console.log('canvas object:mousedrag', e.detail.deltaPoint.canvas, e.detail.target)
+      // console.log('canvas object:mousedrag', e)
+    })
+    canvas.on('object:mousemove', function (e) {
+      // console.log('canvas object:mousemove', e.detail.currentPoint.canvas, e.detail.target)
+      if (e.detail.target) {
+        canvas.ctx.canvas.style.cursor = 'move'
+      } else {
+        canvas.ctx.canvas.style.cursor = ''
+      }
+      // console.log('rect', rect.isCurrentMouseIn)
+    })
+    canvas.on('object:mouseup', function (e) {
+      // console.log('canvas object:mouseup', e)
+      // console.log('canvas object:mousedrag', e)
+    })
+
+    // function demo() {
+    //   canvas.tree.traverseDF_preOrder(function (node) {
+    //     console.log('node', node.name)
+    //   })
+    // }
+
+    function animate() {
+      var speed = 10
+      setInterval(function () {
+        // if (group.translation.x > 200) {
+        //   speed = speed * -1
+        // } else if (group.translation.x < 20) {
+        //   speed = speed * -1
+        // }
+        // group.translation.x = group.translation.x + speed
+        // group.rotation = group.rotation + 0.1
+        // group2.rotation = group2.rotation + 0.1
+        canvas.render()
+      }, 10)
+    }
+
+    animate()
+  </script>
+</body>
+
 </html>

@@ -1,9 +1,6 @@
-import EventTarget from '../events/EventTarget'
 import Shape from '../Shape'
-import triggerEvent from '../events/triggerEvent'
-import { mix } from '../utils/extend'
 
-export class Arc extends mix(Shape, EventTarget) {
+export class Arc extends Shape {
   constructor(options = {}) {
     super(options)
     const { name, x, y, radius, startAngle, endAngle, anticlockwise} = options
@@ -26,12 +23,6 @@ export class Arc extends mix(Shape, EventTarget) {
     this.fill && ctx.fill()
     this.stroke && ctx.stroke()
     ctx.restore()
-  }
-  on(type, callback) {
-    this.addEventListener(type, callback)
-  }
-  fire(type) {
-    triggerEvent(this, type)
   }
 }
 

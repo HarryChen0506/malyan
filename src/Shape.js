@@ -2,21 +2,34 @@
 import Vector from './Vector'
 import Matrix from './Matrix'
 import { EventTarget, triggerEvent } from './events'
+import _ from './utils/tool'
 
 const defaultConfig = {
   fill: true,
   stroke: true,
-  close: false,
+  closed: false,
   fillStyle: '#fff',
   strokeStyle: '#000',
-  lineWidth: 1
+  lineWidth: 1,
+  opacity: 1,
+  shadowOffsetX: 0,
+  shadowOffsetY: 0,
+  shadowBlur: 0,
+  shadowColor: 'rgba(0, 0, 0, 0)',
+  lineCap: 'butt',
+  lineJoin: 'miter',
+  miterLimit: 10,
+  lineDashOffset: 0,
+  font: '10px sans-serif',
+  textAlign: 'start',
+  textBaseline: 'alphabetic',
+  direction: 'ltr',
 }
 
 class Shape extends EventTarget {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }
-    const { fill, stroke, close, fillStyle, strokeStyle, lineWidth } = config
     this.matrix = new Matrix().identity()
     this._translation = new Vector({
       x: 0,
@@ -29,12 +42,12 @@ class Shape extends EventTarget {
       onChange: this.onChange.bind(this)
     })
     this._rotation = 0
-    this.fill = fill
-    this.stroke = stroke
-    this.close = close
-    this.fillStyle = fillStyle
-    this.strokeStyle = strokeStyle
-    this.lineWidth = lineWidth
+    // preset property
+    Object.keys(defaultConfig).forEach(key => {
+      this[key] = config[key]
+    })
+
+    // mouse
     this.isCurrentMouseIn = false // is mouse in shape currently
     this.isLastMouseIn = false // is mouse in shape last time
   }
@@ -52,12 +65,44 @@ class Shape extends EventTarget {
     } else {
       ctx.fillStyle = this.fillStyle
     }
+
     if (typeof this.strokeStyle === 'function') {
       ctx.strokeStyle = this.strokeStyle(ctx)
     } else {
       ctx.strokeStyle = this.strokeStyle
     }
-    ctx.lineWidth = this.lineWidth
+
+    if (this.stroke) {
+      if (this.lineWidth) {
+        ctx.lineWidth = this.lineWidth
+      }
+      if (this.miterLimit) {
+        ctx.miterLimit = this.miterLimit
+      }
+      if (this.lineJoin) {
+        ctx.lineJoin = this.lineJoin
+      }
+      if (this.lineCap) {
+        ctx.lineCap = this.lineCap
+      }
+    }
+
+    if (_.isNumber(this.opacity)) {
+      ctx.globalAlpha = this.opacity
+    }
+
+    if (this.shadowColor !== defaultConfig.shadowColor) {
+      ctx.shadowColor = this.shadowColor
+      if (_.isNumber(this.shadowOffsetX)) {
+        ctx.shadowOffsetX = this.shadowOffsetX
+      }
+      if (_.isNumber(this.shadowOffsetY)) {
+        ctx.shadowOffsetY = this.shadowOffsetY
+      }
+      if (_.isNumber(this.shadowBlur)) {
+        ctx.shadowBlur = this.shadowBlur
+      }
+    }
   }
   get translation() {
     return this._translation

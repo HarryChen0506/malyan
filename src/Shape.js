@@ -12,18 +12,14 @@ const defaultConfig = {
   strokeStyle: '#000',
   lineWidth: 1,
   opacity: 1,
+  shadowColor: 'rgba(0, 0, 0, 0)',
   shadowOffsetX: 0,
   shadowOffsetY: 0,
   shadowBlur: 0,
-  shadowColor: 'rgba(0, 0, 0, 0)',
   lineCap: 'butt',
   lineJoin: 'miter',
   miterLimit: 10,
   lineDashOffset: 0,
-  font: '10px sans-serif',
-  textAlign: 'start',
-  textBaseline: 'alphabetic',
-  direction: 'ltr',
 }
 
 class Shape extends EventTarget {
@@ -125,6 +121,9 @@ class Shape extends EventTarget {
     return this._scale
   }
   set scale(v = { x: 1, y: 1 }) {
+    if (_.isNumber(v)) {
+      v = { x: v, y: v }
+    }
     this._scale = new Vector({
       ...v,
       onChange: this.onChange.bind(this)

@@ -43,6 +43,14 @@
       strokeStyle: 'red',
     })
 
+    var text = new Malyan.Text({
+      text: '12345',
+      font: '24px STheiti, SimHei',
+      x: 0,
+      y: 0,
+      textAlign: 'left',
+    })
+
     var rect = new Malyan.Rect({
       name: 'rect-1',
       x: 0,
@@ -52,13 +60,8 @@
       fill: false,
       strokeStyle: 'blue',
       lineWidth: 1,
-      shadowColor: 'rgba(0,0,0,0.5)',
-      shadowOffsetX: 4,
-      shadowOffsetY: 4,
-      shadowBlur: 4,
     })
     rect.translation = { x: 0, y: 0 }
-
     rect.on('mousedrag', function (e) {
       rect.translation = {
         x: rect.translation.x + e.detail.deltaPoint.canvas.x,
@@ -69,10 +72,12 @@
     var group = new Malyan.Group({
       name: 'group'
     })
-    group.translation = { x: 150, y: 150 }
+    group.translation = { x: 100, y: 120 }
 
     group.add(rect)
     group.add(line)
+    group.add(text)
+
     canvas.add(group)
     canvas.render()
 
@@ -85,6 +90,7 @@
         //   speed = speed * -1
         // }
         // group.rotation = group.rotation + 0.01
+        canvas.render()
       }, 100)
     }
     animate()

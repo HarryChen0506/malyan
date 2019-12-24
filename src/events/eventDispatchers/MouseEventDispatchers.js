@@ -20,7 +20,7 @@ export default class MouseDispatchers {
         // console.log('node', node.name, node.calcFinalMatrix())
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
-        const isInPath = node.containPoint && node.containPoint(this.root.ctx, relativePos)
+        const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
         if (isInPath) {
           object = node
           node.fire &&
@@ -61,7 +61,7 @@ export default class MouseDispatchers {
       if (node) {
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
-        const isInPath = node.containPoint && node.containPoint(this.root.ctx, relativePos)
+        const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
         if (isInPath) {
           object = node
           node.isCurrentMouseIn = true
@@ -107,7 +107,7 @@ export default class MouseDispatchers {
         // console.log('node', node.name, node.calcFinalMatrix())
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
-        const isInPath = node.containPoint && node.containPoint(this.root.ctx, relativePos)
+        const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
         if (isInPath) {
           this.dragTarget = node
         }

@@ -31,7 +31,9 @@
     var canvas = new Malyan({
       id: 'canvas',
       width: 400,
-      height: 400
+      height: 400,
+      // autoRatio: false,
+      // ratio: 1
     })
 
     var line = new Malyan.Line({
@@ -44,10 +46,10 @@
     })
 
     var text = new Malyan.Text({
-      text: '12345',
-      font: '24px STheiti, SimHei',
-      x: 0,
-      y: 0,
+      text: 'malyan canvas',
+      font: '14px STheiti, SimHei',
+      x: 10,
+      y: 30,
       textAlign: 'left',
     })
 
@@ -76,10 +78,14 @@
 
     group.add(rect)
     group.add(line)
-    group.add(text)
 
     canvas.add(group)
+    canvas.add(text)
     canvas.render()
+
+    rect.on('click', function (e) {
+      // console.log('rect click', e)
+    })
 
     function animate() {
       var speed = 10

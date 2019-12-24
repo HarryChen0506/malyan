@@ -6,15 +6,22 @@ import { EventManager } from './events/index'
 /* eslint-disable */
 
 export class Malyan {
+  static defaultConfig = {
+    ratio: 1,
+    autoRatio: true
+  }
   constructor(options = {}) {
     this.ctx = null
+    this.cacheCtx = this.createCanvas()
+    this.config = {...Malyan.defaultConfig, ...options}
     this.scene = new Scene({ name: 'root_group', root: this })
     this.tree = new Tree(this.scene)
-    this.init(options)
+    this.init(this.config)
   }
   init(options = {}) {
     this.initCtx(options)
     this.initSize(options)
+    this.initRatio(options)
     this.initEventManager()
   }
   initCtx(options = {}) {
@@ -41,19 +48,27 @@ export class Malyan {
     canvas.style.width = width + 'px'
     canvas.style.height = height + 'px'
   }
-  initRatio() {
-    // const context = this.ctx
-    // const canvas = this.ctx.canvas
-    // var devicePixelRatio = window.devicePixelRatio || 1;
-    // var backingStoreRatio = context.webkitBackingStorePixelRatio ||
-    //                     context.mozBackingStorePixelRatio ||
-    //                     context.msBackingStorePixelRatio ||
-    //                     context.oBackingStorePixelRatio ||
-    //                     context.backingStorePixelRatio || 1;
-    // var ratio = devicePixelRatio / backingStoreRatio;
-    // canvas.width = canvas.width * ratio;
-    // canvas.height = canvas.height * ratio;
-    // context.scale(ratio, ratio)
+  initRatio(options = {}) {
+    const context = this.ctx
+    const canvas = this.ctx.canvas
+    let { ratio, autoRatio } = options
+    if (autoRatio) {
+      var devicePixelRatio = window.devicePixelRatio || 1
+      var backingStoreRatio = context.webkitBackingStorePixelRatio ||
+        context.mozBackingStorePixelRatio ||
+        context.msBackingStorePixelRatio ||
+        context.oBackingStorePixelRatio ||
+        context.backingStorePixelRatio || 1
+      ratio = devicePixelRatio / backingStoreRatio
+    }
+    canvas.width = canvas.width * ratio;
+    canvas.height = canvas.height * ratio;
+    context.scale(ratio, ratio)
+  }
+  createCanvas() {
+    const dom = document.createElement('canvas')
+    const context = dom.getContext('2d')
+    return context
   }
   add(object) {
     this.scene.add(object)

@@ -49,6 +49,18 @@ export class Image extends Shape {
     }
     return false
   }
+  static load(url, callback) {
+    const global = window || global
+    var img = new global.Image()
+    img.src = url
+    if (img.complete) {
+      callback(img)
+    } else {
+      img.onload = function () {
+        callback(img)
+      }
+    }
+  }
 }
 
 export default Image

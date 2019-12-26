@@ -30,18 +30,6 @@
   </div>
   <script>
 
-    function getImageInfo(url, callback) {
-      var img = new Image()
-      img.src = url
-      if (img.complete) {
-        callback(img.width, img.height);
-      } else {
-        img.onload = function () {
-          callback(img)
-        }
-      }
-    }
-
     function calcImageRatio(naturalWidth, naturalHeight, ) {
       return naturalWidth / naturalHeight
     }
@@ -58,8 +46,7 @@
     group.translation = { x: 100, y: 120 }
 
     var image
-
-    getImageInfo('./assets/dog.jpeg', drawImage)
+    Malyan.Image.load('./assets/dog.jpeg', drawImage)
 
     function drawImage(res) {
       var width = 150
@@ -77,18 +64,6 @@
         console.log('image click', e)
       })
       group.add(image)
-
-      // var rect = new Malyan.Rect({
-      //   name: 'rect-1',
-      //   x: 0,
-      //   y: 0,
-      //   width: width,
-      //   height: width / calcImageRatio(res.width, res.height),
-      //   fill: false,
-      //   strokeStyle: 'blue',
-      //   lineWidth: 1,
-      // })
-      // group.add(rect)
     }
 
     canvas.add(group)

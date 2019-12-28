@@ -21,6 +21,7 @@ export default class MouseDispatchers {
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
         const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
+        // console.log('isInPath', isInPath, node.name)
         if (isInPath) {
           object = node
           node.fire &&

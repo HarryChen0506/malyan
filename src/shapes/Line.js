@@ -1,15 +1,20 @@
 /* eslint-disable */
 import Shape from '../Shape'
+import Vector from '../Vector'
 
 export class Line extends Shape {
   constructor(options = {}) {
     super(options)
-    const { name, x1, y1, x2, y2 } = options
+    const { name, start, end} = options
     this.name = name
-    this.x1 = x1 || 0
-    this.y1 = y1 || 0
-    this.x2 = x2 || 20
-    this.y2 = y2 || 20
+    this.start = start || new Vector({
+      x: 0,
+      y: 0,
+    })
+    this.end = end || new Vector({
+      x: 20,
+      y: 20,
+    })
   }
   render(ctx) {
     ctx.save()
@@ -17,8 +22,8 @@ export class Line extends Shape {
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
     ctx.beginPath()
     this.setCtxProps && this.setCtxProps(ctx)
-    ctx.moveTo(this.x1, this.y1)
-    ctx.lineTo(this.x2, this.y2)
+    ctx.moveTo(this.start.x, this.start.y)
+    ctx.lineTo(this.end.x, this.end.y)
     this.stroke && ctx.stroke()
     ctx.restore()
   }

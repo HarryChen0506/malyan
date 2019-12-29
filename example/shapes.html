@@ -41,6 +41,25 @@
     })
     // group.translation = { x: 100, y: 120 }
 
+    var line = new Malyan.Line({
+      name: 'line-1',
+      start: new Malyan.Vector({x: 10, y: 10}),
+      end: new Malyan.Vector({x: 50, y: 50}),
+      strokeStyle: 'red',
+    })
+    // group.add(line)
+
+    var curve = new Malyan.Curve({
+      name: 'curve-1',
+      start: new Malyan.Vector({x: 10, y: 10}),
+      end: new Malyan.Vector({x: 50, y: 50}),
+      controls: [new Malyan.Vector({x: 10, y: 50}), new Malyan.Vector({x: 20, y: 60})],
+      strokeStyle: 'red',
+    })
+
+   
+    group.add(curve)
+
     var circle = new Malyan.Circle({
       name: 'cicle-1',
       x: 100,

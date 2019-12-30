@@ -1,6 +1,5 @@
 /* eslint-disable */
 import Shape from '../../Shape'
-import Vector from '../../Vector'
 import CurvePath from './CurvePath'
 import LinePath from './LinePath'
 

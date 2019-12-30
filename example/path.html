@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>malyan demo</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.js"></script>
+  <script src="../dist/malyan.js"></script>
+  <!-- <script src='../lib/index.js'></script> -->
+  <style>
+    .canvas-wrap {
+      margin: 20px auto;
+    }
+
+    canvas {
+      border: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <h3>shapes</h3>
+    <!-- <image id='image' src='./assets/dog.jpeg' width=200></image> -->
+    <div class="canvas-wrap">
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+  <script>
+
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 400,
+      height: 400,
+    })
+
+    var group = new Malyan.Group({
+      name: 'group'
+    })
+
+    var width = 100, height = 80
+    var x = 100, y = 100, r = 20
+
+    var path = new Malyan.Path({
+      name: 'path-1',
+      paths: [
+        new Malyan.Path.Curve({
+          start: new Malyan.Vector({ x: x, y: y + r }),
+          end: new Malyan.Vector({ x: x + r, y: y }),
+          controls: [new Malyan.Vector({ x: x, y: y })],
+        }),
+        new Malyan.Path.Line({
+          end: new Malyan.Vector({ x: x + width - r, y: y }),
+        }),
+        new Malyan.Path.Curve({
+          start: new Malyan.Vector({ x: x + width - r, y: y }),
+          end: new Malyan.Vector({ x: x + width, y: y + r}),
+          controls: [new Malyan.Vector({ x: x + width, y: y })],
+        }),
+        new Malyan.Path.Line({
+          end: new Malyan.Vector({ x: x + width, y: y + height - r}),
+        }),
+        new Malyan.Path.Curve({
+          start: new Malyan.Vector({ x: x + width, y: y + height -r }),
+          end: new Malyan.Vector({ x: x + width - r, y: y + height}),
+          controls: [new Malyan.Vector({ x: x + width, y: y + height })],
+        }),
+        new Malyan.Path.Line({
+          end: new Malyan.Vector({ x: x + r, y: y + height}),
+        }),
+        new Malyan.Path.Curve({
+          start: new Malyan.Vector({ x: x + r, y: y + height }),
+          end: new Malyan.Vector({ x: x, y: y + height - r}),
+          controls: [new Malyan.Vector({ x: x, y: y + height })],
+        }),
+        new Malyan.Path.Line({
+          end: new Malyan.Vector({ x: x, y: y + r }),
+        }),
+      ],
+      closed: true,
+      strokeStyle: 'blue',
+      fill: true,
+      fillStyle: 'pink'
+    })
+    path.translation.y = 30
+    path.on('mousedrag', function (e) {
+      path.translation = {
+        x: path.translation.x + e.detail.deltaPoint.canvas.x,
+        y: path.translation.y + e.detail.deltaPoint.canvas.y
+      }
+    })
+    group.add(path)
+
+    var roundRect = new Malyan.RoundRect({
+      name: 'roundRect-1',
+      x: 0,
+      y: 0,
+      width: 60,
+      height: 80,
+      radius: 10,
+      fill: true,
+      // fillStyle: '#0d9fde',
+      fillStyle: 'transparent',
+      strokeStyle: 'red',
+    })
+    roundRect.translation = {x: 50, y: 50}
+    group.add(roundRect)
+
+    canvas.add(group)
+    canvas.render()
+
+    function animate() {
+      var speed = 10
+      setInterval(function () {
+        // if (group.translation.x > 200) {
+        //   speed = speed * -1
+        // } else if (group.translation.x < 20) {
+        //   speed = speed * -1
+        // }
+        // group.rotation = group.rotation + 0.01
+        canvas.render()
+      }, 100)
+    }
+    animate()
+
+
+    // function animateLoop() {
+    //   group.rotation = group.rotation + 0.01
+    //   canvas.render()
+    //   requestAnimationFrame(animateLoop)
+    // }
+    // animateLoop()
+  </script>
+</body>
+
+</html>

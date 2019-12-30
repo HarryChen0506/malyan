@@ -4,6 +4,7 @@ import Vector from './Vector'
 import Group from './Group'
 import Line from './shapes/Line'
 import Curve from './shapes/Curve'
+import Path from './shapes/Path'
 import Rect from './shapes/Rect'
 import Arc from './shapes/Arc'
 import Circle from './shapes/Circle'
@@ -16,6 +17,7 @@ Malyan.Group = Group
 Malyan.Vector = Vector
 Malyan.Line = Line
 Malyan.Curve = Curve
+Malyan.Path = Path
 Malyan.Rect = Rect
 Malyan.Arc = Arc
 Malyan.Circle = Circle
@@ -30,6 +32,7 @@ export {
   Group,
   Line,
   Curve,
+  Path,
   Rect,
   Arc,
   Circle,

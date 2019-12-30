@@ -41,39 +41,75 @@
     })
     // group.translation = { x: 100, y: 120 }
 
-    var line = new Malyan.Line({
-      name: 'line-1',
-      start: new Malyan.Vector({x: 10, y: 10}),
-      end: new Malyan.Vector({x: 50, y: 50}),
-      strokeStyle: 'red',
-    })
+    // var line = new Malyan.Line({
+    //   name: 'line-1',
+    //   start: new Malyan.Vector({ x: 10, y: 10 }),
+    //   end: new Malyan.Vector({ x: 50, y: 50 }),
+    //   strokeStyle: 'red',
+    // })
     // group.add(line)
 
-    var curve = new Malyan.Curve({
-      name: 'curve-1',
-      start: new Malyan.Vector({x: 10, y: 10}),
-      end: new Malyan.Vector({x: 50, y: 50}),
-      controls: [new Malyan.Vector({x: 10, y: 50}), new Malyan.Vector({x: 20, y: 60})],
-      strokeStyle: 'red',
-    })
+    // var curve = new Malyan.Curve({
+    //   name: 'curve-1',
+    //   start: new Malyan.Vector({ x: 10, y: 10 }),
+    //   end: new Malyan.Vector({ x: 50, y: 50 }),
+    //   controls: [new Malyan.Vector({ x: 10, y: 50 }), new Malyan.Vector({ x: 20, y: 60 })],
+    //   strokeStyle: 'red',
+    // })
+    // group.add(curve)
 
-   
-    group.add(curve)
-
-    var circle = new Malyan.Circle({
-      name: 'cicle-1',
-      x: 100,
-      y: 100,
-      radius: 50,
-      strokeStyle: 'red'
+    var path = new Malyan.Path({
+      name: 'path-1',
+      paths: [
+        new Malyan.Path.Curve({
+          start: new Malyan.Vector({ x: 10, y: 10 }),
+          end: new Malyan.Vector({ x: 50, y: 50 }),
+          controls: [new Malyan.Vector({ x: 10, y: 50 })],
+        }),
+        new Malyan.Path.Curve({
+          end: new Malyan.Vector({ x: 100, y: 20 }),
+          controls: [new Malyan.Vector({ x: 60, y: 50 })],
+        }),
+        new Malyan.Path.Curve({
+          end: new Malyan.Vector({ x: 120, y: 50 }),
+          controls: [new Malyan.Vector({ x: 80, y: 30 })],
+        }),
+        new Malyan.Path.Curve({
+          end: new Malyan.Vector({ x: 150, y: 0 }),
+          controls: [new Malyan.Vector({ x: 180, y: 30 })],
+        }),
+        new Malyan.Path.Line({
+          end: new Malyan.Vector({ x: 60, y: 30 }),
+        }),
+      ],
+      closed: true,
+      // strokeStyle: 'red',
+      // fill: true,
+      // fillStyle: 'blue'
     })
-    circle.on('mousedrag', function (e) {
-      circle.translation = {
-        x: circle.translation.x + e.detail.deltaPoint.canvas.x,
-        y: circle.translation.y + e.detail.deltaPoint.canvas.y
+    path.translation.y = 30
+    path.on('mousedrag', function (e) {
+      path.translation = {
+        x: path.translation.x + e.detail.deltaPoint.canvas.x,
+        y: path.translation.y + e.detail.deltaPoint.canvas.y
       }
     })
-    group.add(circle)
+    group.add(path)
+
+    // var circle = new Malyan.Circle({
+    //   name: 'cicle-1',
+    //   x: 100,
+    //   y: 100,
+    //   radius: 50,
+    //   strokeStyle: 'red'
+    // })
+    // circle.on('mousedrag', function (e) {
+    //   circle.translation = {
+    //     x: circle.translation.x + e.detail.deltaPoint.canvas.x,
+    //     y: circle.translation.y + e.detail.deltaPoint.canvas.y
+    //   }
+    // })
+    // group.add(circle)
 
     var ellipse = new Malyan.Ellipse({
       name: 'cicle-1',

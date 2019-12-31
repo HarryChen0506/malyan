@@ -67,8 +67,10 @@ export class Path extends Shape {
       return new Vector(point)
     }
     elements.forEach(v => {
-      let element
-      let params = {}
+      let element = {}
+      let params = {
+        id: v.id
+      }
       if (!v.end) {
         console.error('element `end` props must be not null in Path.createPaths function')
         return
@@ -93,6 +95,7 @@ export class Path extends Shape {
         params.controls = controls
         element = new Path.Curve(params)
       }
+     
       element && paths.push(element)
     })
     return paths

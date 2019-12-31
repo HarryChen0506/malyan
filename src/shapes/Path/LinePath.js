@@ -2,8 +2,9 @@ import Vector from '../../Vector'
 
 export class LinePath {
   constructor(options = {}) {
-    const { name, start, end } = options
+    const { name, id, start, end } = options
     this.name = name
+    this.id = id
     this.start = start || end || new Vector({
       x: 0,
       y: 0,

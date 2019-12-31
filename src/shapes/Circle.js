@@ -15,6 +15,17 @@ export class Circle extends Arc {
     }
     return false
   }
+  getBoundingClientRect() {
+    const res = {
+      left: this.x - this.radius,
+      right: this.x + this.radius,
+      top: this.y - this.radius,
+      bottom: this.y + this.radius,
+      width: 2 * this.radius,
+      height:2 * this.radius
+    }
+    return res
+  }
 }
 
 export default Circle

@@ -145,6 +145,14 @@ class Shape extends EventTarget {
     // console.log('clacFinalMatrix', matrices, finalMatrix)
     return finalMatrix
   }
+  calcPixelToParentCoordinatePoint(originPoint = [0, 0]) {
+    return Matrix.multiply(this.matrix.elements, [originPoint[0], originPoint[1], 1])
+  }
+  calcParentToPixelCoordinatePoint(originPoint = [0, 0]) {
+    const inverted_matrix = Matrix.invert(this.matrix.elements)
+    const relativePos = Matrix.multiply(inverted_matrix, [originPoint[0], originPoint[1], 1])
+    return relativePos
+  }
   getRoot() {
     let parent = this.parent
     while (parent.parent) {

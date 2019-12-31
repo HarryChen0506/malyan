@@ -1,5 +1,5 @@
 import Shape from '../Shape'
-
+import math from '../utils/math'
 export class Rect extends Shape {
   constructor(options = {}) {
     super(options)
@@ -37,7 +37,28 @@ export class Rect extends Shape {
     }
     return false
   }
- 
+  getBoundingClientRect() {
+    const pixelVertices = [
+      [this.x, this.y],
+      [this.x + this.width, this.y],
+      [this.x + this.width, this.y + this.height],
+      [this.x, this.y + this.height]
+    ]
+    const parentVertices = pixelVertices.map(v => {
+      const point = this.calcPixelToParentCoordinatePoint(v)
+      return [point.x, point.y]
+    })
+    const { left, right, top, bottom } = math.calcPointsRect(parentVertices)
+    const res = {
+      left,
+      right,
+      top,
+      bottom,
+      width: right - left,
+      height: bottom - top
+    }
+    return res
+  }
 }
 
 export default Rect

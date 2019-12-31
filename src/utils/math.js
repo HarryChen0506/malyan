@@ -125,8 +125,37 @@ export const point = {
   }
 }
 
+export const calcPointsRect = function (points = []) {
+  let left = Infinity
+  let right = -Infinity
+  let top = Infinity
+  let bottom = -Infinity
+  for (let i = 0; i < points.length; i++) {
+    const point = points[i]
+    if (point[0] <= left) {
+      left = point[0]
+    }
+    if (point[0] >= right) {
+      right = point[0]
+    }
+    if (point[1] <= top) {
+      top = point[1]
+    }
+    if (point[1] >= bottom) {
+      bottom = point[1]
+    }
+  }
+  return {
+    left,
+    right,
+    top,
+    bottom
+  }
+}
+
 export default {
   matrix_invert,
   pageToCanvas,
-  point
+  point,
+  calcPointsRect
 }

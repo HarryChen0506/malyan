@@ -33,6 +33,10 @@ export class Polygon extends Path {
     })
     return elements
   }
+  updatePaths(points = []) {
+    const formatedPoints = Polygon.formatPolyPoints(points)
+    this.paths = Path.createPaths(formatedPoints)
+  }
 }
 
 export default Polygon

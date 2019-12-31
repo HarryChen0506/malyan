@@ -20,6 +20,7 @@ const defaultConfig = {
   lineJoin: 'miter',
   miterLimit: 10,
   lineDashOffset: 0,
+  penetrable: false,
 }
 
 class Shape extends EventTarget {

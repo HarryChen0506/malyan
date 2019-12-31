@@ -58,35 +58,30 @@
     // })
     // group.add(curve)
 
+   
+
+    var pathElements = Malyan.Path.createPaths([
+      {
+        type: 'curve',
+        start: [10, 10],
+        end: [20, 50],
+        controls: [[10, 50]]
+      },
+      {
+        type: 'curve',
+        end: [50, 30],
+        controls: [[60, 50]]
+      },
+    ])
     var path = new Malyan.Path({
       name: 'path-1',
-      paths: [
-        new Malyan.Path.Curve({
-          start: new Malyan.Vector({ x: 10, y: 10 }),
-          end: new Malyan.Vector({ x: 50, y: 50 }),
-          controls: [new Malyan.Vector({ x: 10, y: 50 })],
-        }),
-        new Malyan.Path.Curve({
-          end: new Malyan.Vector({ x: 100, y: 20 }),
-          controls: [new Malyan.Vector({ x: 60, y: 50 })],
-        }),
-        new Malyan.Path.Curve({
-          end: new Malyan.Vector({ x: 120, y: 50 }),
-          controls: [new Malyan.Vector({ x: 80, y: 30 })],
-        }),
-        new Malyan.Path.Curve({
-          end: new Malyan.Vector({ x: 150, y: 0 }),
-          controls: [new Malyan.Vector({ x: 180, y: 30 })],
-        }),
-        new Malyan.Path.Line({
-          end: new Malyan.Vector({ x: 60, y: 30 }),
-        }),
-      ],
+      paths: pathElements,
       closed: true,
       // strokeStyle: 'red',
       // fill: true,
       // fillStyle: 'blue'
     })
+    group.add(path)
     path.translation.y = 30
     path.on('mousedrag', function (e) {
       path.translation = {
@@ -94,7 +89,6 @@
         y: path.translation.y + e.detail.deltaPoint.canvas.y
       }
     })
-    group.add(path)
 
     // var circle = new Malyan.Circle({
     //   name: 'cicle-1',

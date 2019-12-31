@@ -1,5 +1,6 @@
 /* eslint-disable */
 import Shape from '../../Shape'
+import Vector from '../../Vector'
 import CurvePath from './CurvePath'
 import LinePath from './LinePath'
 
@@ -49,6 +50,52 @@ export class Path extends Shape {
       return true
     }
     return false
+  }
+  static PATH_TYPE = {
+    LINE: 'line',
+    CURVE: 'curve'
+  }
+  static createPaths = (elements = []) => {
+    let paths = []
+    const formatPoint = function (point) {
+      if (Array.isArray(point)) {
+        return new Vector({
+          x: point[0],
+          y: point[1]
+        })
+      }
+      return new Vector(point)
+    }
+    elements.forEach(v => {
+      let element
+      let params = {}
+      if (!v.end) {
+        console.error('element `end` props must be not null in Path.createPaths function')
+        return
+      }
+      if (v.type === Path.PATH_TYPE.Line) {
+        if (v.start) {
+          params.start = formatPoint(v.start)
+        }
+        params.end = formatPoint(v.end)
+        element = new Path.Line(params)
+      } else if (v.type === Path.PATH_TYPE.CURVE) {
+        let controls = []
+        if (Array.isArray(v.controls)) {
+          controls = v.controls.map(k => {
+            return formatPoint(k)
+          })
+        }
+        if (v.start) {
+          params.start = formatPoint(v.start)
+        }
+        params.end = formatPoint(v.end)
+        params.controls = controls
+        element = new Path.Curve(params)
+      }
+      element && paths.push(element)
+    })
+    return paths
   }
 }
 Path.Curve = CurvePath

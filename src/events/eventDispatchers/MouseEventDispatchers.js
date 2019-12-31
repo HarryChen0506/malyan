@@ -16,7 +16,7 @@ export default class MouseDispatchers {
     const mouse = e.detail.startPoint.canvas
     let object = null
     this.root.tree.traverseDF_preOrder((node) => {
-      if (node) {
+      if (node && !node.penetrable) {
         // console.log('node', node.name, node.calcFinalMatrix())
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
@@ -59,7 +59,7 @@ export default class MouseDispatchers {
     const mouse = e.detail.currentPoint.canvas
     let object = null
     this.root.tree.traverseDF_preOrder((node) => {
-      if (node) {
+      if (node && !node.penetrable) {
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
         const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
@@ -104,7 +104,7 @@ export default class MouseDispatchers {
     // console.log('mouseDown', e)
     const mouse = e.detail.startPoint.canvas
     this.root.tree.traverseDF_preOrder((node) => {
-      if (node) {
+      if (node && !node.penetrable) {
         // console.log('node', node.name, node.calcFinalMatrix())
         const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
         const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])

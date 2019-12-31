@@ -7,6 +7,7 @@ import Curve from './shapes/Curve'
 import Path from './shapes/Path'
 import Rect from './shapes/Rect'
 import RoundRect from './shapes/RoundRect'
+import Polygon from './shapes/Polygon'
 import Arc from './shapes/Arc'
 import Circle from './shapes/Circle'
 import Ellipse from './shapes/Ellipse'
@@ -21,6 +22,7 @@ Malyan.Curve = Curve
 Malyan.Path = Path
 Malyan.Rect = Rect
 Malyan.RoundRect = RoundRect
+Malyan.Polygon = Polygon
 Malyan.Arc = Arc
 Malyan.Circle = Circle
 Malyan.Ellipse = Ellipse
@@ -37,6 +39,7 @@ export {
   Path,
   Rect,
   RoundRect,
+  Polygon,
   Arc,
   Circle,
   Ellipse,

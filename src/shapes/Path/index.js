@@ -75,7 +75,7 @@ export class Path extends Shape {
         console.error('element `end` props must be not null in Path.createPaths function')
         return
       }
-      if (v.type === Path.PATH_TYPE.Line) {
+      if (v.type === Path.PATH_TYPE.LINE) {
         if (v.start) {
           params.start = formatPoint(v.start)
         }

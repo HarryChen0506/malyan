@@ -22,7 +22,7 @@
 
 <body>
   <div id="root">
-    <h3>shapes</h3>
+    <h3>path</h3>
     <!-- <image id='image' src='./assets/dog.jpeg' width=200></image> -->
     <div class="canvas-wrap">
       <canvas id="canvas"></canvas>
@@ -40,59 +40,6 @@
       name: 'group'
     })
 
-    var width = 100, height = 80
-    var x = 100, y = 100, r = 20
-
-    var path = new Malyan.Path({
-      name: 'path-1',
-      paths: [
-        new Malyan.Path.Curve({
-          start: new Malyan.Vector({ x: x, y: y + r }),
-          end: new Malyan.Vector({ x: x + r, y: y }),
-          controls: [new Malyan.Vector({ x: x, y: y })],
-        }),
-        new Malyan.Path.Line({
-          end: new Malyan.Vector({ x: x + width - r, y: y }),
-        }),
-        new Malyan.Path.Curve({
-          start: new Malyan.Vector({ x: x + width - r, y: y }),
-          end: new Malyan.Vector({ x: x + width, y: y + r}),
-          controls: [new Malyan.Vector({ x: x + width, y: y })],
-        }),
-        new Malyan.Path.Line({
-          end: new Malyan.Vector({ x: x + width, y: y + height - r}),
-        }),
-        new Malyan.Path.Curve({
-          start: new Malyan.Vector({ x: x + width, y: y + height -r }),
-          end: new Malyan.Vector({ x: x + width - r, y: y + height}),
-          controls: [new Malyan.Vector({ x: x + width, y: y + height })],
-        }),
-        new Malyan.Path.Line({
-          end: new Malyan.Vector({ x: x + r, y: y + height}),
-        }),
-        new Malyan.Path.Curve({
-          start: new Malyan.Vector({ x: x + r, y: y + height }),
-          end: new Malyan.Vector({ x: x, y: y + height - r}),
-          controls: [new Malyan.Vector({ x: x, y: y + height })],
-        }),
-        new Malyan.Path.Line({
-          end: new Malyan.Vector({ x: x, y: y + r }),
-        }),
-      ],
-      closed: true,
-      strokeStyle: 'blue',
-      fill: true,
-      fillStyle: 'pink'
-    })
-    path.translation.y = 30
-    path.on('mousedrag', function (e) {
-      path.translation = {
-        x: path.translation.x + e.detail.deltaPoint.canvas.x,
-        y: path.translation.y + e.detail.deltaPoint.canvas.y
-      }
-    })
-    group.add(path)
-
     var roundRect = new Malyan.RoundRect({
       name: 'roundRect-1',
       x: 0,
@@ -105,8 +52,29 @@
       fillStyle: 'transparent',
       strokeStyle: 'red',
     })
-    roundRect.translation = {x: 50, y: 50}
+    roundRect.translation = { x: 50, y: 50 }
+    roundRect.on('mousedrag', function (e) {
+      roundRect.translation = {
+        x: roundRect.translation.x + e.detail.deltaPoint.canvas.x,
+        y: roundRect.translation.y + e.detail.deltaPoint.canvas.y
+      }
+    })
     group.add(roundRect)
+
+    var polygon = new Malyan.Polygon({
+      name: 'polygon-1',
+      points: [[10, 10], [10, 30], [30, 30], [30, 10]],
+      strokeStyle: '#0d9fde',
+    })
+    polygon.translation = { x: 120, y: 100 }
+    polygon.on('mousedrag', function (e) {
+      polygon.translation = {
+        x: polygon.translation.x + e.detail.deltaPoint.canvas.x,
+        y: polygon.translation.y + e.detail.deltaPoint.canvas.y
+      }
+    })
+
+    group.add(polygon)
 
     canvas.add(group)
     canvas.render()

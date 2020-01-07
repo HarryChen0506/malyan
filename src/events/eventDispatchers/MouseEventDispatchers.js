@@ -1,5 +1,5 @@
 import { EVENTS, triggerEvent } from '../index'
-import Matrix from '../../Matrix'
+// import Matrix from '../../Matrix'
 // import _ from '../../utils/tool'
 // import math from '../../utils/math'
 
@@ -17,9 +17,9 @@ export default class MouseDispatchers {
     let object = null
     this.root.tree.traverseDF_preOrder((node) => {
       if (node && !node.penetrable) {
+        const relativePos = node.calcCanvasToPixelCoordinatePoint([mouse.x, mouse.y])
         // console.log('node', node.name, node.calcFinalMatrix())
-        const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
-        const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
+        // console.log('relativePos', e.detail.startPoint.canvas, relativePos)
         const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
         // console.log('isInPath', isInPath, node.name)
         if (isInPath) {
@@ -60,8 +60,7 @@ export default class MouseDispatchers {
     let object = null
     this.root.tree.traverseDF_preOrder((node) => {
       if (node && !node.penetrable) {
-        const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
-        const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
+        const relativePos = node.calcCanvasToPixelCoordinatePoint([mouse.x, mouse.y])
         const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
         if (isInPath) {
           object = node
@@ -106,8 +105,7 @@ export default class MouseDispatchers {
     this.root.tree.traverseDF_preOrder((node) => {
       if (node && !node.penetrable) {
         // console.log('node', node.name, node.calcFinalMatrix())
-        const inverted_matrix = Matrix.invert(node.calcFinalMatrix())
-        const relativePos = Matrix.multiply(inverted_matrix, [mouse.x, mouse.y, 1])
+        const relativePos = node.calcCanvasToPixelCoordinatePoint([mouse.x, mouse.y])
         const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
         if (isInPath) {
           this.dragTarget = node

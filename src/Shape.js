@@ -145,6 +145,11 @@ class Shape extends EventTarget {
     // console.log('clacFinalMatrix', matrices, finalMatrix)
     return finalMatrix
   }
+  calcCanvasToPixelCoordinatePoint(originPoint = [0, 0]) {
+    const inverted_matrix = Matrix.invert(this.calcFinalMatrix())
+    const relativePos = Matrix.multiply(inverted_matrix, [originPoint[0], originPoint[1], 1])
+    return relativePos
+  }
   calcPixelToParentCoordinatePoint(originPoint = [0, 0]) {
     return Matrix.multiply(this.matrix.elements, [originPoint[0], originPoint[1], 1])
   }

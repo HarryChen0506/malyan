@@ -34,19 +34,20 @@
       id: 'canvas',
       width: 400,
       height: 400,
+      // autoRatio: false
     })
 
     var group = new Malyan.Group({
       name: 'group'
     })
 
-    var roundRect = new Malyan.RoundRect({
+    var roundRect = new Malyan.Rect({
       name: 'roundRect-1',
       x: 0,
       y: 0,
       width: 60,
       height: 80,
-      radius: 10,
+      // radius: 10,
       fill: true,
       // fillStyle: '#0d9fde',
       fillStyle: 'transparent',
@@ -61,20 +62,20 @@
     })
     group.add(roundRect)
 
-    var polygon = new Malyan.Polygon({
-      name: 'polygon-1',
-      points: [[10, 10], [10, 30], [30, 30], [30, 10]],
-      strokeStyle: '#0d9fde',
-    })
-    polygon.translation = { x: 120, y: 100 }
-    polygon.on('mousedrag', function (e) {
-      polygon.translation = {
-        x: polygon.translation.x + e.detail.deltaPoint.canvas.x,
-        y: polygon.translation.y + e.detail.deltaPoint.canvas.y
-      }
-    })
+    // var polygon = new Malyan.Polygon({
+    //   name: 'polygon-1',
+    //   points: [[10, 10], [10, 30], [30, 30], [30, 10]],
+    //   strokeStyle: '#0d9fde',
+    // })
+    // polygon.translation = { x: 120, y: 100 }
+    // polygon.on('mousedrag', function (e) {
+    //   polygon.translation = {
+    //     x: polygon.translation.x + e.detail.deltaPoint.canvas.x,
+    //     y: polygon.translation.y + e.detail.deltaPoint.canvas.y
+    //   }
+    // })
 
-    group.add(polygon)
+    // group.add(polygon)
 
     canvas.add(group)
     canvas.render()

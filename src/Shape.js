@@ -146,14 +146,30 @@ class Shape extends EventTarget {
     return finalMatrix
   }
   calcCanvasToPixelCoordinatePoint(originPoint = [0, 0]) {
+    if (!Array.isArray(originPoint)) {
+      console.error('calcCanvasToPixelCoordinatePoint params must be Array')
+    }
     const inverted_matrix = Matrix.invert(this.calcFinalMatrix())
     const relativePos = Matrix.multiply(inverted_matrix, [originPoint[0], originPoint[1], 1])
     return relativePos
   }
+  calcPixelToCanvasCoordinatePoint(originPoint = [0, 0]) {
+    if (!Array.isArray(originPoint)) {
+      console.error('calcPixelToCanvasCoordinatePoint params must be Array')
+    }
+    const matrix = this.calcFinalMatrix()
+    return Matrix.multiply(matrix, [originPoint[0], originPoint[1], 1])
+  }
   calcPixelToParentCoordinatePoint(originPoint = [0, 0]) {
+    if (!Array.isArray(originPoint)) {
+      console.error('calcPixelToParentCoordinatePoint params must be Array')
+    }
     return Matrix.multiply(this.matrix.elements, [originPoint[0], originPoint[1], 1])
   }
   calcParentToPixelCoordinatePoint(originPoint = [0, 0]) {
+    if (!Array.isArray(originPoint)) {
+      console.error('calcPixelToParentCoordinatePoint params must be Array')
+    }
     const inverted_matrix = Matrix.invert(this.matrix.elements)
     const relativePos = Matrix.multiply(inverted_matrix, [originPoint[0], originPoint[1], 1])
     return relativePos

@@ -4,12 +4,21 @@ import Vector from '../../Vector'
 import CurvePath from './CurvePath'
 import LinePath from './LinePath'
 
+const defaultConfig = {
+  center: false
+}
 export class Path extends Shape {
   constructor(options = {}) {
     super(options)
-    const { name, paths } = options
+    const config = { ...defaultConfig, ...options }
+    const { name, paths, center } = config
     this.name = name
     this.paths = paths || []
+    this.offsetX = 0
+    this.offsetY = 0
+    if (center) {
+      this.center()
+    }
   }
   render(ctx) {
     ctx.save()
@@ -20,7 +29,7 @@ export class Path extends Shape {
     this.setCtxProps && this.setCtxProps(ctx)
     const firstPath = this.paths[0]
     if (firstPath) {
-      ctx.moveTo(firstPath.start.x, firstPath.start.y)
+      ctx.moveTo(firstPath.start.x + this.offsetX, firstPath.start.y + this.offsetY)
     }
     for (let i = 0; i < this.paths.length; i++) {
       this.paths[i].render(ctx)
@@ -37,7 +46,7 @@ export class Path extends Shape {
     ctx.beginPath()
     const firstPath = this.paths[0]
     if (firstPath) {
-      ctx.moveTo(firstPath.start.x, firstPath.start.y)
+      ctx.moveTo(firstPath.start.x + this.offsetX, firstPath.start.y + this.offsetY)
     }
     for (let i = 0; i < this.paths.length; i++) {
       this.paths[i].render(ctx)
@@ -50,6 +59,15 @@ export class Path extends Shape {
       return true
     }
     return false
+  }
+  center() {
+    // this.offsetX = - this.width * 0.5
+    // this.offsetY = - this.height * 0.5
+    this.offsetX = -30
+    this.offsetY = -40
+    this.paths.forEach(v => {
+      v.setOffset(this.offsetX, this.offsetY)
+    })
   }
   static PATH_TYPE = {
     LINE: 'line',
@@ -95,7 +113,7 @@ export class Path extends Shape {
         params.controls = controls
         element = new Path.Curve(params)
       }
-     
+
       element && paths.push(element)
     })
     return paths

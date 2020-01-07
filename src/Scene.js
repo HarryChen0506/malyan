@@ -7,8 +7,10 @@ export class Scene extends Group{
     const options = args[0] || {}
     this.root = options.root
   }
-  render(ctx) {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+  render(ctx, options) {
+    if (options.autoClear) {
+      ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    }
     super.render(ctx)
   }
 }

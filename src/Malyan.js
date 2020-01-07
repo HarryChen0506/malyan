@@ -10,7 +10,8 @@ export class Malyan {
     ratio: 1,
     autoRatio: true,
     width: 300,
-    height: 150
+    height: 150,
+    autoClear: true
   }
   constructor(options = {}) {
     this.ctx = null
@@ -18,16 +19,21 @@ export class Malyan {
     this.config = { ...Malyan.defaultConfig, ...options }
     this.scene = new Scene({ name: 'root_group', root: this })
     this.tree = new Tree(this.scene)
-    this.width = Malyan.defaultConfig.width
-    this.height = Malyan.defaultConfig.height
-    this.ratio = Malyan.defaultConfig.ratio
     this.init(this.config)
   }
   init(options = {}) {
+    this.initParams(options)
     this.initCtx(options)
     this.initRatio(options)
     this.initSize(options)
     this.initEventManager()
+  }
+  initParams(options = {}) {
+    const { width, height, ratio, autoClear } = options
+    this.width = width
+    this.height = height
+    this.ratio = ratio
+    this.autoClear = autoClear
   }
   initCtx(options = {}) {
     let { id, context, dom } = options
@@ -95,7 +101,9 @@ export class Malyan {
     this.scene.add(object)
   }
   render() {
-    this.scene.render(this.ctx)
+    this.scene.render(this.ctx, {
+      autoClear: this.autoClear
+    })
   }
   forEach(callback) {
     this.tree.traverseDF_preOrder((node) => {

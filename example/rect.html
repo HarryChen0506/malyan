@@ -45,14 +45,15 @@
       name: 'rect-1',
       x: 0,
       y: 0,
-      width: 60,
+      width: 30,
       height: 60,
       fill: false,
       strokeStyle: 'blue',
       lineWidth: 1,
+      center: false
     })
     rect.translation = { x: 50, y: 50 }
-    rect.rotation = Math.PI * 0.25
+    // rect.rotation = Math.PI * 0.25
     rect.on('mousedrag', function (e) {
       rect.translation = {
         x: rect.translation.x + e.detail.deltaPoint.canvas.x,
@@ -62,9 +63,9 @@
 
     var circle = new Malyan.Circle({
       name: 'cicle-1',
-      x: 150,
-      y: 100,
-      radius: 50,
+      x: 50,
+      y: 50,
+      radius: 60,
       strokeStyle: 'red'
     })
     group.add(circle)

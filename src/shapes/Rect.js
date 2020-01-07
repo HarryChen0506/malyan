@@ -1,14 +1,24 @@
 import Shape from '../Shape'
 import math from '../utils/math'
+
+const defaultConfig = {
+  center: true
+}
 export class Rect extends Shape {
   constructor(options = {}) {
     super(options)
-    const { name, x, y, width, height } = options
+    const config = { ...defaultConfig, ...options }
+    const { name, x, y, width, height, center } = config
     this.name = name
     this.x = x || 0
     this.y = y || 0
     this.width = width || 0
     this.height = height || 0
+    this.offsetX = 0
+    this.offsetY = 0
+    if (center) {
+      this.center()
+    }
   }
   render(ctx) {
     ctx.save()
@@ -20,7 +30,7 @@ export class Rect extends Shape {
     // this.fill && ctx.fill()
     // this.stroke && ctx.stroke()
     const path = new Path2D()
-    path.rect(this.x, this.y, this.width, this.height)
+    path.rect(this.x + this.offsetX, this.y + this.offsetY, this.width, this.height)
     this.fill && ctx.fill(path)
     this.stroke && ctx.stroke(path)
     ctx.restore()
@@ -31,7 +41,7 @@ export class Rect extends Shape {
     // ctx.rect(this.x, this.y, this.width, this.height)
     // ctx.restore()
     const path = new Path2D()
-    path.rect(this.x, this.y, this.width, this.height)
+    path.rect(this.x + this.offsetX, this.y + this.offsetY, this.width, this.height)
     if (ctx.isPointInPath(path, point.x, point.y)) {
       return true
     }
@@ -58,6 +68,10 @@ export class Rect extends Shape {
       height: bottom - top
     }
     return res
+  }
+  center() {
+    this.offsetX = - this.width * 0.5
+    this.offsetY = - this.height * 0.5
   }
 }
 

@@ -17,12 +17,32 @@ export class CurvePath {
       console.error('Curve controls must be a array')
     }
     this.controls = controls || []
+    this.offsetX = 0
+    this.offsetY = 0
   }
   render(ctx) {
     if (this.controls.length === 1) {
-      ctx.quadraticCurveTo(this.controls[0].x, this.controls[0].y, this.end.x, this.end.y)
+      ctx.quadraticCurveTo(
+        this.controls[0].x + this.offsetX,
+        this.controls[0].y + this.offsetY, 
+        this.end.x + this.offsetX, 
+        this.end.y + this.offsetY)
     } else if (this.controls.length === 2) {
-      ctx.bezierCurveTo(this.controls[0].x, this.controls[0].y, this.controls[1].x, this.controls[1].y, this.end.x, this.end.y)
+      ctx.bezierCurveTo(
+        this.controls[0].x + this.offsetX, 
+        this.controls[0].y + this.offsetY, 
+        this.controls[1].x + this.offsetX, 
+        this.controls[1].y + this.offsetY, 
+        this.end.x + this.offsetX, 
+        this.end.y + this.offsetY)
+    }
+  }
+  setOffset(x, y) {
+    if (x !== undefined) {
+      this.offsetX = x
+    }
+    if (y !== undefined) {
+      this.offsetY = y
     }
   }
 }

@@ -1,12 +1,14 @@
 
 import Shape from './Shape'
 import { mix } from './utils/extend'
+import _ from './utils/tool'
 export class Group extends mix(Shape) {
   constructor(options = {}) {
     super(options)
     this.children = []
     this.parent = null
     this.name = options.name
+    this.uuid = _.uuid()
   }
   add(object) {
     if (object) {

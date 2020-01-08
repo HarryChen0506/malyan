@@ -43,10 +43,10 @@ class Shape extends EventTarget {
     Object.keys(defaultConfig).forEach(key => {
       this[key] = config[key]
     })
-
     // mouse
     this.isCurrentMouseIn = false // is mouse in shape currently
     this.isLastMouseIn = false // is mouse in shape last time
+    this.uuid = _.uuid()
   }
   onChange() {
     this.matrix
@@ -145,38 +145,38 @@ class Shape extends EventTarget {
     // console.log('clacFinalMatrix', matrices, finalMatrix)
     return finalMatrix
   }
-  calcCanvasToPixelCoordinatePoint(originPoint = [0, 0]) {
-    if (!Array.isArray(originPoint)) {
+  calcCanvasToPixelCoordinatePoint(targetPoint = [0, 0]) {
+    if (!Array.isArray(targetPoint)) {
       console.error('calcCanvasToPixelCoordinatePoint params must be Array')
     }
     const inverted_matrix = Matrix.invert(this.calcFinalMatrix())
-    const relativePos = Matrix.multiply(inverted_matrix, [originPoint[0], originPoint[1], 1])
+    const relativePos = Matrix.multiply(inverted_matrix, [targetPoint[0], targetPoint[1], 1])
     return relativePos
   }
-  calcPixelToCanvasCoordinatePoint(originPoint = [0, 0]) {
-    if (!Array.isArray(originPoint)) {
+  calcPixelToCanvasCoordinatePoint(targetPoint = [0, 0]) {
+    if (!Array.isArray(targetPoint)) {
       console.error('calcPixelToCanvasCoordinatePoint params must be Array')
     }
     const matrix = this.calcFinalMatrix()
-    return Matrix.multiply(matrix, [originPoint[0], originPoint[1], 1])
+    return Matrix.multiply(matrix, [targetPoint[0], targetPoint[1], 1])
   }
-  calcPixelToParentCoordinatePoint(originPoint = [0, 0]) {
-    if (!Array.isArray(originPoint)) {
+  calcPixelToParentCoordinatePoint(targetPoint = [0, 0]) {
+    if (!Array.isArray(targetPoint)) {
       console.error('calcPixelToParentCoordinatePoint params must be Array')
     }
-    return Matrix.multiply(this.matrix.elements, [originPoint[0], originPoint[1], 1])
+    return Matrix.multiply(this.matrix.elements, [targetPoint[0], targetPoint[1], 1])
   }
-  calcParentToPixelCoordinatePoint(originPoint = [0, 0]) {
-    if (!Array.isArray(originPoint)) {
+  calcParentToPixelCoordinatePoint(targetPoint = [0, 0]) {
+    if (!Array.isArray(targetPoint)) {
       console.error('calcPixelToParentCoordinatePoint params must be Array')
     }
     const inverted_matrix = Matrix.invert(this.matrix.elements)
-    const relativePos = Matrix.multiply(inverted_matrix, [originPoint[0], originPoint[1], 1])
+    const relativePos = Matrix.multiply(inverted_matrix, [targetPoint[0], targetPoint[1], 1])
     return relativePos
   }
   getRoot() {
     let parent = this.parent
-    while (parent.parent) {
+    while (parent && parent.parent) {
       parent = parent.parent
     }
     if (!parent) {

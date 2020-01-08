@@ -41,6 +41,19 @@
       name: 'group'
     })
     group.translation = { x: 150, y: 150 }
+
+    var rect = new Malyan.Rect({
+      name: 'rect-1',
+      x: 0,
+      y: 0,
+      width: 20,
+      height: 20,
+      center: true,
+      fill: true,
+      fillStyle: '#0d9fde',
+    })
+    group.add(rect)
+
     var roundRect = new Malyan.RoundRect({
       name: 'roundRect-1',
       x: 0,
@@ -62,23 +75,13 @@
     })
     group.add(roundRect)
 
-    var rect = new Malyan.Rect({
-      name: 'rect-1',
-      x: 0,
-      y: 0,
-      width: 10,
-      height: 10,
-      center: true,
-      fill: true,
-      fillStyle: '#0d9fde',
-    })
-    group.add(rect)
     // var polygon = new Malyan.Polygon({
     //   name: 'polygon-1',
-    //   points: [[10, 10], [10, 30], [30, 30], [30, 10]],
+    //   points: [[10, 10], [20, 50], [10, 40], [0, 20]],
     //   strokeStyle: '#0d9fde',
+    //   fill: false
     // })
-    // polygon.translation = { x: 120, y: 100 }
+    // polygon.translation = { x: 20, y: 20 }
     // polygon.on('mousedrag', function (e) {
     //   polygon.translation = {
     //     x: polygon.translation.x + e.detail.deltaPoint.canvas.x,
@@ -88,18 +91,16 @@
 
     // group.add(polygon)
 
-
-    
-
     var box = new Malyan.Polygon({
       points: getBoxPoints(),
-      strokeStyle: 'red',
+      strokeStyle: 'blue',
       fillStyle: 'transparent',
       penetrable: true
     })
 
     function getBoxPoints() {
       var params = roundRect.getBoundingClientRect()
+      // console.log('getBoxPoints', params)
       return [
         [params.left, params.top],
         [params.right, params.top],
@@ -112,8 +113,8 @@
       box.updatePaths(getBoxPoints())
     }
     group.add(box)
-
     canvas.add(group)
+    
     canvas.render()
 
     function animate() {

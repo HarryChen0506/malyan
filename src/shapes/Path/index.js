@@ -1,8 +1,8 @@
-/* eslint-disable */
 import Shape from '../../Shape'
 import Vector from '../../Vector'
 import CurvePath from './CurvePath'
 import LinePath from './LinePath'
+import math from '../../utils/math'
 
 const defaultConfig = {
   center: false
@@ -29,7 +29,7 @@ export class Path extends Shape {
     this.setCtxProps && this.setCtxProps(ctx)
     const firstPath = this.paths[0]
     if (firstPath) {
-      ctx.moveTo(firstPath.start.x + this.offsetX, firstPath.start.y + this.offsetY)
+      firstPath.moveTo(ctx)
     }
     for (let i = 0; i < this.paths.length; i++) {
       this.paths[i].render(ctx)
@@ -46,7 +46,7 @@ export class Path extends Shape {
     ctx.beginPath()
     const firstPath = this.paths[0]
     if (firstPath) {
-      ctx.moveTo(firstPath.start.x + this.offsetX, firstPath.start.y + this.offsetY)
+      firstPath.moveTo(ctx)
     }
     for (let i = 0; i < this.paths.length; i++) {
       this.paths[i].render(ctx)
@@ -60,11 +60,44 @@ export class Path extends Shape {
     }
     return false
   }
+  getVertices() {
+    const vertices = []
+    this.paths.forEach(v => {
+      if (v.start) {
+        vertices.push([v.start.x, v.start.y])
+      }
+      if (v.end) {
+        vertices.push([v.end.x, v.end.y])
+      }
+      if (v.controls && v.controls.length > 0) {
+        v.controls.forEach(k => {
+          vertices.push([k.x, k.y])
+        })
+      }
+    })
+    return vertices
+  }
+  getBoundingClientRect() {
+    const pixelVertices = this.getVertices()
+    const parentVertices = pixelVertices.map(v => {
+      const point = this.calcPixelToParentCoordinatePoint(v)
+      return [point.x, point.y]
+    })
+    const { left, right, top, bottom } = math.calcPointsRect(parentVertices)
+    const res = {
+      left,
+      right,
+      top,
+      bottom,
+      width: right - left,
+      height: bottom - top
+    }
+    return res
+  }
   center() {
-    // this.offsetX = - this.width * 0.5
-    // this.offsetY = - this.height * 0.5
-    this.offsetX = -30
-    this.offsetY = -40
+    const { width, height } = this.getBoundingClientRect()
+    this.offsetX = -width * 0.5
+    this.offsetY = -height * 0.5
     this.paths.forEach(v => {
       v.setOffset(this.offsetX, this.offsetY)
     })

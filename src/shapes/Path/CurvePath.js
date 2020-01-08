@@ -1,24 +1,13 @@
-import Vector from '../../Vector'
+import BaseCommandPath from './BaseCommandPath'
 
-export class CurvePath {
+export class CurvePath extends BaseCommandPath {
   constructor(options = {}) {
-    const { name, id, start, end, controls } = options
-    this.name = name
-    this.id = id
-    this.start = start || end || new Vector({
-      x: 0,
-      y: 0,
-    })
-    this.end = end || new Vector({
-      x: 0,
-      y: 0,
-    })
+    super(options)
+    const { controls } = options
     if (!Array.isArray(controls)) {
       console.error('Curve controls must be a array')
     }
     this.controls = controls || []
-    this.offsetX = 0
-    this.offsetY = 0
   }
   render(ctx) {
     if (this.controls.length === 1) {
@@ -35,14 +24,6 @@ export class CurvePath {
         this.controls[1].y + this.offsetY, 
         this.end.x + this.offsetX, 
         this.end.y + this.offsetY)
-    }
-  }
-  setOffset(x, y) {
-    if (x !== undefined) {
-      this.offsetX = x
-    }
-    if (y !== undefined) {
-      this.offsetY = y
     }
   }
 }

@@ -5,7 +5,7 @@ export class LinePath extends BaseCommandPath{
     super(options)
   }
   render(ctx) {
-    ctx.lineTo(this.end.x + this.offsetX, this.end.y + this.offsetY)
+    ctx.lineTo(this.end.x, this.end.y)
   }
 }
 

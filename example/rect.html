@@ -39,7 +39,7 @@
     var group = new Malyan.Group({
       name: 'group'
     })
-    // group.translation = { x: 100, y: 120 }
+    group.translation = { x: 100, y: 120 }
 
     var rect = new Malyan.Rect({
       name: 'rect-1',
@@ -63,13 +63,12 @@
 
     var circle = new Malyan.Circle({
       name: 'cicle-1',
-      x: 50,
-      y: 50,
-      radius: 60,
+      x: 0,
+      y: 0,
+      radius: 10,
       strokeStyle: 'red'
     })
     group.add(circle)
-
 
     function getBoxPoints() {
       var params = circle.getBoundingClientRect()
@@ -93,8 +92,6 @@
     })
     group.add(rect)
     group.add(box)
-
-    
 
     canvas.add(group)
     canvas.render()

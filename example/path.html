@@ -40,7 +40,7 @@
     var group = new Malyan.Group({
       name: 'group'
     })
-
+    group.translation = { x: 150, y: 150 }
     var roundRect = new Malyan.RoundRect({
       name: 'roundRect-1',
       x: 0,
@@ -53,7 +53,7 @@
       fillStyle: 'transparent',
       strokeStyle: 'red',
     })
-    roundRect.translation = { x: 150, y: 150 }
+    
     roundRect.on('mousedrag', function (e) {
       roundRect.translation = {
         x: roundRect.translation.x + e.detail.deltaPoint.canvas.x,
@@ -64,8 +64,8 @@
 
     var rect = new Malyan.Rect({
       name: 'rect-1',
-      x: 150,
-      y: 150,
+      x: 0,
+      y: 0,
       width: 10,
       height: 10,
       center: true,
@@ -88,6 +88,31 @@
 
     // group.add(polygon)
 
+
+    
+
+    var box = new Malyan.Polygon({
+      points: getBoxPoints(),
+      strokeStyle: 'red',
+      fillStyle: 'transparent',
+      penetrable: true
+    })
+
+    function getBoxPoints() {
+      var params = roundRect.getBoundingClientRect()
+      return [
+        [params.left, params.top],
+        [params.right, params.top],
+        [params.right, params.bottom],
+        [params.left, params.bottom]
+      ]
+    }
+
+    function updateBox() {
+      box.updatePaths(getBoxPoints())
+    }
+    group.add(box)
+
     canvas.add(group)
     canvas.render()
 
@@ -100,6 +125,7 @@
         //   speed = speed * -1
         // }
         // group.rotation = group.rotation + 0.01
+        updateBox()
         canvas.render()
       }, 100)
     }

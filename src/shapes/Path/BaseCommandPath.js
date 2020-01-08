@@ -13,22 +13,11 @@ export class BaseCommandPath {
       x: 0,
       y: 0,
     })
-    this.offsetX = 0
-    this.offsetY = 0
   }
   moveTo(ctx) {
-    ctx.moveTo(this.start.x + this.offsetX, this.start.y + this.offsetY)
+    ctx.moveTo(this.start.x, this.start.y)
   }
   render() {
-    
-  }
-  setOffset(x, y) {
-    if (x !== undefined) {
-      this.offsetX = x
-    }
-    if (y !== undefined) {
-      this.offsetY = y
-    }
   }
 }
 

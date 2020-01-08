@@ -12,18 +12,18 @@ export class CurvePath extends BaseCommandPath {
   render(ctx) {
     if (this.controls.length === 1) {
       ctx.quadraticCurveTo(
-        this.controls[0].x + this.offsetX,
-        this.controls[0].y + this.offsetY, 
-        this.end.x + this.offsetX, 
-        this.end.y + this.offsetY)
+        this.controls[0].x,
+        this.controls[0].y, 
+        this.end.x, 
+        this.end.y)
     } else if (this.controls.length === 2) {
       ctx.bezierCurveTo(
-        this.controls[0].x + this.offsetX, 
-        this.controls[0].y + this.offsetY, 
-        this.controls[1].x + this.offsetX, 
-        this.controls[1].y + this.offsetY, 
-        this.end.x + this.offsetX, 
-        this.end.y + this.offsetY)
+        this.controls[0].x, 
+        this.controls[0].y, 
+        this.controls[1].x, 
+        this.controls[1].y, 
+        this.end.x, 
+        this.end.y)
     }
   }
 }

@@ -14,8 +14,6 @@ export class Rect extends Shape {
     this.y = y || 0
     this.width = width || 0
     this.height = height || 0
-    this.offsetX = 0
-    this.offsetY = 0
     if (center) {
       this.center()
     }
@@ -30,7 +28,7 @@ export class Rect extends Shape {
     // this.fill && ctx.fill()
     // this.stroke && ctx.stroke()
     const path = new Path2D()
-    path.rect(this.x + this.offsetX, this.y + this.offsetY, this.width, this.height)
+    path.rect(this.x, this.y, this.width, this.height)
     this.fill && ctx.fill(path)
     this.stroke && ctx.stroke(path)
     ctx.restore()
@@ -41,7 +39,7 @@ export class Rect extends Shape {
     // ctx.rect(this.x, this.y, this.width, this.height)
     // ctx.restore()
     const path = new Path2D()
-    path.rect(this.x + this.offsetX, this.y + this.offsetY, this.width, this.height)
+    path.rect(this.x, this.y, this.width, this.height)
     if (ctx.isPointInPath(path, point.x, point.y)) {
       return true
     }
@@ -70,8 +68,8 @@ export class Rect extends Shape {
     return res
   }
   center() {
-    this.offsetX = - this.width * 0.5
-    this.offsetY = - this.height * 0.5
+    this.translation.x = - this.width * 0.5
+    this.translation.y = - this.height * 0.5
   }
 }
 

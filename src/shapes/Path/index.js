@@ -14,8 +14,6 @@ export class Path extends Shape {
     const { name, paths, center } = config
     this.name = name
     this.paths = paths || []
-    this.offsetX = 0
-    this.offsetY = 0
     if (center) {
       this.center()
     }
@@ -95,12 +93,10 @@ export class Path extends Shape {
     return res
   }
   center() {
-    const { width, height } = this.getBoundingClientRect()
-    this.offsetX = -width * 0.5
-    this.offsetY = -height * 0.5
-    this.paths.forEach(v => {
-      v.setOffset(this.offsetX, this.offsetY)
-    })
+    const { width, height, left, top } = this.getBoundingClientRect()
+    const originPoint = this.calcPixelToParentCoordinatePoint([0, 0])
+    this.translation.x = originPoint.x - (left + 0.5 * width)
+    this.translation.y = originPoint.y - (top + 0.5 * height)
   }
   static PATH_TYPE = {
     LINE: 'line',

@@ -5,35 +5,65 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>malyan demo</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.5/math.js"></script>
-  <script src="../temp/malyan.js"></script>
-  <!-- <script src='../lib/index.js'></script> -->
-  <style>
-    .canvas-wrap {
-      margin: 20px auto;
-    }
+  <title>malyan path</title>
+  <script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.js"></script>
+  <script src="https://cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.css">
+  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/codemirror/5.48.4/theme/ambiance.css" /> -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/codemirror/5.48.4/theme/3024-night.css">
 
-    canvas {
-      border: 1px solid #333;
-    }
+  <link rel="stylesheet" type="text/css" href="./styles/base.css">
+  <link rel="stylesheet" type="text/css" href="./styles/demo.css">
+  <script src="../temp/malyan.js"></script>
+  <script src="./js/code.js"></script>
+  <style>
+
   </style>
 </head>
 
 <body>
-  <div id="root">
-    <h3>path</h3>
-    <!-- <image id='image' src='./assets/dog.jpeg' width=200></image> -->
-    <div class="canvas-wrap">
-      <canvas id="canvas"></canvas>
+  <div class='page-header'>
+    <div class='title'>path</div>
+  </div>
+  <div class="page-main">
+    <div class='panel-left'>
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class='right-wrap'>
+        <textarea class="form-control" id="code" name="code">
+
+          </textarea>
+      </div>
     </div>
   </div>
+  
+  <script>
+    var text = `
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+      // autoRatio: false,
+    })
+
+    var group = new Malyan.Group({
+      name: 'group'
+    })
+    group.translation = { x: 150, y: 150 }
+  `
+    var codeEditor = new CodeEditor('code')
+    codeEditor.setCode(text).showCode()
+  </script>
+
   <script>
 
     var canvas = new Malyan({
       id: 'canvas',
-      width: 400,
-      height: 400,
+      width: 500,
+      height: 500,
       // autoRatio: false,
     })
 
@@ -66,7 +96,7 @@
       fillStyle: 'transparent',
       strokeStyle: 'red',
     })
-    
+
     roundRect.on('mousedrag', function (e) {
       roundRect.translation = {
         x: roundRect.translation.x + e.detail.deltaPoint.canvas.x,
@@ -75,21 +105,21 @@
     })
     group.add(roundRect)
 
-    // var polygon = new Malyan.Polygon({
-    //   name: 'polygon-1',
-    //   points: [[10, 10], [20, 50], [10, 40], [0, 20]],
-    //   strokeStyle: '#0d9fde',
-    //   fill: false
-    // })
-    // polygon.translation = { x: 20, y: 20 }
-    // polygon.on('mousedrag', function (e) {
-    //   polygon.translation = {
-    //     x: polygon.translation.x + e.detail.deltaPoint.canvas.x,
-    //     y: polygon.translation.y + e.detail.deltaPoint.canvas.y
-    //   }
-    // })
+    var polygon = new Malyan.Polygon({
+      name: 'polygon-1',
+      points: [[10, 10], [20, 50], [10, 40], [0, 20]],
+      strokeStyle: '#0d9fde',
+      fill: false
+    })
+    polygon.translation = { x: 20, y: 20 }
+    polygon.on('mousedrag', function (e) {
+      polygon.translation = {
+        x: polygon.translation.x + e.detail.deltaPoint.canvas.x,
+        y: polygon.translation.y + e.detail.deltaPoint.canvas.y
+      }
+    })
 
-    // group.add(polygon)
+    group.add(polygon)
 
     var box = new Malyan.Polygon({
       points: getBoxPoints(),
@@ -114,7 +144,7 @@
     }
     group.add(box)
     canvas.add(group)
-    
+
     canvas.render()
 
     function animate() {

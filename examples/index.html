@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Malyan examples</title>
+  <link rel="stylesheet" type="text/css" href="./styles/base.css">
+  <link rel="stylesheet" type="text/css" href="./styles/main.css">
+</head>
+
+<body>
+  <div id="panel">
+    <div id="header">
+      <h1><a href="https://github.com/HarryChen0506/malyan">malyan</a></h1>
+      <div id="sections">
+        <a href="../docs/index.html#manual/introduction/Creating-a-scene">docs</a>
+        <span class="selected">examples</span>
+      </div>
+      <div id="expandButton"></div>
+    </div>
+    <div id="panelScrim"></div>
+    <div id="contentWrapper">
+      <div id="inputWrapper">
+        <input placeholder="" type="text" id="filter" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <div id="exitSearchButton"></div>
+      </div>
+      <div id="content">
+        <div>
+          <h2 data-category='shapes'>shapes</h2>
+          <a class="link selected" href="path.html" target="viewer"><b></b>path</a>
+          <a class="link" href="rect.html" target="viewer"><b></b>rect</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <iframe id="viewer" name="viewer" allowfullscreen allowvr onmousewheel="" src='./path.html'></iframe>
+  <script>
+  </script>
+</body>
+
+</html>

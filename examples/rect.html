@@ -7,26 +7,45 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>malyan demo</title>
   <!-- <script src="../temp/malyan.js"></script> -->
-  <script src='../dist/malyan.min.js'></script>
-  <style>
-    .canvas-wrap {
-      margin: 20px auto;
-    }
-
-    canvas {
-      border: 1px solid #333;
-    }
-  </style>
+  <!-- <script src='../dist/malyan.min.js'></script> -->
+  <script src='./js/base.js'></script>
 </head>
 
 <body>
-  <div id="root">
-    <h3>shapes</h3>
-    <!-- <image id='image' src='./assets/dog.jpeg' width=200></image> -->
-    <div class="canvas-wrap">
-      <canvas id="canvas"></canvas>
+  <div class='page-header'>
+    <div class='title'>path</div>
+  </div>
+  <div class="page-main">
+    <div class='panel-left'>
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class='right-wrap'>
+        <textarea class="form-control" id="code" name="code">
+
+          </textarea>
+      </div>
     </div>
   </div>
+  <script>
+    var text = `
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+      // autoRatio: false,
+    })
+
+    var group = new Malyan.Group({
+      name: 'group'
+    })
+    group.translation = { x: 150, y: 150 }
+  `
+    var codeEditor = new CodeEditor('code')
+    codeEditor.setCode(text).showCode()
+  </script>
   <script>
 
     var canvas = new Malyan({

@@ -17,14 +17,14 @@ const config = {
     },
     libraryTarget: 'umd',
     libraryExport: 'default',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './temp'),
     umdNamedDefine: true
   },
   mode: 'development',
   devtool: 'source-map',
   devServer: {
     // contentBase: path.join(__dirname, './'),
-    publicPath: '/dist/',
+    publicPath: '/temp/',
     port: '8080',
     host: '0.0.0.0', //支持ip来访问页面，否则只能通过localhost:8080来访问
     historyApiFallback: true, //所有404页面能跳转到index.html
@@ -87,7 +87,7 @@ const config = {
     extensions: ['.js'],
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(['temp']),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ],

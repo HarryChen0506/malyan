@@ -12,6 +12,10 @@ node_modules/
 dist/
 dist/*
 
+# temp
+temp/
+temp/*
+
 # lib
 lib/
 lib/*

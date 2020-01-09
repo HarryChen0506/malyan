@@ -6,15 +6,16 @@ const banner =
   '/**\n' +
   ' * malyan v' + version + '\n' +
   ' * https://github.com/HarryChen0506/malyan\n' +
+  ' * built at' + new Date() + '\n' +
   ' * MIT License\n' +
   ' */\n'
 const config = {
   entry: {
-    app: './src/index',
+    malyan: './src/index',
   },
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'lib'),
+    filename: '[name].min.js',
+    path: path.resolve(__dirname, 'dist'),
     library: {
       commonjs: 'malyan',
       amd: 'malyan',

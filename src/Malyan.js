@@ -11,7 +11,8 @@ export class Malyan {
     autoRatio: true,
     width: 300,
     height: 150,
-    autoClear: true
+    autoClear: true,
+    background: undefined
   }
   constructor(options = {}) {
     this.ctx = null
@@ -26,17 +27,19 @@ export class Malyan {
     this.initCtx(options)
     this.initRatio(options)
     this.initSize(options)
+    this.initStyle(options)
     this.initEventManager()
   }
   initParams(options = {}) {
-    const { width, height, ratio, autoClear } = options
+    const { width, height, ratio, autoClear, background } = options
     this.width = width
     this.height = height
     this.ratio = ratio
     this.autoClear = autoClear
+    this.background = background
   }
   initCtx(options = {}) {
-    let { id, context, dom } = options
+    let { id, context, dom, background } = options
     if (context) {
       this.ctx = context
     } else if (dom) {
@@ -49,6 +52,11 @@ export class Malyan {
     }
     if (!this.ctx) {
       console.warn('canvas context cannot be null')
+    }
+  }
+  initStyle() {
+    if (this.background) {
+      this.ctx.canvas.style.background = this.background
     }
   }
   initSize(options = {}) {

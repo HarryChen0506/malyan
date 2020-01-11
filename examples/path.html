@@ -23,15 +23,20 @@
       <div class="canvas-wrap">
         <canvas id="canvas"></canvas>
       </div>
+      <div class="log-wrap">
+        <div id='logger'></div>
+      </div>
     </div>
     <div class="panel-right">
       <div class='right-wrap'>
-        <textarea class="form-control" id="code" name="code">
-
-          </textarea>
+        <textarea class="form-control" id="code" name="code"></textarea>
       </div>
     </div>
   </div>
+  <script>
+    var logger = new Logger({id: 'logger'})
+  
+  </script>
 
   <script>
     var text = `
@@ -49,10 +54,9 @@
   `
     var codeEditor = new CodeEditor('code')
     codeEditor.setCode(text).showCode()
-  </script>
+  </script >
 
   <script>
-
     var canvas = new Malyan({
       id: 'canvas',
       width: 500,

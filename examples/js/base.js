@@ -8,6 +8,7 @@
   document.write('<link rel="stylesheet" type="text/css" href="./styles/base.css">')
   document.write('<link rel="stylesheet" type="text/css" href="./styles/demo.css">')
   document.write('<script src="./js/code.js"><\/script>')
+  document.write('<script src="./js/logger.js"><\/script>')
 
   window.Malyan || document.write('<script src="https://unpkg.com/malyan@0.0.2/dist/malyan.min.js"><\/script>')
 

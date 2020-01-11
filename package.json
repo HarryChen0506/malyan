@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "start": "webpack --config webpack.config.js",
-    "dev": "webpack-dev-server  --host 0.0.0.0 --open --port 8080",
+    "dev": "webpack-dev-server  --host 0.0.0.0 --open --port 8080 --open-page examples",
     "build": "webpack --config webpack.build.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

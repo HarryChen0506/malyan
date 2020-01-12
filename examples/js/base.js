@@ -1,7 +1,8 @@
 (function (window) {
 
   document.write('<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.css">')
-  document.write('<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/codemirror/5.48.4/theme/3024-night.css">')
+  // document.write('<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/codemirror/5.48.4/theme/3024-night.css">')
+  document.write('<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/codemirror/5.48.4/theme/eclipse.css">')
   document.write('<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.js"><\/script>')
   document.write('<script src="https://cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"><\/script>')
 

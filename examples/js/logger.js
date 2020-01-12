@@ -14,13 +14,14 @@
     },
     log: {
       marginRight: '5px',
-      color: 'blue',
+      color: '#333',
       fontSize: '14px',
       lineHeight: '18px',
       display: 'inline-block'
     },
     error: '#fdf1f1',
     warn: '#fffbe7',
+    blue: 'blue'
   }
   var TYPE = {
     LOG: 'log',
@@ -45,6 +46,22 @@
       dom.style[i] = style[i]
     }
   }
+  function createLogText(text) {
+    const span = document.createElement('span')
+    var style = STYLE.log
+    if (typeof text === 'number') {
+      style = Object.assign({}, STYLE.log, { color: STYLE.blue })
+    } else if (typeof text === 'object') {
+      try {
+        text = JSON.stringify(text)
+      } catch(err) {
+        console.log(err)
+      }
+    }
+    addStyle(span, style)
+    span.innerText = text
+    return span
+  }
   Logger.prototype.init = function () {
     STYLE.container.height = this.height
     addStyle(this.container, STYLE.container)
@@ -66,12 +83,10 @@
     } else if (type === TYPE.ERROR) {
       background = STYLE.error
     }
-    var style = Object.assign(STYLE.item, { background: background })
+    var style = Object.assign({}, STYLE.item, { background: background })
     addStyle(item, style)
     for (var i = 0; i < list.length; i++) {
-      const span = document.createElement('span')
-      span.innerText = list[i]
-      addStyle(span, STYLE.log)
+      var span = createLogText(list[i])
       item.appendChild(span)
     }
     this.body.appendChild(item)

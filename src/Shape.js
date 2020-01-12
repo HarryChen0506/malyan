@@ -174,6 +174,15 @@ class Shape extends EventTarget {
     const relativePos = Matrix.multiply(inverted_matrix, [targetPoint[0], targetPoint[1], 1])
     return relativePos
   }
+  static calcPixelToSpecificCoordinatePoint(targetPoint = [0, 0], matrix = new Matrix().identity().elements) {
+    if (!Array.isArray(targetPoint)) {
+      console.error('calcPixelToParentCoordinatePoint params must be Array')
+    }
+    return Matrix.multiply(matrix, [targetPoint[0], targetPoint[1], 1])
+  }
+  getVertices() {
+    return []
+  }
   getRoot() {
     let parent = this.parent
     while (parent && parent.parent) {

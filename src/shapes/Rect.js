@@ -46,12 +46,7 @@ export class Rect extends Shape {
     return false
   }
   getBoundingClientRect() {
-    const pixelVertices = [
-      [this.x, this.y],
-      [this.x + this.width, this.y],
-      [this.x + this.width, this.y + this.height],
-      [this.x, this.y + this.height]
-    ]
+    const pixelVertices = this.getVertices()
     const parentVertices = pixelVertices.map(v => {
       const point = this.calcPixelToParentCoordinatePoint(v)
       return [point.x, point.y]
@@ -66,6 +61,14 @@ export class Rect extends Shape {
       height: bottom - top
     }
     return res
+  }
+  getVertices() {
+    return [
+      [this.x, this.y],
+      [this.x + this.width, this.y],
+      [this.x + this.width, this.y + this.height],
+      [this.x, this.y + this.height]
+    ]
   }
   center() {
     this.translation.x = - this.width * 0.5

@@ -41,6 +41,7 @@ canvas {
 
 .CodeMirror {
   height: 680px;
+  border: 1px solid #ddd;
 }
 
 .log-wrap {

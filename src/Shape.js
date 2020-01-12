@@ -19,6 +19,7 @@ const defaultConfig = {
   lineCap: 'butt',
   lineJoin: 'miter',
   miterLimit: 10,
+  lineDash: undefined,
   lineDashOffset: 0,
   penetrable: false,
 }
@@ -72,6 +73,9 @@ class Shape extends EventTarget {
     if (this.stroke) {
       if (this.lineWidth) {
         ctx.lineWidth = this.lineWidth
+      }
+      if (this.lineDash) {
+        ctx.setLineDash(this.lineDash)
       }
       if (this.miterLimit) {
         ctx.miterLimit = this.miterLimit

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>malyan examples</title>
+  <script src="../temp/malyan.js"></script>
+  <!-- <script src='../dist/malyan.min.js'></script> -->
+  <script src='./js/base.js'></script>
+</head>
+
+<body>
+  <div class='page-header'>
+    <div class='title'>polygon</div>
+  </div>
+  <div class="page-main">
+    <div class='panel-left'>
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="log-wrap">
+        <div id='logger'></div>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class='right-wrap'>
+        <textarea class="form-control" id="code" name="code"></textarea>
+      </div>
+    </div>
+  </div>
+  <script>
+    var text = `    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var polygon_1 = new Malyan.Polygon({
+      name: 'polygon-1',
+      points: [[0, -1.73], [1, 0], [-1, 0]],
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+      lineWidth: 0.04
+    })
+    polygon_1.scale = 50
+    polygon_1.translation = { x: 130, y: 180 }
+    canvas.add(polygon_1)
+
+    var polygon_2 = new Malyan.Polygon({
+      name: 'polygon-2',
+      points: [[2, 0], [1, 1.73], [-1, 1.73], [-2, 0], [-1, -1.73], [1, -1.73]],
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 0.08
+    })
+    polygon_2.scale = 25
+    polygon_2.translation = { x: 340, y: 135 }
+    canvas.add(polygon_2)
+
+    var polygon_3 = new Malyan.Polygon({
+      name: 'polygon-1',
+      // points: [[100, 0], [195, 69], [159, 181], [41, 181], [5, 69]],
+      points: [[100, 0], [159, 181], [5, 69], [195, 69], [41, 181]],
+      fillStyle: 'rgba(84, 188, 169, 0.2)',
+      strokeStyle: '#54bca9',
+      lineWidth: 3
+    })
+    polygon_3.scale = 0.6
+    polygon_3.translation = { x: 80, y: 280 }
+    canvas.add(polygon_3)
+
+    var polygon_4 = new Malyan.Polygon({
+      name: 'polygon-1',
+      points: [[2, 0], [1.41, 1.41], [0, 2], [-1.41, 1.41], [-2, 0], [-1.41, -1.41], [0, -2], [1.41, -1.41]],
+      fillStyle: 'rgba(186, 85, 211, 0.2)',
+      strokeStyle: '#BA55D3',
+      lineWidth: 0.08
+    })
+    polygon_4.scale = 25
+    polygon_4.translation = { x: 340, y: 340 }
+    canvas.add(polygon_4)
+
+    canvas.render()
+  `
+    var codeEditor = new CodeEditor('code')
+    codeEditor.setCode(text).showCode()
+    var logger = new Logger({ id: 'logger' })
+    logger.log("welcome to malyan's world")
+  </script>
+  <script>
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var polygon_1 = new Malyan.Polygon({
+      name: 'polygon-1',
+      points: [[0, -1.73], [1, 0], [-1, 0]],
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+      lineWidth: 0.04
+    })
+    polygon_1.scale = 50
+    polygon_1.translation = { x: 130, y: 180 }
+    canvas.add(polygon_1)
+
+    var polygon_2 = new Malyan.Polygon({
+      name: 'polygon-2',
+      points: [[2, 0], [1, 1.73], [-1, 1.73], [-2, 0], [-1, -1.73], [1, -1.73]],
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 0.08
+    })
+    polygon_2.scale = 25
+    polygon_2.translation = { x: 340, y: 135 }
+    canvas.add(polygon_2)
+
+    var polygon_3 = new Malyan.Polygon({
+      name: 'polygon-1',
+      // points: [[100, 0], [195, 69], [159, 181], [41, 181], [5, 69]],
+      points: [[100, 0], [159, 181], [5, 69], [195, 69], [41, 181]],
+      fillStyle: 'rgba(84, 188, 169, 0.2)',
+      strokeStyle: '#54bca9',
+      lineWidth: 3
+    })
+    polygon_3.scale = 0.6
+    polygon_3.translation = { x: 80, y: 280 }
+    canvas.add(polygon_3)
+
+    var polygon_4 = new Malyan.Polygon({
+      name: 'polygon-1',
+      points: [[2, 0], [1.41, 1.41], [0, 2], [-1.41, 1.41], [-2, 0], [-1.41, -1.41], [0, -2], [1.41, -1.41]],
+      fillStyle: 'rgba(186, 85, 211, 0.2)',
+      strokeStyle: '#BA55D3',
+      lineWidth: 0.08
+    })
+    polygon_4.scale = 25
+    polygon_4.translation = { x: 340, y: 340 }
+    canvas.add(polygon_4)
+
+    canvas.render()
+  </script>
+</body>
+
+</html>

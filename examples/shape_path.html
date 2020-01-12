@@ -5,13 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>malyan path</title>
+  <title>malyan examples</title>
   <script src="../temp/malyan.js"></script>
-
+  <!-- <script src='../dist/malyan.min.js'></script> -->
   <script src='./js/base.js'></script>
-  <style>
-
-  </style>
 </head>
 
 <body>
@@ -34,134 +31,147 @@
     </div>
   </div>
   <script>
-    var text = `
-    var canvas = new Malyan({
+    var text = `    var canvas = new Malyan({
       id: 'canvas',
       width: 500,
       height: 500,
-      // autoRatio: false,
     })
 
-    var group = new Malyan.Group({
-      name: 'group'
+    var pathElements_1 = Malyan.Path.createPaths([
+      {
+        type: 'curve',
+        id: '1',
+        start: [0, 0],
+        end: [0, 50],
+        controls: [[50, -30], [30, 40]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [0, 0],
+        controls: [[-30, 40], [-50, -30]]
+      },
+    ])
+    var path_1 = new Malyan.Path({
+      name: 'path-1',
+      paths: pathElements_1,
+      closed: true,
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+      lineWidth: 2,
     })
-    group.translation = { x: 150, y: 150 }
+    path_1.scale = 1.5
+    path_1.translation = { x: 130, y: 100 }
+    canvas.add(path_1)
+
+    var pathElements_2 = Malyan.Path.createPaths([
+      {
+        type: 'curve',
+        id: '1',
+        start: [0, -10],
+        end: [0, 10],
+        controls: [[-8, 0]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [-10, 0],
+        controls: [[-10, 10]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [0, -10],
+        controls: [[-10, -10]]
+      },
+    ])
+    var path_2 = new Malyan.Path({
+      name: 'path-2',
+      paths: pathElements_2,
+      closed: true,
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 0.48,
+    })
+    path_2.scale = 4.5
+    path_2.translation = { x: 360, y: 130 }
+    canvas.add(path_2)
+
+    canvas.render()
   `
     var codeEditor = new CodeEditor('code')
     codeEditor.setCode(text).showCode()
     var logger = new Logger({ id: 'logger' })
+    logger.log("welcome to malyan's world")
   </script>
-
   <script>
     var canvas = new Malyan({
       id: 'canvas',
       width: 500,
       height: 500,
-      // autoRatio: false,
     })
 
-    var group = new Malyan.Group({
-      name: 'group'
+    var pathElements_1 = Malyan.Path.createPaths([
+      {
+        type: 'curve',
+        id: '1',
+        start: [0, 0],
+        end: [0, 50],
+        controls: [[50, -30], [30, 40]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [0, 0],
+        controls: [[-30, 40], [-50, -30]]
+      },
+    ])
+    var path_1 = new Malyan.Path({
+      name: 'path-1',
+      paths: pathElements_1,
+      closed: true,
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+      lineWidth: 2,
     })
-    group.translation = { x: 150, y: 150 }
+    path_1.scale = 1.5
+    path_1.translation = { x: 130, y: 100 }
+    canvas.add(path_1)
 
-    var rect = new Malyan.Rect({
-      name: 'rect-1',
-      x: 0,
-      y: 0,
-      width: 20,
-      height: 20,
-      center: true,
-      fill: true,
-      fillStyle: '#0d9fde',
+    var pathElements_2 = Malyan.Path.createPaths([
+      {
+        type: 'curve',
+        id: '1',
+        start: [0, -10],
+        end: [0, 10],
+        controls: [[-8, 0]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [-10, 0],
+        controls: [[-10, 10]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [0, -10],
+        controls: [[-10, -10]]
+      },
+    ])
+    var path_2 = new Malyan.Path({
+      name: 'path-2',
+      paths: pathElements_2,
+      closed: true,
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 0.48,
     })
-    group.add(rect)
-
-    var roundRect = new Malyan.RoundRect({
-      name: 'roundRect-1',
-      x: 0,
-      y: 0,
-      width: 60,
-      height: 80,
-      radius: 10,
-      fill: true,
-      // fillStyle: '#0d9fde',
-      fillStyle: 'transparent',
-      strokeStyle: 'red',
-    })
-
-    roundRect.on('mousedrag', function (e) {
-      roundRect.translation = {
-        x: roundRect.translation.x + e.detail.deltaPoint.canvas.x,
-        y: roundRect.translation.y + e.detail.deltaPoint.canvas.y
-      }
-    })
-    group.add(roundRect)
-
-    var polygon = new Malyan.Polygon({
-      name: 'polygon-1',
-      points: [[10, 10], [20, 50], [10, 40], [0, 20]],
-      strokeStyle: '#0d9fde',
-      fill: false
-    })
-    polygon.translation = { x: 20, y: 20 }
-    polygon.on('mousedrag', function (e) {
-      polygon.translation = {
-        x: polygon.translation.x + e.detail.deltaPoint.canvas.x,
-        y: polygon.translation.y + e.detail.deltaPoint.canvas.y
-      }
-    })
-
-    group.add(polygon)
-
-    var box = new Malyan.Polygon({
-      points: getBoxPoints(),
-      strokeStyle: 'blue',
-      fillStyle: 'transparent',
-      penetrable: true
-    })
-
-    function getBoxPoints() {
-      var params = roundRect.getBoundingClientRect()
-      // console.log('getBoxPoints', params)
-      return [
-        [params.left, params.top],
-        [params.right, params.top],
-        [params.right, params.bottom],
-        [params.left, params.bottom]
-      ]
-    }
-
-    function updateBox() {
-      box.updatePaths(getBoxPoints())
-    }
-    group.add(box)
-    canvas.add(group)
+    path_2.scale = 4.5
+    path_2.translation = { x: 360, y: 130 }
+    canvas.add(path_2)
 
     canvas.render()
-
-    function animate() {
-      var speed = 10
-      setInterval(function () {
-        // if (group.translation.x > 200) {
-        //   speed = speed * -1
-        // } else if (group.translation.x < 20) {
-        //   speed = speed * -1
-        // }
-        // group.rotation = group.rotation + 0.01
-        updateBox()
-        canvas.render()
-      }, 100)
-    }
-    animate()
-
-
-    // function animateLoop() {
-    //   group.rotation = group.rotation + 0.01
-    //   canvas.render()
-    //   requestAnimationFrame(animateLoop)
-    // }
-    // animateLoop()
   </script>
 </body>
 

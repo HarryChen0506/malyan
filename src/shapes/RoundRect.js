@@ -5,7 +5,7 @@ export class RoundRect extends Path {
     let { name, x = 0, y = 0, width = 0, height = 0, radius = 0 } = options
     this.name = name
     // create paths
-    this.paths = Path.createPaths([
+    this.paths = Path.createElements([
       {
         type: 'curve',
         id: '0',

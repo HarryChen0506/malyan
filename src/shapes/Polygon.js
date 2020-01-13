@@ -6,7 +6,7 @@ export class Polygon extends Path {
     this.name = name
     this.closed = closed !== undefined ? closed : true
     const formatedPoints = Polygon.formatPolyPoints(points)
-    this.paths = Path.createPaths(formatedPoints)
+    this.paths = Path.createElements(formatedPoints)
   }
   static formatPolyPoints = (points = []) => {
     const elements = []
@@ -35,7 +35,7 @@ export class Polygon extends Path {
   }
   updatePaths(points = []) {
     const formatedPoints = Polygon.formatPolyPoints(points)
-    this.paths = Path.createPaths(formatedPoints)
+    this.paths = Path.createElements(formatedPoints)
   }
 }
 

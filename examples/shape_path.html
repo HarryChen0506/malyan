@@ -37,7 +37,7 @@
     height: 500,
   })
 
-  var pathElements_1 = Malyan.Path.createPaths([
+  var pathElements_1 = Malyan.Path.createElements([
     {
       type: 'curve',
       id: '1',
@@ -64,25 +64,23 @@
   path_1.translation = { x: 130, y: 100 }
   canvas.add(path_1)
 
-  var pathElements_2 = Malyan.Path.createPaths([
+  var pathElements_2 = Malyan.Path.createElements([
     {
-      type: 'curve',
+      type: 'arc',
       id: '1',
       start: [0, -10],
-      end: [0, 10],
-      controls: [[-8, 0]]
-    },
-    {
-      type: 'curve',
-      id: '2',
-      end: [-10, 0],
-      controls: [[-10, 10]]
+      x: 0,
+      y: 0,
+      radius: 10,
+      startAngle: -Math.PI * 0.5,
+      endAngle: Math.PI * 0.5,
+      anticlockwise: true,
     },
     {
       type: 'curve',
       id: '2',
       end: [0, -10],
-      controls: [[-10, -10]]
+      controls: [[-10, 0]]
     },
   ])
   var path_2 = new Malyan.Path({
@@ -97,7 +95,7 @@
   path_2.translation = { x: 340, y: 130 }
   canvas.add(path_2)
 
-  var pathElements_3 = Malyan.Path.createPaths([
+  var pathElements_3 = Malyan.Path.createElements([
     {
       type: 'arcTo',
       id: '1-1',
@@ -126,12 +124,12 @@
     {
       type: 'arc',
       id: '2',
-      start: [110, 75],
+      start: [75 + 30 * Math.cos(Math.PI * 0.25), 75 + 30 * Math.sin(Math.PI * 0.25)],
       x: 75,
       y: 75,
-      radius: 35,
-      startAngle: 0,
-      endAngle: Math.PI,
+      radius: 30,
+      startAngle: Math.PI * 0.25,
+      endAngle: Math.PI * 0.75,
       anticlockwise: false,
     },
     {
@@ -167,8 +165,7 @@
   path_3.translation = { x: 50, y: 250 }
   canvas.add(path_3)
 
-  canvas.render()
-  `
+  canvas.render()  `
     var codeEditor = new CodeEditor('code')
     codeEditor.setCode(text).showCode()
     var logger = new Logger({ id: 'logger' })
@@ -181,7 +178,7 @@
       height: 500,
     })
 
-    var pathElements_1 = Malyan.Path.createPaths([
+    var pathElements_1 = Malyan.Path.createElements([
       {
         type: 'curve',
         id: '1',
@@ -208,25 +205,23 @@
     path_1.translation = { x: 130, y: 100 }
     canvas.add(path_1)
 
-    var pathElements_2 = Malyan.Path.createPaths([
+    var pathElements_2 = Malyan.Path.createElements([
       {
-        type: 'curve',
+        type: 'arc',
         id: '1',
         start: [0, -10],
-        end: [0, 10],
-        controls: [[-8, 0]]
-      },
-      {
-        type: 'curve',
-        id: '2',
-        end: [-10, 0],
-        controls: [[-10, 10]]
+        x: 0,
+        y: 0,
+        radius: 10,
+        startAngle: -Math.PI * 0.5,
+        endAngle: Math.PI * 0.5,
+        anticlockwise: true,
       },
       {
         type: 'curve',
         id: '2',
         end: [0, -10],
-        controls: [[-10, -10]]
+        controls: [[-10, 0]]
       },
     ])
     var path_2 = new Malyan.Path({
@@ -241,7 +236,7 @@
     path_2.translation = { x: 340, y: 130 }
     canvas.add(path_2)
 
-    var pathElements_3 = Malyan.Path.createPaths([
+    var pathElements_3 = Malyan.Path.createElements([
       {
         type: 'arcTo',
         id: '1-1',
@@ -270,12 +265,12 @@
       {
         type: 'arc',
         id: '2',
-        start: [110, 75],
+        start: [75 + 30 * Math.cos(Math.PI * 0.25), 75 + 30 * Math.sin(Math.PI * 0.25)],
         x: 75,
         y: 75,
-        radius: 35,
-        startAngle: 0,
-        endAngle: Math.PI,
+        radius: 30,
+        startAngle: Math.PI * 0.25,
+        endAngle: Math.PI * 0.75,
         anticlockwise: false,
       },
       {

@@ -106,7 +106,7 @@ export class Path extends Shape {
     ARC: 'arc',
     ARC_TO: 'arcTo',
   }
-  static createPaths = (elements = []) => {
+  static createElements = (elements = []) => {
     let paths = []
     const formatPoint = function (point) {
       if (Array.isArray(point)) {

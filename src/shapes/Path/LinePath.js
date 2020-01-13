@@ -17,7 +17,7 @@ export class LinePath extends BaseCommandPath{
   static validateParams(options = {}) {
     const { end } = options
     if (!end || end.x === undefined || end.y === undefined) {
-      console.error('LinePath `end` props must be not null in Path.createPaths function')
+      console.error('LinePath `end` props must be not null in Path.createElements function')
       return false
     }
     return true

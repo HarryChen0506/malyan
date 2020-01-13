@@ -18,7 +18,7 @@ export class CurvePath extends BaseCommandPath {
   static validateParams(options = {}) {
     const { end, controls } = options
     if (!end || end.x === undefined || end.y === undefined) {
-      console.error('CurvePath `end` props must be not null in Path.createPaths function')
+      console.error('CurvePath `end` props must be not null in Path.createElements function')
       return false
     }
     if (!Array.isArray(controls)) {

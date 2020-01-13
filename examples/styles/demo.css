@@ -28,6 +28,7 @@
   justify-content: space-between;
   min-height: 0;
   min-width: 0;
+  min-height: 600px;
 }
 
 .canvas-wrap {
@@ -40,7 +41,10 @@ canvas {
 }
 
 .CodeMirror {
-  height: 680px;
+  /* height: 680px; */
+  height: calc(100vh - 90px);
+  height:-moz-calc(100vh - 90px); 
+  height:-webkit-calc(100vh - 90px);
   border: 1px solid #ddd;
 }
 

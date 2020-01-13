@@ -7,11 +7,11 @@ export class RoundRect extends Path {
     // create paths
     this.paths = Path.createElements([
       {
-        type: 'curve',
+        type: 'arcTo',
         id: '0',
         start: [x, y + radius],
-        end: [x + radius, y],
-        controls: [[x, y]]
+        controls: [[x, y], [x + radius, y]],
+        radius,
       },
       {
         type: 'line',
@@ -19,10 +19,10 @@ export class RoundRect extends Path {
         end: [x + width - radius, y]
       },
       {
-        type: 'curve',
+        type: 'arcTo',
         id: '2',
-        end: [x + width, y + radius],
-        controls: [[x + width, y]]
+        controls: [[x + width, y], [x + width, y + radius]],
+        radius,
       },
       {
         type: 'line',
@@ -30,10 +30,10 @@ export class RoundRect extends Path {
         end: [x + width, y + height - radius]
       },
       {
-        type: 'curve',
+        type: 'arcTo',
         id: '4',
-        end: [x + width - radius, y + height],
-        controls: [[x + width, y + height]]
+        controls: [ [x + width, y + height], [x + width - radius, y + height]],
+        radius,
       },
       {
         type: 'line',
@@ -41,10 +41,10 @@ export class RoundRect extends Path {
         end: [x + radius, y + height]
       },
       {
-        type: 'curve',
+        type: 'arcTo',
         id: '6',
-        end: [x, y + height - radius],
-        controls: [[x, y + height]]
+        controls: [[x, y + height], [x, y + height - radius]],
+        radius,
       },
       {
         type: 'line',

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>malyan examples</title>
+  <script src="../temp/malyan.js"></script>
+  <!-- <script src='../dist/malyan.min.js'></script> -->
+  <script src='./js/base.js'></script>
+</head>
+
+<body>
+  <div class='page-header'>
+    <div class='title'>image</div>
+  </div>
+  <div class="page-main">
+    <div class='panel-left'>
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="log-wrap">
+        <div id='logger'></div>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class='right-wrap'>
+        <textarea class="form-control" id="code" name="code"></textarea>
+      </div>
+    </div>
+  </div>
+  <script>
+    var text = `   var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+    
+    var image_1, image_2
+    Malyan.Image.load('./assets/dog.jpeg', drawImage)
+
+    function calcImageRatio(naturalWidth, naturalHeight, ) {
+      return naturalWidth / naturalHeight
+    }
+    function drawImage(res) {
+      var width = 200
+      image_1 = new Malyan.Image({
+        name: 'image-1',
+        image: res,
+        x: 0,
+        y: 0,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+      })
+      image_1.translation = { x: 150, y: 80 }
+
+      image_2 = new Malyan.Image({
+        name: 'image-2',
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+        sx: 600,
+        sy: 100,
+        sWidth: 1600,
+        sHeight: 1200
+      })
+      image_2.translation = { x: 150, y: 280 }
+      
+      canvas.add(image_1)
+      canvas.add(image_2)
+    }
+
+    function animateLoop() {
+      canvas.render()
+      requestAnimationFrame(animateLoop)
+    }
+    animateLoop()
+  `
+    var codeEditor = new CodeEditor('code')
+    codeEditor.setCode(text).showCode()
+    var logger = new Logger({ id: 'logger' })
+    logger.log("welcome to malyan's world")
+  </script>
+  <script>
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+    
+    var image_1, image_2
+    Malyan.Image.load('./assets/dog.jpeg', drawImage)
+
+    function calcImageRatio(naturalWidth, naturalHeight, ) {
+      return naturalWidth / naturalHeight
+    }
+    function drawImage(res) {
+      var width = 200
+      image_1 = new Malyan.Image({
+        name: 'image-1',
+        image: res,
+        x: 0,
+        y: 0,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+      })
+      image_1.translation = { x: 150, y: 80 }
+
+      image_2 = new Malyan.Image({
+        name: 'image-2',
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+        sx: 600,
+        sy: 100,
+        sWidth: 1600,
+        sHeight: 1200
+      })
+      image_2.translation = { x: 150, y: 280 }
+
+      canvas.add(image_1)
+      canvas.add(image_2)
+    }
+
+    function animateLoop() {
+      canvas.render()
+      requestAnimationFrame(animateLoop)
+    }
+    animateLoop()
+  </script>
+</body>
+
+</html>

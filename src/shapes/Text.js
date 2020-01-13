@@ -5,7 +5,7 @@ const defaultConfig = {
   text: '',
   x: 0,
   y: 0,
-  maxWidth: 100,
+  maxWidth: undefined,
   fillText: true,
   strokeText: false,
   fillStyle: '#000',
@@ -31,8 +31,13 @@ export class Text extends Shape {
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
     this.setCtxProps && this.setCtxProps(ctx)
     this.setTextCtxProps && this.setTextCtxProps(ctx)
-    this.fillText && ctx.fillText(this.text, this.x, this.y, this.maxWidth)
-    this.strokeText && ctx.strokeText(this.text, this.x, this.y, this.maxWidth)
+    if (this.maxWidth) {
+      this.fillText && ctx.fillText(this.text, this.x, this.y, this.maxWidth)
+      this.strokeText && ctx.strokeText(this.text, this.x, this.y, this.maxWidth)
+    } else {
+      this.fillText && ctx.fillText(this.text, this.x, this.y)
+      this.strokeText && ctx.strokeText(this.text, this.x, this.y)
+    }
     ctx.restore()
   }
   setTextCtxProps(ctx) {
@@ -49,7 +54,7 @@ export class Text extends Shape {
       ctx.direction = this.direction
     }
   }
-  containPoint(ctx) {
+  containPoint() {
     return false
   }
 

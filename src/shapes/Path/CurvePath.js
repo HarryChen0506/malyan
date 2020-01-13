@@ -1,15 +1,39 @@
 import BaseCommandPath from './BaseCommandPath'
+import Vector from '../../Vector'
 
 export class CurvePath extends BaseCommandPath {
   constructor(options = {}) {
     super(options)
-    const { controls } = options
-    if (!Array.isArray(controls)) {
-      console.error('Curve controls must be a array')
-    }
+    const { start, end, controls } = options
+    CurvePath.validateParams(options)
     this.controls = controls || []
+    if (start) {
+      this.start = start
+    }
+    this.end = end || new Vector({
+      x: 0,
+      y: 0,
+    })
+  }
+  static validateParams(options = {}) {
+    const { end, controls } = options
+    if (!end || end.x === undefined || end.y === undefined) {
+      console.error('CurvePath `end` props must be not null in Path.createPaths function')
+      return false
+    }
+    if (!Array.isArray(controls)) {
+      console.error('CurvePath `controls` props must be a array')
+      return false
+    }
+    return true
+  }
+  moveTo(ctx) {
+    ctx.moveTo(this.start.x, this.start.y)
   }
   render(ctx) {
+    if (this.start) {
+      this.moveTo(ctx)
+    }
     if (this.controls.length === 1) {
       ctx.quadraticCurveTo(
         this.controls[0].x,

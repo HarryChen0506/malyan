@@ -2,6 +2,8 @@ import Shape from '../../Shape'
 import Vector from '../../Vector'
 import CurvePath from './CurvePath'
 import LinePath from './LinePath'
+import ArcPath from './ArcPath'
+import ArcToPath from './ArcToPath'
 import math from '../../utils/math'
 
 const defaultConfig = {
@@ -100,7 +102,9 @@ export class Path extends Shape {
   }
   static PATH_TYPE = {
     LINE: 'line',
-    CURVE: 'curve'
+    CURVE: 'curve',
+    ARC: 'arc',
+    ARC_TO: 'arcTo',
   }
   static createPaths = (elements = []) => {
     let paths = []
@@ -114,41 +118,80 @@ export class Path extends Shape {
       return new Vector(point)
     }
     elements.forEach(v => {
-      let element = {}
+      let element = null
       let params = {
         id: v.id
       }
-      if (!v.end) {
-        console.error('element `end` props must be not null in Path.createPaths function')
-        return
-      }
+      // line path
       if (v.type === Path.PATH_TYPE.LINE) {
         if (v.start) {
           params.start = formatPoint(v.start)
         }
-        params.end = formatPoint(v.end)
-        element = new Path.Line(params)
-      } else if (v.type === Path.PATH_TYPE.CURVE) {
-        let controls = []
+        if (v.end) {
+          params.end = formatPoint(v.end)
+        }
+        if (Path.Line.validateParams(params)) {
+          element = new Path.Line(params)
+        }
+      }
+      // curve path
+      if (v.type === Path.PATH_TYPE.CURVE) {
         if (Array.isArray(v.controls)) {
-          controls = v.controls.map(k => {
+          const controls = v.controls.map(k => {
             return formatPoint(k)
           })
+          params.controls = controls
         }
         if (v.start) {
           params.start = formatPoint(v.start)
         }
-        params.end = formatPoint(v.end)
-        params.controls = controls
-        element = new Path.Curve(params)
+        if (v.end) {
+          params.end = formatPoint(v.end)
+        }
+        if (Path.Curve.validateParams(params)) {
+          element = new Path.Curve(params)
+        }
       }
-
+      // arcTo path
+      if (v.type === Path.PATH_TYPE.ARC_TO) {
+        if (Array.isArray(v.controls)) {
+          const controls = v.controls.map(k => {
+            return formatPoint(k)
+          })
+          params.controls = controls
+        }
+        if (v.start) {
+          params.start = formatPoint(v.start)
+        }
+        params.radius = v.radius
+        if (Path.ArcTo.validateParams(params)) {
+          element = new Path.ArcTo(params)
+        }
+      }
+      // arc path
+      if (v.type === Path.PATH_TYPE.ARC) {
+        if (v.start) {
+          params.start = formatPoint(v.start)
+        }
+        params.x = v.x
+        params.y = v.y
+        params.radius = v.radius
+        params.startAngle = v.startAngle
+        params.endAngle = v.endAngle
+        params.anticlockwise = v.anticlockwise
+        if (Path.Arc.validateParams(params)) {
+          element = new Path.Arc(params)
+        }
+      }
       element && paths.push(element)
     })
+
     return paths
   }
 }
 Path.Curve = CurvePath
 Path.Line = LinePath
+Path.Arc = ArcPath
+Path.ArcTo = ArcToPath
 
 export default Path

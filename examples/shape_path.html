@@ -31,73 +31,143 @@
     </div>
   </div>
   <script>
-    var text = `    var canvas = new Malyan({
-      id: 'canvas',
-      width: 500,
-      height: 500,
-    })
+    var text = `  var canvas = new Malyan({
+    id: 'canvas',
+    width: 500,
+    height: 500,
+  })
 
-    var pathElements_1 = Malyan.Path.createPaths([
-      {
-        type: 'curve',
-        id: '1',
-        start: [0, 0],
-        end: [0, 50],
-        controls: [[50, -30], [30, 40]]
-      },
-      {
-        type: 'curve',
-        id: '2',
-        end: [0, 0],
-        controls: [[-30, 40], [-50, -30]]
-      },
-    ])
-    var path_1 = new Malyan.Path({
-      name: 'path-1',
-      paths: pathElements_1,
-      closed: true,
-      fillStyle: 'rgba(64, 196, 255, 0.2)',
-      strokeStyle: '#40c4ff',
-      lineWidth: 2,
-    })
-    path_1.scale = 1.5
-    path_1.translation = { x: 130, y: 100 }
-    canvas.add(path_1)
+  var pathElements_1 = Malyan.Path.createPaths([
+    {
+      type: 'curve',
+      id: '1',
+      start: [0, 0],
+      end: [0, 50],
+      controls: [[50, -30], [30, 40]]
+    },
+    {
+      type: 'curve',
+      id: '2',
+      end: [0, 0],
+      controls: [[-30, 40], [-50, -30]]
+    },
+  ])
+  var path_1 = new Malyan.Path({
+    name: 'path-1',
+    paths: pathElements_1,
+    closed: false,
+    fillStyle: 'rgba(64, 196, 255, 0.2)',
+    strokeStyle: '#40c4ff',
+    lineWidth: 2,
+  })
+  path_1.scale = 1.5
+  path_1.translation = { x: 130, y: 100 }
+  canvas.add(path_1)
 
-    var pathElements_2 = Malyan.Path.createPaths([
-      {
-        type: 'curve',
-        id: '1',
-        start: [0, -10],
-        end: [0, 10],
-        controls: [[-8, 0]]
-      },
-      {
-        type: 'curve',
-        id: '2',
-        end: [-10, 0],
-        controls: [[-10, 10]]
-      },
-      {
-        type: 'curve',
-        id: '2',
-        end: [0, -10],
-        controls: [[-10, -10]]
-      },
-    ])
-    var path_2 = new Malyan.Path({
-      name: 'path-2',
-      paths: pathElements_2,
-      closed: true,
-      fillStyle: 'rgba(255, 69, 0, 0.2)',
-      strokeStyle: '#FF4500',
-      lineWidth: 0.48,
-    })
-    path_2.scale = 4.5
-    path_2.translation = { x: 360, y: 130 }
-    canvas.add(path_2)
+  var pathElements_2 = Malyan.Path.createPaths([
+    {
+      type: 'curve',
+      id: '1',
+      start: [0, -10],
+      end: [0, 10],
+      controls: [[-8, 0]]
+    },
+    {
+      type: 'curve',
+      id: '2',
+      end: [-10, 0],
+      controls: [[-10, 10]]
+    },
+    {
+      type: 'curve',
+      id: '2',
+      end: [0, -10],
+      controls: [[-10, -10]]
+    },
+  ])
+  var path_2 = new Malyan.Path({
+    name: 'path-2',
+    paths: pathElements_2,
+    closed: true,
+    fillStyle: 'rgba(186, 85, 211, 0.2)',
+    strokeStyle: '#BA55D3',
+    lineWidth: 0.48,
+  })
+  path_2.scale = 4.5
+  path_2.translation = { x: 340, y: 130 }
+  canvas.add(path_2)
 
-    canvas.render()
+  var pathElements_3 = Malyan.Path.createPaths([
+    {
+      type: 'arcTo',
+      id: '1-1',
+      start: [125, 75],
+      controls: [[125, 125], [75, 125]],
+      radius: 50,
+    },
+    {
+      type: 'arcTo',
+      id: '1-2',
+      controls: [[25, 125], [25, 75]],
+      radius: 50,
+    },
+    {
+      type: 'arcTo',
+      id: '1-3',
+      controls: [[25, 25], [75, 25]],
+      radius: 50,
+    },
+    {
+      type: 'arcTo',
+      id: '1-4',
+      controls: [[125, 25], [125, 75]],
+      radius: 50,
+    },
+    {
+      type: 'arc',
+      id: '2',
+      start: [110, 75],
+      x: 75,
+      y: 75,
+      radius: 35,
+      startAngle: 0,
+      endAngle: Math.PI,
+      anticlockwise: false,
+    },
+    {
+      type: 'arc',
+      id: '3',
+      start: [65, 65],
+      x: 60,
+      y: 65,
+      startAngle: 0,
+      endAngle: Math.PI * 2,
+      radius: 5,
+    },
+    {
+      type: 'arc',
+      id: '4',
+      start: [95, 65],
+      x: 90,
+      y: 65,
+      startAngle: 0,
+      endAngle: Math.PI * 2,
+      radius: 5,
+    }
+  ])
+  var path_3 = new Malyan.Path({
+    name: 'path-3',
+    paths: pathElements_3,
+    closed: false,
+    fillStyle: 'rgba(255, 69, 0, 0.2)',
+    strokeStyle: '#FF4500',
+    lineWidth: 2,
+  })
+  path_3.scale = 1
+  path_3.translation = { x: 50, y: 250 }
+  canvas.add(path_3)
+
+  canvas.render()
   `
     var codeEditor = new CodeEditor('code')
     codeEditor.setCode(text).showCode()
@@ -129,7 +199,7 @@
     var path_1 = new Malyan.Path({
       name: 'path-1',
       paths: pathElements_1,
-      closed: true,
+      closed: false,
       fillStyle: 'rgba(64, 196, 255, 0.2)',
       strokeStyle: '#40c4ff',
       lineWidth: 2,
@@ -163,13 +233,83 @@
       name: 'path-2',
       paths: pathElements_2,
       closed: true,
-      fillStyle: 'rgba(255, 69, 0, 0.2)',
-      strokeStyle: '#FF4500',
+      fillStyle: 'rgba(186, 85, 211, 0.2)',
+      strokeStyle: '#BA55D3',
       lineWidth: 0.48,
     })
     path_2.scale = 4.5
-    path_2.translation = { x: 360, y: 130 }
+    path_2.translation = { x: 340, y: 130 }
     canvas.add(path_2)
+
+    var pathElements_3 = Malyan.Path.createPaths([
+      {
+        type: 'arcTo',
+        id: '1-1',
+        start: [125, 75],
+        controls: [[125, 125], [75, 125]],
+        radius: 50,
+      },
+      {
+        type: 'arcTo',
+        id: '1-2',
+        controls: [[25, 125], [25, 75]],
+        radius: 50,
+      },
+      {
+        type: 'arcTo',
+        id: '1-3',
+        controls: [[25, 25], [75, 25]],
+        radius: 50,
+      },
+      {
+        type: 'arcTo',
+        id: '1-4',
+        controls: [[125, 25], [125, 75]],
+        radius: 50,
+      },
+      {
+        type: 'arc',
+        id: '2',
+        start: [110, 75],
+        x: 75,
+        y: 75,
+        radius: 35,
+        startAngle: 0,
+        endAngle: Math.PI,
+        anticlockwise: false,
+      },
+      {
+        type: 'arc',
+        id: '3',
+        start: [65, 65],
+        x: 60,
+        y: 65,
+        startAngle: 0,
+        endAngle: Math.PI * 2,
+        radius: 5,
+      },
+      {
+        type: 'arc',
+        id: '4',
+        start: [95, 65],
+        x: 90,
+        y: 65,
+        startAngle: 0,
+        endAngle: Math.PI * 2,
+        radius: 5,
+      }
+    ])
+    var path_3 = new Malyan.Path({
+      name: 'path-3',
+      paths: pathElements_3,
+      closed: false,
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 2,
+    })
+    path_3.scale = 1
+    path_3.translation = { x: 50, y: 250 }
+    canvas.add(path_3)
 
     canvas.render()
   </script>

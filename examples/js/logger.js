@@ -103,19 +103,19 @@
 
   Logger.prototype.log = function () {
     this.print(arguments, TYPE.LOG)
-    return this
+    this.scrollTop()
   }
   Logger.prototype.warn = function () {
     this.print(arguments, TYPE.WARN)
-    return this
+    this.scrollTop()
   }
   Logger.prototype.info = function () {
     this.print(arguments, TYPE.INFO)
-    return this
+    this.scrollTop()
   }
   Logger.prototype.error = function () {
     this.print(arguments, TYPE.ERROR)
-    return this
+    this.scrollTop()
   }
   Logger.prototype.scrollTop = function () {
     const height = this.body.offsetHeight

@@ -10,11 +10,13 @@ export class Group extends mix(Shape) {
     this.name = options.name
     this.uuid = _.uuid()
   }
-  add(object) {
-    if (object) {
-      object.parent = this
-      this.children.push(object)
-    }
+  add(...args) {
+    args.forEach(v => {
+      if (v) {
+        v.parent = this
+        this.children.push(v)
+      }
+    })
   }
   remove(object) {
     if (object) {

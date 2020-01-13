@@ -105,8 +105,8 @@ export class Malyan {
     const context = dom.getContext('2d')
     return context
   }
-  add(object) {
-    this.scene.add(object)
+  add(...args) {
+    this.scene.add(...args)
   }
   render() {
     this.scene.render(this.ctx, {

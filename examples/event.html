@@ -71,10 +71,28 @@
       }
     })
 
+    var circle = new Malyan.Circle({
+      name: 'cicle',
+      x: 0,
+      y: 0,
+      radius: 30,
+      lineWidth: 2,
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+    })
+    circle.on('mousedrag', function (e) {
+      circle.translation = {
+        x: circle.translation.x + e.detail.deltaPoint.canvas.x,
+        y: circle.translation.y + e.detail.deltaPoint.canvas.y
+      }
+    })
+
     var group = new Malyan.Group({
       name: 'group'
     })
     group.translation = { x: 20, y: 20 }
+
+    group.add(circle)
 
     group.add(rect)
     canvas.add(group)

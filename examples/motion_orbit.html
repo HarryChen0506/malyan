@@ -31,43 +31,27 @@
     </div>
   </div>
   <script>
-    var text = `    var canvas = new Malyan({
+    var text = `    var url = {
+      sun: 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png',
+      earth: 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png',
+      moon: 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png',
+    }
+
+    var canvas = new Malyan({
       id: 'canvas',
-      width: 500,
-      height: 500,
+      width: 400,
+      height: 400,
     })
 
-    var image_sun = new Image()
-    var image_earth = new Image()
-    var image_moon = new Image()
+    var group_0 = new Malyan.Group()
+    canvas.add(group_0)
 
-    image_sun.src = 
-'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
-    image_earth.src = 
-'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
-    image_moon.src = 
-'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
-
-    var sun = new Malyan.Image({
-      name: 'sun',
-      image: image_sun,
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
-    })
-    canvas.add(sun)
-
-    var group_1 = new Malyan.Group({
-      name: 'group-1'
-    })
-    group_1.translation = { x: 250, y: 250 }
+    var group_1 = new Malyan.Group()
+    group_1.translation = { x: 200, y: 200 }
     canvas.add(group_1)
 
     var earthOrbit = new Malyan.Arc({
       name: 'earth-orbit',
-      x: 0,
-      y: 0,
       radius: 100,
       fill: false,
       strokeStyle: 'rgba(0,153,255,0.4)',
@@ -75,98 +59,54 @@
     })
     group_1.add(earthOrbit)
 
-    var group_2 = new Malyan.Group({
-      name: 'group-2'
-    })
+    var group_2 = new Malyan.Group()
     group_2.translation = { x: 100, y: 0 }
     group_1.add(group_2)
 
-    var earth = new Malyan.Image({
-      name: 'earth',
-      image: image_earth,
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
-    })
-    group_2.add(earth)
-
-    var group3 = new Malyan.Group({
-      name: 'group-3'
-    })
+    var group3 = new Malyan.Group()
     group3.translation = { x: -20, y: 0 }
     group_2.add(group3)
 
-    var moon = new Malyan.Image({
-      name: 'moon',
-      image: image_moon,
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
+    function calcImageRatio (naturalWidth, naturalHeight) {
+      return naturalWidth / naturalHeight
+    }
+
+    Malyan.Image.load(url.sun, function (res) {
+      var width = 400
+      var sun = new Malyan.Image({
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+      })
+      group_0.add(sun)
     })
-    group3.add(moon)
 
-    function draw() {
-      drawImage(image_sun, 500, function (image, width, height) {
-        if (sun.loaded) {
-          return
-        }
-        sun.set({
-          'image': image,
-          width,
-          height,
-          loaded: true
-        })
+    Malyan.Image.load(url.earth, function (res) {
+      var width = 12
+      var earth = new Malyan.Image({
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+        x: -6,
+        y: -6
       })
-      drawImage(image_earth, 12, function (image, width, height) {
-        if (earth.loaded) {
-          return
-        }
-        earth.set({
-          'image': image,
-          width,
-          height,
-          x: - width * 0.5,
-          y: - height * 0.5,
-          loaded: true
-        })
-      })
-      drawImage(image_moon, 6, function (image, width, height) {
-        if (moon.loaded) {
-          return
-        }
-        moon.set({
-          'image': image,
-          width,
-          height,
-          x: - width * 0.5,
-          y: - height * 0.5,
-          loaded: true
-        })
-      })
-    }
+      group_2.add(earth)
+    })
 
-    function drawImage(image, width = 0, onAfterLoaded) {
-      var height = 0
-      if (image.height > 0) {
-        height = width / calcImageRatio(image.width, image.height)
-        typeof onAfterLoaded === 'function' && 
-        onAfterLoaded(image, width, height)
-      }
-    }
-
-    function calcImageRatio(width, height) {
-      return width / height
-    }
+    Malyan.Image.load(url.moon, function (res) {
+      var width = 6
+      var moon = new Malyan.Image({
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+      })
+      group3.add(moon)
+    })
 
     function animateLoop() {
-      draw()
       var time = new Date()
-      group_1.rotation = ((2 * Math.PI) / 60) * time.getSeconds() + 
-        ((2 * Math.PI) / 60000) * time.getMilliseconds();
-      group_2.rotation = ((2 * Math.PI) / 6) * time.getSeconds() + 
-        ((2 * Math.PI) / 6000) * time.getMilliseconds()
+      group_1.rotation = ((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds()
+      group_2.rotation = ((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds()
       canvas.render()
       requestAnimationFrame(animateLoop)
     }
@@ -178,40 +118,27 @@
     logger.log("welcome to malyan's world")
   </script>
   <script>
+    var url = {
+      sun: 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png',
+      earth: 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png',
+      moon: 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png',
+    }
+
     var canvas = new Malyan({
       id: 'canvas',
       width: 400,
       height: 400,
     })
 
-    var image_sun = new Image()
-    var image_earth = new Image()
-    var image_moon = new Image()
+    var group_0 = new Malyan.Group()
+    canvas.add(group_0)
 
-    image_sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png'
-    image_earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png'
-    image_moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png'
-
-    var sun = new Malyan.Image({
-      name: 'sun',
-      image: image_sun,
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
-    })
-    canvas.add(sun)
-
-    var group_1 = new Malyan.Group({
-      name: 'group-1'
-    })
+    var group_1 = new Malyan.Group()
     group_1.translation = { x: 200, y: 200 }
     canvas.add(group_1)
 
     var earthOrbit = new Malyan.Arc({
       name: 'earth-orbit',
-      x: 0,
-      y: 0,
       radius: 100,
       fill: false,
       strokeStyle: 'rgba(0,153,255,0.4)',
@@ -219,92 +146,51 @@
     })
     group_1.add(earthOrbit)
 
-    var group_2 = new Malyan.Group({
-      name: 'group-2'
-    })
+    var group_2 = new Malyan.Group()
     group_2.translation = { x: 100, y: 0 }
     group_1.add(group_2)
 
-    var earth = new Malyan.Image({
-      name: 'earth',
-      image: image_earth,
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
-    })
-    group_2.add(earth)
-
-    var group3 = new Malyan.Group({
-      name: 'group-3'
-    })
+    var group3 = new Malyan.Group()
     group3.translation = { x: -20, y: 0 }
     group_2.add(group3)
 
-    var moon = new Malyan.Image({
-      name: 'moon',
-      image: image_moon,
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 0,
+    function calcImageRatio(naturalWidth, naturalHeight) {
+      return naturalWidth / naturalHeight
+    }
+
+    Malyan.Image.load(url.sun, function (res) {
+      var width = 400
+      var sun = new Malyan.Image({
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+      })
+      group_0.add(sun)
     })
-    group3.add(moon)
 
-    function draw() {
-      drawImage(image_sun, 400, function (image, width, height) {
-        if (sun.loaded) {
-          return
-        }
-        sun.set({
-          'image': image,
-          width,
-          height,
-          loaded: true
-        })
+    Malyan.Image.load(url.earth, function (res) {
+      var width = 12
+      var earth = new Malyan.Image({
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+        x: -6,
+        y: -6
       })
-      drawImage(image_earth, 12, function (image, width, height) {
-        if (earth.loaded) {
-          return
-        }
-        earth.set({
-          'image': image,
-          width,
-          height,
-          x: - width * 0.5,
-          y: - height * 0.5,
-          loaded: true
-        })
-      })
-      drawImage(image_moon, 6, function (image, width, height) {
-        if (moon.loaded) {
-          return
-        }
-        moon.set({
-          'image': image,
-          width,
-          height,
-          x: - width * 0.5,
-          y: - height * 0.5,
-          loaded: true
-        })
-      })
-    }
+      group_2.add(earth)
+    })
 
-    function drawImage(image, width = 0, onAfterLoaded) {
-      var height = 0
-      if (image.height > 0) {
-        height = width / calcImageRatio(image.width, image.height)
-        typeof onAfterLoaded === 'function' && onAfterLoaded(image, width, height)
-      }
-    }
-
-    function calcImageRatio(width, height) {
-      return width / height
-    }
+    Malyan.Image.load(url.moon, function (res) {
+      var width = 6
+      var moon = new Malyan.Image({
+        image: res,
+        width: width,
+        height: width / calcImageRatio(res.width, res.height),
+      })
+      group3.add(moon)
+    })
 
     function animateLoop() {
-      draw()
       var time = new Date()
       group_1.rotation = ((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds()
       group_2.rotation = ((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds()

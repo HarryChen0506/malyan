@@ -31,7 +31,61 @@
     </div>
   </div>
   <script>
-    var text = `   
+    var text = `    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var circle = new Malyan.Circle({
+      x: 0,
+      y: 0,
+      radius: 100,
+      lineWidth: 2,
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+      onAfterRender: function (ctx) {
+        ctx.save()
+        ctx.clip()
+      }
+    })
+    circle.translation = { x: 150, y: 160 }
+    canvas.on('object:mousemove', function (e) {
+      if (e.detail.target) {
+        canvas.ctx.canvas.style.cursor = 'move'
+      } else {
+        canvas.ctx.canvas.style.cursor = ''
+      }
+      circle.translation = {
+        x: e.detail.currentPoint.canvas.x,
+        y: e.detail.currentPoint.canvas.y
+      }
+    })
+    canvas.add(circle)
+
+    Malyan.Image.load('./assets/dog.jpeg', function (res) {
+      var width = 500, height = 500
+      var image_1 = new Malyan.Image({
+        image: res,
+        width: height * calcImageRatio(res.width, res.height),
+        height: height,
+        penetrable: true,
+        onBeforeRender: function(ctx) {
+          // ctx.restore()
+        }
+      })
+      canvas.add(image_1)
+    })
+
+    function calcImageRatio(naturalWidth, naturalHeight) {
+      return naturalWidth / naturalHeight
+    }
+
+    function animateLoop() {
+      canvas.render()
+      requestAnimationFrame(animateLoop)
+    }
+    animateLoop()
   `
     var codeEditor = new CodeEditor('code')
     codeEditor.setCode(text).showCode()
@@ -45,94 +99,50 @@
       height: 500,
     })
 
-    var rect_1 = new Malyan.Rect({
-      name: 'rect_1',
+    var circle = new Malyan.Circle({
       x: 0,
       y: 0,
-      width: 360,
-      height: 360,
-      fillStyle: 'rgba(64, 196, 255, 1)',
-      strokeStyle: '#40c4ff',
+      radius: 100,
       lineWidth: 2,
-    })
-    rect_1.translation = { x: 20, y: 20 }
-    canvas.add(rect_1)
-
-    // var rect_2 = new Malyan.Rect({
-    //   name: 'rect_2',
-    //   x: 0,
-    //   y: 0,
-    //   width: 100,
-    //   height: 100,
-    //   fillStyle: 'rgba(255, 69, 0, 1)',
-    //   strokeStyle: '#FF4500',
-    //   lineWidth: 2,
-    //   onAfterRender: function (ctx) {
-    //     ctx.save()
-    //     ctx.clip()
-    //   }
-    // })
-    // rect_2.translation = { x: 60, y: 60 }
-    // canvas.add(rect_2)
-
-    var polygon_1 = new Malyan.Polygon({
-      name: 'polygon-1',
-      points: [[0, 0], [200, 200], [200, 0]],
-      fillStyle: 'red',
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
       onAfterRender: function (ctx) {
         ctx.save()
         ctx.clip()
       }
     })
-    // polygon_1.scale = 50
-    // polygon_1.translation = { x: 130, y: 180 }
-    canvas.add(polygon_1)
-
-    var rect_3 = new Malyan.Rect({
-      name: 'rect_3',
-      x: 0,
-      y: 0,
-      width: 150,
-      height: 150,
-      fillStyle: 'rgba(84, 188, 169, 1)',
-      strokeStyle: '#54bca9',
-      lineWidth: 2,
+    circle.translation = { x: 150, y: 160 }
+    canvas.on('object:mousemove', function (e) {
+      if (e.detail.target) {
+        canvas.ctx.canvas.style.cursor = 'move'
+      } else {
+        canvas.ctx.canvas.style.cursor = ''
+      }
+      circle.translation = {
+        x: e.detail.currentPoint.canvas.x,
+        y: e.detail.currentPoint.canvas.y
+      }
     })
-    rect_3.translation = { x: 90, y: 90 }
-    canvas.add(rect_3)
-
-    var rect_4 = new Malyan.Rect({
-      name: 'rect_3',
-      x: 0,
-      y: 0,
-      width: 150,
-      height: 150,
-      fillStyle: 'pink',
-      lineWidth: 2,
-      onBeforeRender: function (ctx) {
-        ctx.restore()
-      },
-    })
-    rect_4.translation = { x: 120, y: 120 }
-    canvas.add(rect_4)
-
-    var circle = new Malyan.Circle({
-      name: 'cicle',
-      x: 0,
-      y: 0,
-      radius: 150,
-      lineWidth: 2,
-      fillStyle: 'rgba(64, 196, 255, 0.2)',
-      strokeStyle: '#40c4ff',
-      endClip: true,
-      onBeforeRender: function (ctx) {
-        // ctx.restore()
-      },
-    })
-
     canvas.add(circle)
 
-    // canvas.render()
+    Malyan.Image.load('./assets/dog.jpeg', function (res) {
+      var width = 500, height = 500
+      var image_1 = new Malyan.Image({
+        image: res,
+        width: height * calcImageRatio(res.width, res.height),
+        height: height,
+        penetrable: true,
+        onBeforeRender: function(ctx) {
+          // ctx.restore()
+        }
+      })
+      canvas.add(image_1)
+    })
+
+    function calcImageRatio(naturalWidth, naturalHeight) {
+      return naturalWidth / naturalHeight
+    }
+
     function animateLoop() {
       canvas.render()
       requestAnimationFrame(animateLoop)

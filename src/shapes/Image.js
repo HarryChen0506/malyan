@@ -19,6 +19,7 @@ export class Image extends Shape {
     Object.keys(defaultConfig).forEach(key => {
       this[key] = config[key]
     })
+    this.loaded = false
   }
   render(ctx) {
     this.onBeforeRender && this.onBeforeRender(ctx)
@@ -48,6 +49,16 @@ export class Image extends Shape {
       return true
     }
     return false
+  }
+  set(key, value) {
+    if (typeof key === 'object') {
+      Object.keys(key).forEach(v => {
+        this[v] = key[v]
+      })
+    } else {
+      this[key] = value
+    }
+    return this
   }
   static load(url, callback) {
     const global = window || global

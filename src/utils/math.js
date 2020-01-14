@@ -1,3 +1,4 @@
+
 export function matrix_invert(M) {
   // M [[0,1], [1,0]]
   // http://blog.acipo.com/matrix-inversion-in-javascript/
@@ -157,5 +158,5 @@ export default {
   matrix_invert,
   pageToCanvas,
   point,
-  calcPointsRect
+  calcPointsRect,
 }

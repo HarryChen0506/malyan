@@ -24,6 +24,8 @@ const defaultConfig = {
   lineDash: undefined,
   lineDashOffset: 0,
   penetrable: false,
+  onBeforeRender: () => {},
+  onAfterRender: () => {},
 }
 
 class Shape extends mix(EventTarget, BaseObject) {

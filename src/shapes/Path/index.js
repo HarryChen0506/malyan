@@ -20,6 +20,7 @@ export class Path extends Shape {
     }
   }
   render(ctx) {
+    this.onBeforeRender && this.onBeforeRender(ctx)
     ctx.save()
     const matrix = this.matrix.elements
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
@@ -39,6 +40,7 @@ export class Path extends Shape {
     this.stroke && ctx.stroke()
     this.fill && ctx.fill()
     ctx.restore()
+    this.onAfterRender && this.onAfterRender(ctx)
   }
   containPoint(ctx, point = { x: 0, y: 0 }) {
     ctx.save()
@@ -107,15 +109,6 @@ export class Path extends Shape {
   }
   static createElements = (elements = []) => {
     let paths = []
-    const formatPoint = function (point) {
-      if (Array.isArray(point)) {
-        return new Vector({
-          x: point[0],
-          y: point[1]
-        })
-      }
-      return new Vector(point)
-    }
     elements.forEach(v => {
       let element = null
       let params = {
@@ -124,10 +117,10 @@ export class Path extends Shape {
       // line path
       if (v.type === Path.PATH_TYPE.LINE) {
         if (v.start) {
-          params.start = formatPoint(v.start)
+          params.start = Vector.formatPointIntoVector(v.start)
         }
         if (v.end) {
-          params.end = formatPoint(v.end)
+          params.end = Vector.formatPointIntoVector(v.end)
         }
         if (Path.Line.validateParams(params)) {
           element = new Path.Line(params)
@@ -137,15 +130,15 @@ export class Path extends Shape {
       if (v.type === Path.PATH_TYPE.CURVE) {
         if (Array.isArray(v.controls)) {
           const controls = v.controls.map(k => {
-            return formatPoint(k)
+            return Vector.formatPointIntoVector(k)
           })
           params.controls = controls
         }
         if (v.start) {
-          params.start = formatPoint(v.start)
+          params.start = Vector.formatPointIntoVector(v.start)
         }
         if (v.end) {
-          params.end = formatPoint(v.end)
+          params.end = Vector.formatPointIntoVector(v.end)
         }
         if (Path.Curve.validateParams(params)) {
           element = new Path.Curve(params)
@@ -155,12 +148,12 @@ export class Path extends Shape {
       if (v.type === Path.PATH_TYPE.ARC_TO) {
         if (Array.isArray(v.controls)) {
           const controls = v.controls.map(k => {
-            return formatPoint(k)
+            return Vector.formatPointIntoVector(k)
           })
           params.controls = controls
         }
         if (v.start) {
-          params.start = formatPoint(v.start)
+          params.start = Vector.formatPointIntoVector(v.start)
         }
         params.radius = v.radius
         if (Path.ArcTo.validateParams(params)) {
@@ -170,7 +163,7 @@ export class Path extends Shape {
       // arc path
       if (v.type === Path.PATH_TYPE.ARC) {
         if (v.start) {
-          params.start = formatPoint(v.start)
+          params.start = Vector.formatPointIntoVector(v.start)
         }
         params.x = v.x
         params.y = v.y

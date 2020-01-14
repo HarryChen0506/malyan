@@ -12,16 +12,18 @@ export class Arc extends Shape {
     this.endAngle = endAngle || Math.PI * 2
   }
   render(ctx) {
+    this.onBeforeRender && this.onBeforeRender(ctx)
     ctx.save()
     const matrix = this.matrix.elements
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
     ctx.beginPath()
     this.setCtxProps && this.setCtxProps(ctx)
     ctx.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.anticlockwise)
-    this.close && ctx.closePath()
+    this.closed && ctx.closePath()
     this.fill && ctx.fill()
     this.stroke && ctx.stroke()
     ctx.restore()
+    this.onAfterRender && this.onAfterRender(ctx)
   }
 }
 

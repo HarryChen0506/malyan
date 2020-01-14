@@ -23,6 +23,15 @@ class Vector {
     this.x = x
     this.y = y
   }
+  static formatPointIntoVector = function (point) {
+    if (Array.isArray(point)) {
+      return new Vector({
+        x: point[0],
+        y: point[1]
+      })
+    }
+    return new Vector(point)
+  }
 }
 
 export default Vector

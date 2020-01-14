@@ -24,6 +24,7 @@ export class Text extends Shape {
     })
   }
   render(ctx) {
+    this.onBeforeRender && this.onBeforeRender(ctx)
     ctx.save()
     const matrix = this.matrix.elements
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
@@ -37,6 +38,7 @@ export class Text extends Shape {
       this.strokeText && ctx.strokeText(this.text, this.x, this.y)
     }
     ctx.restore()
+    this.onAfterRender && this.onAfterRender(ctx)
   }
   setTextCtxProps(ctx) {
     if (this.font) {

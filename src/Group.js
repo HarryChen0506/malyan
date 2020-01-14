@@ -7,6 +7,7 @@ export class Group extends Shape {
     this.parent = null
   }
   render(ctx) {
+    this.onBeforeRender && this.onBeforeRender(ctx)
     ctx.save()
     const matrix = this.matrix.elements
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
@@ -14,6 +15,7 @@ export class Group extends Shape {
       this.children[i] && this.children[i].render(ctx)
     }
     ctx.restore()
+    this.onAfterRender && this.onAfterRender(ctx)
   }
 }
 

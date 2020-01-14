@@ -14,6 +14,7 @@ export class Ellipse extends Shape {
     this.rotation = rotation || 0
   }
   render(ctx) {
+    this.onBeforeRender && this.onBeforeRender(ctx)
     ctx.save()
     const matrix = this.matrix.elements
     ctx.transform(matrix[0], matrix[3], matrix[1], matrix[4], matrix[2], matrix[5])
@@ -24,6 +25,7 @@ export class Ellipse extends Shape {
     this.fill && ctx.fill()
     this.stroke && ctx.stroke()
     ctx.restore()
+    this.onAfterRender && this.onAfterRender(ctx)
   }
   containPoint(ctx, point = { x: 0, y: 0 }) {
     const path = new Path2D()

@@ -16,8 +16,6 @@ export class Image extends Shape {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }
-    const { name } = config
-    this.name = name
     Object.keys(defaultConfig).forEach(key => {
       this[key] = config[key]
     })

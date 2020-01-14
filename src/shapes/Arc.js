@@ -3,8 +3,7 @@ import Shape from '../Shape'
 export class Arc extends Shape {
   constructor(options = {}) {
     super(options)
-    const { name, x, y, radius, startAngle, endAngle, anticlockwise} = options
-    this.name = name
+    const { x, y, radius, startAngle, endAngle, anticlockwise} = options
     this.x = x || 0
     this.y = y || 0
     this.radius = radius

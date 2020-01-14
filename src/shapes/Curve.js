@@ -5,8 +5,7 @@ import Vector from '../Vector'
 export class Curve extends Shape {
   constructor(options = {}) {
     super(options)
-    const { name, start, end, controls } = options
-    this.name = name
+    const { start, end, controls } = options
     this.start = start || new Vector({
       x: 0,
       y: 0,

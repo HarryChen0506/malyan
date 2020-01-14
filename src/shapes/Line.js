@@ -5,8 +5,7 @@ import Vector from '../Vector'
 export class Line extends Shape {
   constructor(options = {}) {
     super(options)
-    const { name, start, end} = options
-    this.name = name
+    const { start, end } = options
     this.start = start || new Vector({
       x: 0,
       y: 0,

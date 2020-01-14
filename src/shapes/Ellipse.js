@@ -3,8 +3,7 @@ import Shape from '../Shape'
 export class Ellipse extends Shape {
   constructor(options = {}) {
     super(options)
-    const { name, x, y, radiusX, radiusY, startAngle, endAngle, anticlockwise, rotation} = options
-    this.name = name
+    const { x, y, radiusX, radiusY, startAngle, endAngle, anticlockwise, rotation} = options
     this.x = x || 0
     this.y = y || 0
     this.radiusX = radiusX || 0

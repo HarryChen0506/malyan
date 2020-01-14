@@ -1,6 +1,8 @@
 
 import Vector from './Vector'
 import Matrix from './Matrix'
+import BaseObject from './BaseObject'
+import { mix } from './utils/extend'
 import { EventTarget, triggerEvent } from './events'
 import _ from './utils/tool'
 
@@ -24,10 +26,11 @@ const defaultConfig = {
   penetrable: false,
 }
 
-class Shape extends EventTarget {
+class Shape extends mix(EventTarget, BaseObject) {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }
+    this.name = config.name
     this.matrix = new Matrix().identity()
     this._translation = new Vector({
       x: 0,
@@ -47,7 +50,6 @@ class Shape extends EventTarget {
     // mouse
     this.isCurrentMouseIn = false // is mouse in shape currently
     this.isLastMouseIn = false // is mouse in shape last time
-    this.uuid = _.uuid()
   }
   onChange() {
     this.matrix

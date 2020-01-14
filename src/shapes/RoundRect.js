@@ -2,8 +2,7 @@ import Path from './Path'
 export class RoundRect extends Path {
   constructor(options = {}) {
     super(options)
-    let { name, x = 0, y = 0, width = 0, height = 0, radius = 0 } = options
-    this.name = name
+    let { x = 0, y = 0, width = 0, height = 0, radius = 0 } = options
     // create paths
     this.paths = Path.createElements([
       {

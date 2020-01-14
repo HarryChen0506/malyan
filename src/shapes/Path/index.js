@@ -13,8 +13,7 @@ export class Path extends Shape {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }
-    const { name, paths, center } = config
-    this.name = name
+    const { paths, center } = config
     this.paths = paths || []
     if (center) {
       this.center()

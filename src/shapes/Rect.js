@@ -8,8 +8,7 @@ export class Rect extends Shape {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }
-    const { name, x, y, width, height, center } = config
-    this.name = name
+    const { x, y, width, height, center } = config
     this.x = x || 0
     this.y = y || 0
     this.width = width || 0

@@ -2,8 +2,7 @@ import Path from './Path'
 export class Polygon extends Path {
   constructor(options = {}) {
     super(options)
-    let { name, closed, points = [] } = options
-    this.name = name
+    let { closed, points = [] } = options
     this.closed = closed !== undefined ? closed : true
     const formatedPoints = Polygon.formatPolyPoints(points)
     this.paths = Path.createElements(formatedPoints)

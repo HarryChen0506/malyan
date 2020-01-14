@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>malyan examples</title>
+  <script src="../temp/malyan.js"></script>
+  <!-- <script src='../dist/malyan.min.js'></script> -->
+  <script src='./js/base.js'></script>
+</head>
+
+<body>
+  <div class='page-header'>
+    <div class='title'>click</div>
+  </div>
+  <div class="page-main">
+    <div class='panel-left'>
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="log-wrap">
+        <div id='logger'></div>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class='right-wrap'>
+        <textarea class="form-control" id="code" name="code"></textarea>
+      </div>
+    </div>
+  </div>
+  <script>
+    var text = `    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var rect = new Malyan.Rect({
+      name: 'rect',
+      x: 0,
+      y: 0,
+      width: 60,
+      height: 80,
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+      lineWidth: 2,
+    })
+    rect.translation = { x: 100, y: 200 }
+    rect.on('click', function (e) {
+      rect.fill = !rect.fill
+      canvas.render()
+      console.log('rect click', e)
+      logger.log('click', rect.name, e.detail.currentPoint.canvas)
+    })
+    canvas.add(rect)
+
+    var pathElements_1 = Malyan.Path.createElements([
+      {
+        type: 'curve',
+        id: '1',
+        start: [0, 0],
+        end: [0, 50],
+        controls: [[50, -30], [30, 40]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [0, 0],
+        controls: [[-30, 40], [-50, -30]]
+      },
+    ])
+    var path_1 = new Malyan.Path({
+      name: 'heart',
+      paths: pathElements_1,
+      closed: false,
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 2,
+    })
+    path_1.scale = 1.5
+    path_1.translation = { x: 330, y: 200 }
+    path_1.on('click', function (e) {
+      path_1.fill = !path_1.fill
+      canvas.render()
+      console.log('path_1 click', e)
+      logger.log('click', path_1.name, e.detail.currentPoint.canvas)
+    })
+    canvas.add(path_1)
+
+    canvas.on('object:click', function (e) {
+      console.log('canvas object:click', e.detail.target && e.detail.target.name)
+      logger.log('object:click', e.detail.target && e.detail.target.name, e.detail.currentPoint.canvas)
+    })
+
+    canvas.render()
+  `
+    var codeEditor = new CodeEditor('code')
+    codeEditor.setCode(text).showCode()
+    var logger = new Logger({ id: 'logger' })
+    logger.log("welcome to malyan's world")
+  </script>
+  <script>
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var rect = new Malyan.Rect({
+      name: 'rect',
+      x: 0,
+      y: 0,
+      width: 60,
+      height: 80,
+      fillStyle: 'rgba(64, 196, 255, 0.2)',
+      strokeStyle: '#40c4ff',
+      lineWidth: 2,
+    })
+    rect.translation = { x: 100, y: 200 }
+    rect.on('click', function (e) {
+      rect.fill = !rect.fill
+      canvas.render()
+      console.log('rect click', e)
+      logger.log('click', rect.name, e.detail.currentPoint.canvas)
+    })
+    canvas.add(rect)
+
+    var pathElements_1 = Malyan.Path.createElements([
+      {
+        type: 'curve',
+        id: '1',
+        start: [0, 0],
+        end: [0, 50],
+        controls: [[50, -30], [30, 40]]
+      },
+      {
+        type: 'curve',
+        id: '2',
+        end: [0, 0],
+        controls: [[-30, 40], [-50, -30]]
+      },
+    ])
+    var path_1 = new Malyan.Path({
+      name: 'heart',
+      paths: pathElements_1,
+      closed: false,
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 2,
+    })
+    path_1.scale = 1.5
+    path_1.translation = { x: 330, y: 200 }
+    path_1.on('click', function (e) {
+      path_1.fill = !path_1.fill
+      canvas.render()
+      console.log('path_1 click', e)
+      logger.log('click', path_1.name, e.detail.currentPoint.canvas)
+    })
+    canvas.add(path_1)
+
+    canvas.on('object:click', function (e) {
+      console.log('canvas object:click', e.detail.target && e.detail.target.name)
+      logger.log('object:click', e.detail.target && e.detail.target.name, e.detail.currentPoint.canvas)
+    })
+
+    canvas.render()
+  </script>
+</body>
+
+</html>

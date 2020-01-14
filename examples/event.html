@@ -98,6 +98,10 @@
     canvas.add(group)
     canvas.render()
 
+    canvas.on('click', function (e) {
+      console.log('canvas click', e)
+    })
+
     canvas.on('object:click', function (e) {
       // console.log('canvas object:click', e)
     })

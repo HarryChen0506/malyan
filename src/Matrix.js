@@ -1,5 +1,15 @@
 /* eslint-disable */
 import { matrix_invert } from './utils/math'
+
+const EPSILON = (function () {
+  // return Number.EPSILON ? Number.EPSILON : Math.pow(2, -52)
+  return  Math.pow(2, -40)
+})()
+
+function numberSequal(a, b) {
+  return Math.abs(a - b) < EPSILON
+}
+
 export class Matrix {
   constructor() {
     this.elements = []
@@ -29,7 +39,7 @@ export class Matrix {
     var B3 = B[3], B4 = B[4], B5 = B[5]
     var B6 = B[6], B7 = B[7], B8 = B[8]
 
-    return [
+    let res = [
       A0 * B0 + A1 * B3 + A2 * B6,
       A0 * B1 + A1 * B4 + A2 * B7,
       A0 * B2 + A1 * B5 + A2 * B8,
@@ -40,6 +50,12 @@ export class Matrix {
       A6 * B1 + A7 * B4 + A8 * B7,
       A6 * B2 + A7 * B5 + A8 * B8
     ]
+    return res.map(v => {
+      if (numberSequal(v, 0)) {
+        return 0
+      }
+      return v
+    })
   }
   static formatParams = function (...args) {
     if (Array.isArray(args[0])) {

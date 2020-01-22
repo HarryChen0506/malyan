@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "gitbook-cli": "^2.3.2",
     "gitbook-plugin-donate": "^1.0.2",
     "gitbook-plugin-flexible-alerts": "^1.0.3",
     "gitbook-plugin-github": "^3.0.0",

@@ -1,0 +1,18 @@
+{
+  "title": "Malyan docs",
+  "author": "HarryChen",
+  "description": "how to use malyan",
+  "language": "en",
+  "styles": {
+    "website": "./styles/website.css"
+  },
+  "structure": {
+    "readme": "README.md"
+  },
+  "links": {
+    "sharing": {
+      "facebook": false,
+      "twitter": false
+    }
+  }
+}

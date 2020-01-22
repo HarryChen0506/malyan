@@ -26,3 +26,7 @@ coverage/*
 
 # Xcode
 .DS_Store
+
+# docs
+docs/_book/
+docs/_book/*

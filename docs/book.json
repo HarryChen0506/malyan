@@ -1,0 +1,55 @@
+{
+  "title": "Malyan docs",
+  "author": "HarryChen",
+  "description": "how to use malyan",
+  "language": "en",
+  "styles": {
+    "website": "./styles/website.css"
+  },
+  "structure": {
+    "readme": "README.md"
+  },
+  "links": {
+    "sharing": {
+      "facebook": false,
+      "twitter": false
+    }
+  },
+  "plugins": [
+    "github-buttons",
+    "livereload",
+    "donate",
+    "flexible-alerts"
+  ],
+  "pluginsConfig": {
+    "github-buttons": {
+      "buttons": [
+        {
+          "user": "HarryChen0506",
+          "repo": "malyan",
+          "type": "star",
+          "size": "small",
+          "count": true
+        }
+      ]
+    },
+    "donate": {
+      "alipay": "./source/images/donate.png",
+      "title": "",
+      "button": "赞赏",
+      "alipayText": " "
+    },
+    "anchor-navigation-ex": {
+      "showLevel": false
+    },
+    "favicon": {
+      "shortcut": "./source/images/favicon.jpg",
+      "bookmark": "./source/images/favicon.jpg",
+      "appleTouch": "./source/images/apple-touch-icon.jpg",
+      "appleTouchMore": {
+        "120x120": "./source/images/apple-touch-icon.jpg",
+        "180x180": "./source/images/apple-touch-icon.jpg"
+      }
+    }
+  }
+}

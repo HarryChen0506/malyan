@@ -12,7 +12,7 @@ const config = {
     malyan: './src/index',
   },
   output: {
-    filename: '[name].min.js',
+    filename: '[name].webpack.min.js',
     path: path.resolve(__dirname, 'dist'),
     library: {
       commonjs: 'malyan',

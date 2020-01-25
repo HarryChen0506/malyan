@@ -61,6 +61,7 @@ export default [
         file: `dist/${name}.js`,
         format: 'umd',
         name: 'Malyan',
+        exports: 'named',
         banner,
         sourcemap: true
       },
@@ -68,12 +69,14 @@ export default [
       {
         file: `dist/${name}.cjs.js`,
         format: 'cjs',
+        exports: 'named',
         banner
       },
       // cjs and esm version
       {
         file: `dist/${name}.esm.js`,
         format: 'es',
+        exports: 'named',
         banner
       }
     ],
@@ -82,12 +85,14 @@ export default [
   // .min.js
   {
     ...baseConfig,
+    input: 'src/index.unpkg.js',
     output: [
       // umd with compress version
       {
         file: `dist/${name}.min.js`,
         format: 'umd',
         name: 'Malyan',
+        exports: 'default',
         banner
       }
     ],

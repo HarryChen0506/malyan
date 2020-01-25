@@ -1,6 +1,6 @@
 {
   "name": "malyan",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a canvas library",
   "main": "dist/malyan.cjs.js",
   "module": "dist/malyan.esm.js",
@@ -12,8 +12,8 @@
   "scripts": {
     "start": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server  --host 0.0.0.0 --open --port 8080 --open-page examples",
-    "build": "webpack --config webpack.build.config.js",
-    "rollup": "cross-env NODE_ENV=production rollup -c rollup.config.js",
+    "build": "cross-env NODE_ENV=production rollup -c rollup.config.js",
+    "build:webpack": "webpack --config webpack.build.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,14 +33,15 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.8.3",
     "@typescript-eslint/eslint-plugin": "1.13.0",
     "@typescript-eslint/parser": "1.13.0",
     "autoprefixer": "^9.4.7",
-    "babel-eslint": "10.0.3",
-    "babel-loader": "^8.0.5",
-    "babel-polyfill": "^6.26.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^5.0.3",

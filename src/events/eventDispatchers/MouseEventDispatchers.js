@@ -1,4 +1,5 @@
-import { EVENTS, triggerEvent } from '../index'
+import EVENTS from '../EVENTS'
+import triggerEvent from '../triggerEvent'
 // import Matrix from '../../Matrix'
 // import _ from '../../utils/tool'
 // import math from '../../utils/math'

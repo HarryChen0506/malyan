@@ -17,7 +17,7 @@ module.exports = {
       'SwitchCase': 1
     }],
     'quotes': ['error', 'single'],
-    //   'semi': ['error', 'always'],
+    // 'semi': ['error', 'always'],
     'semi': ['error', 'never'],
     'no-return-assign': 0,
     'no-unused-vars': ['warn'],

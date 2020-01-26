@@ -1,6 +1,6 @@
 {
   "name": "malyan",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a canvas library",
   "main": "dist/malyan.cjs.js",
   "module": "dist/malyan.esm.js",
@@ -15,7 +15,8 @@
     "dev": "webpack-dev-server  --host 0.0.0.0 --open --port 8080 --open-page examples",
     "build": "npm run clean && cross-env NODE_ENV=production rollup -c rollup.config.js",
     "build:webpack": "webpack --config webpack.build.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -83,6 +84,7 @@
     "rollup-plugin-uglify": "^6.0.4",
     "sinon": "^7.2.3",
     "sinon-chai": "^3.3.0",
+    "standard-version": "^7.1.0",
     "style-loader": "^0.23.1",
     "uglify-es": "^3.3.9",
     "url-loader": "^1.1.2",

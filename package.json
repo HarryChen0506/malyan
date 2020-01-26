@@ -46,10 +46,13 @@
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^1.0.1",
+    "commitizen": "^4.0.3",
+    "commitlint-config-cz": "^0.12.1",
     "copy-webpack-plugin": "^5.0.3",
     "core-js": "^3.6.4",
     "cross-env": "^6.0.3",
     "css-loader": "^2.1.0",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
     "eslint-formatter-pretty": "^3.0.1",
     "eslint-loader": "2.2.1",
@@ -91,5 +94,10 @@
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

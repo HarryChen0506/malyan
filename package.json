@@ -10,6 +10,7 @@
     "src"
   ],
   "scripts": {
+    "commit":"git cz",
     "clean": "node scripts/clean.js",
     "start": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server  --host 0.0.0.0 --open --port 8080 --open-page examples",
@@ -47,7 +48,6 @@
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^1.0.1",
     "commitizen": "^4.0.3",
-    "commitlint-config-cz": "^0.12.1",
     "copy-webpack-plugin": "^5.0.3",
     "core-js": "^3.6.4",
     "cross-env": "^6.0.3",

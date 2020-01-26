@@ -1,6 +1,6 @@
 {
   "name": "malyan",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "a canvas library",
   "main": "dist/malyan.cjs.js",
   "module": "dist/malyan.esm.js",

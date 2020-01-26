@@ -1,39 +1,4 @@
 
-// import resolve from 'rollup-plugin-node-resolve'
-// import commonjs from 'rollup-plugin-commonjs'
-// import babel from 'rollup-plugin-babel'
-// import { terser } from 'rollup-plugin-terser'
-// import { eslint } from 'rollup-plugin-eslint'
-// const { main, module, version, name, homepage, license } = require('./package.json')
-// function getBanner() {
-//   return ` ${name} v ${version}\n ${homepage}\n built at ${new Date().toGMTString()}\n ${license} License`
-// }
-// export default {
-//   input: 'src/index.js',
-//   output: [
-//     { file: main, format: 'cjs'},
-//     { file: module, format: 'es' },
-//     { file: module, format: 'umd', name: 'Malyan', }
-//   ],
-
-//   plugins: [
-//     eslint({
-//       throwOnError: true,
-//       throwOnWarning: true,
-//       include: ['src/**'],
-//       exclude: ['node_modules/**']
-//     }),
-//     resolve(),
-//     babel({
-//       exclude: 'node_modules/**',
-//     }),
-//     commonjs(),
-//     terser(),
-//   ],
-//   // banner: getBanner(),
-
-// }
-
 import filesize from 'rollup-plugin-filesize'
 import { uglify } from 'rollup-plugin-uglify'
 import { minify } from 'uglify-es'

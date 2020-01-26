@@ -1,5 +1,5 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+// const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const { version, name, homepage, license } = require('./package.json')
 
@@ -36,7 +36,7 @@ const config = {
     extensions: ['.js'],
   },
   plugins: [
-    new CleanWebpackPlugin(['lib']),
+    // new CleanWebpackPlugin(['dist']),
     new webpack.BannerPlugin({
       banner: getBanner(),
       raw: false

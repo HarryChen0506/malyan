@@ -10,7 +10,7 @@
     "src"
   ],
   "scripts": {
-    "commit":"git cz",
+    "commit": "git cz",
     "clean": "node scripts/clean.js",
     "start": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server  --host 0.0.0.0 --open --port 8080 --open-page examples",

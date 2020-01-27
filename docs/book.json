@@ -34,10 +34,10 @@
       ]
     },
     "donate": {
-      "alipay": "./source/images/donate.png",
+      "alipay": "/source/images/alipay.png",
       "title": "",
-      "button": "赞赏",
-      "alipayText": " "
+      "button": "donate",
+      "alipayText": "alipay * 支付宝"
     },
     "anchor-navigation-ex": {
       "showLevel": false

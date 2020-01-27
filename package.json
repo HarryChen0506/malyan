@@ -10,6 +10,7 @@
     "src"
   ],
   "scripts": {
+    "docs": "cd docs && npm run dev",
     "commit": "git cz",
     "clean": "node scripts/clean.js",
     "start": "webpack --config webpack.config.js",

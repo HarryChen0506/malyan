@@ -16,7 +16,7 @@ export default class MouseDispatchers {
     // ROOT_CLICK
     const mouse = e.detail.startPoint.canvas
     let object = null
-    this.root.tree.traverseDF_preOrder((node) => {
+    this.root.tree.traverseDFByPreOrder((node) => {
       if (node && !node.penetrable) {
         const relativePos = node.calcCanvasToPixelCoordinatePoint([mouse.x, mouse.y])
         // console.log('node', node.name, node.calcFinalMatrix())
@@ -59,7 +59,7 @@ export default class MouseDispatchers {
   mouseMove = (e) => {
     const mouse = e.detail.currentPoint.canvas
     let object = null
-    this.root.tree.traverseDF_preOrder((node) => {
+    this.root.tree.traverseDFByPreOrder((node) => {
       if (node && !node.penetrable) {
         const relativePos = node.calcCanvasToPixelCoordinatePoint([mouse.x, mouse.y])
         const isInPath = node.containPoint && node.containPoint(this.root.cacheCtx, relativePos)
@@ -103,7 +103,7 @@ export default class MouseDispatchers {
   mouseDown = (e) => {
     // console.log('mouseDown', e)
     const mouse = e.detail.startPoint.canvas
-    this.root.tree.traverseDF_preOrder((node) => {
+    this.root.tree.traverseDFByPreOrder((node) => {
       if (node && !node.penetrable) {
         // console.log('node', node.name, node.calcFinalMatrix())
         const relativePos = node.calcCanvasToPixelCoordinatePoint([mouse.x, mouse.y])

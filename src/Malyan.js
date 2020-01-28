@@ -7,6 +7,8 @@ import { EventManager } from './events/index'
 
 export class Malyan {
   static defaultConfig = {
+    id: undefined,
+    dom: undefined,
     ratio: 1,
     autoRatio: true,
     width: 300,
@@ -39,7 +41,7 @@ export class Malyan {
     this.background = background
   }
   initCtx(options = {}) {
-    let { id, context, dom, background } = options
+    let { id, context, dom } = options
     if (context) {
       this.ctx = context
     } else if (dom) {
@@ -114,7 +116,7 @@ export class Malyan {
     })
   }
   forEach(callback) {
-    this.tree.traverseDF_preOrder((node) => {
+    this.tree.traverseDFByPreOrder((node) => {
       typeof callback === 'function' && callback(node)
     })
   }

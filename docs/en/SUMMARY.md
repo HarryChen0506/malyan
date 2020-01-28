@@ -7,7 +7,9 @@
   * [start](essentials/start.md)
   * [FAQ](core/concepts/enabledElement.md)
 * advanced
-  * [如何实现坐标系转换](advanced/coordinate-system.md)
+  * [how to ...](advanced/coordinate-system.md)
 * [API](api/index.md)
+  * [Malyan](api/index.md#malyan)
+  * [Scene](api/index.md#scene)
   * [shapes](api/index.md#shapes)
    - [rect](api/index.md#rect)

@@ -6,7 +6,7 @@ export class Tree {
     this._root = node
   }
   // 深度优先遍历-先序
-  traverseDF_preOrder = (callback) => {
+  traverseDFByPreOrder = (callback) => {
     function recurse(currentNode) {
       callback(currentNode)
       if (!Array.isArray(currentNode.children)) {

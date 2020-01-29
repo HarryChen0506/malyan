@@ -25,8 +25,8 @@ export default class MouseDispatchers {
         // console.log('isInPath', isInPath, node.name)
         if (isInPath) {
           object = node
-          node.fire &&
-            node.fire(EVENTS.CLICK, {
+          node.dispatch &&
+            node.dispatch(EVENTS.CLICK, {
               ...e.detail,
               target: node
             })
@@ -42,11 +42,11 @@ export default class MouseDispatchers {
   mouseDrag = (e) => {
     // console.log('MouseDispatchers mouseDrag', e.detail.event.clientX)
     if (this.dragTarget) {
-      this.dragTarget.fire(EVENTS.MOUSE_DRAG, {
+      this.dragTarget.dispatch(EVENTS.MOUSE_DRAG, {
         ...e.detail,
         target: this.dragTarget
       })
-      this.dragTarget.fire(EVENTS.MOUSE_MOVE, {
+      this.dragTarget.dispatch(EVENTS.MOUSE_MOVE, {
         ...e.detail,
         target: this.dragTarget
       })
@@ -68,15 +68,15 @@ export default class MouseDispatchers {
           node.isCurrentMouseIn = true
           if (node.isLastMouseIn === false) {
             // mouseenter
-            typeof node.fire === 'function' &&
-              node.fire(EVENTS.MOUSE_ENTER, {
+            typeof node.dispatch === 'function' &&
+              node.dispatch(EVENTS.MOUSE_ENTER, {
                 ...e.detail,
                 target: node
               })
             node.isLastMouseIn = true
           }
-          typeof node.fire === 'function' &&
-            node.fire(EVENTS.MOUSE_MOVE, {
+          typeof node.dispatch === 'function' &&
+            node.dispatch(EVENTS.MOUSE_MOVE, {
               ...e.detail,
               target: node
             })
@@ -84,8 +84,8 @@ export default class MouseDispatchers {
           node.isCurrentMouseIn = false
           if (node.isLastMouseIn === true) {
             // mouseleave
-            typeof node.fire === 'function' &&
-              node.fire(EVENTS.MOUSE_LEAVE, {
+            typeof node.dispatch === 'function' &&
+              node.dispatch(EVENTS.MOUSE_LEAVE, {
                 ...e.detail,
                 target: node
               })

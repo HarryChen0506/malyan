@@ -23,7 +23,13 @@ export class BaseObject {
     })
   }
   remove(...args) {
-    args.forEach(object => {
+    let objects = []
+    if (Array.isArray(args[0])) {
+      objects = args[0]
+    } else {
+      objects = args
+    }
+    objects.forEach(object => {
       if (object && this.children) {
         object.parent = null
         const index = this.children.indexOf(object)

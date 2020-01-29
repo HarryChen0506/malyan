@@ -205,7 +205,7 @@ class Shape extends mix(BaseObject, EventTarget) {
   on(type, callback) {
     this.addEventListener(type, callback)
   }
-  fire(type, detail) {
+  dispatch(type, detail) {
     triggerEvent(this, type, detail)
   }
   off(type, callback) {

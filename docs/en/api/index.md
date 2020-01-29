@@ -4,7 +4,6 @@ type: api
 ---
 
 ### Malyan
-
 * **Construction:** `( params : Object ) `  
   Create a new instance of Malyan where `params` is a object with several optional parameters listed below.
   The constructor also accepts no parameters at all.
@@ -76,7 +75,7 @@ type: api
   ```
 
 ### Group
-* **Extends:** [Shape](#Shape)
+* **Extends:** [Shape](#shape)
 
 * **Construction:** `( params : Object ) `  
   Create a new instance of Group.
@@ -89,7 +88,7 @@ type: api
   render the children of this group.
 
 ### Shape
-* **Extends:** [BaseObject](#BaseObject) && [EventTarget](#EventTarget)
+* **Extends:** [BaseObject](#baseobject) && [EventTarget](#eventtarget)
 
 * **Construction:** `( params : Object ) `  
   Create a new instance of Group where `params` is a object with several optional parameters listed below.
@@ -141,7 +140,7 @@ type: api
 
 * **Methods:** 
   - **calcFinalMatrix:** `(): Matrix`  
-    render this shape final matrix.
+    return this shape final matrix.
   - **calcCanvasToPixelCoordinatePoint:** `(targetPoint：[Number, Number]): relativePos:[Number, Number]`  
     converts a point in the canvas coordinate system to the pixel coordinate system
   - **calcPixelToCanvasCoordinatePoint:** `(targetPoint：[Number, Number]): relativePos:[Number, Number]`  
@@ -150,6 +149,39 @@ type: api
     converts a point in the pixel coordinate system to the parent object coordinate system
   - **calcParentToPixelCoordinatePoint:** `(targetPoint：[Number, Number]): relativePos:[Number, Number]`  
     converts a point in the parent object coordinate system to the pixel coordinate system
+  - **getRoot:** `(): Malyan`  
+    return a Malyan instance (new Scene().root).
+  - **on:** `(type: String, callback: Function): null`  
+    add event listener
+  - **dispatch:** `(type: String, detail: Object): null`  
+    trigger event
+  - **off:** `(type: String, callback: Function): null`  
+    remove event listener
 
+### BaseObject
+* **Construction:** `() ` 
 
+* **Members:** 
+  - **uuid:** `String` unique identifier
+  - **children:** `Array` 
+  - **parent:** `Object`
 
+* **Methods:** 
+  - **add:** `(object: Object, ...): null`
+    add one or many shapes to the instance. Objects can be added as arguments, new BaseObject().add(o1, o2, oN), or as an array depicted above.
+  - **remove:** `(object: Object, ...): null`
+     remove one or many shapes to the instance. Objects can be added as arguments, new BaseObject().remove(o1, o2, oN), or as an array depicted above.
+
+### EventTarget
+* **Construction:** `() ` 
+
+* **Members:** 
+  - **listeners:** `Object`
+
+* **Methods:** 
+  - **addEventListener:** `(type: String, callback: Function): null`  
+    add event listener
+  - **dispatchEvent:** `(type: String, event: CustomEvent): null`  
+    trigger event
+  - **removeEventListener:** `(type: String, callback: Function): null`  
+    remove event listener

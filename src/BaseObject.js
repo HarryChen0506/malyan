@@ -5,6 +5,8 @@ import _ from './utils/tool'
 export class BaseObject {
   constructor(){
     this.uuid = _.uuid()
+    this.children = []
+    this.parent = null
   }
   add(...args) {
     let objects = []

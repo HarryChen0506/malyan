@@ -8,8 +8,8 @@ type: api
 * **Construction:** `( params : Object ) `  
   Create a new instance of Malyan where `params` is a object with several optional parameters listed below.
   The constructor also accepts no parameters at all.
-  - **id:** `String | undefined` the id of the canvas html tag. Optional; defaults to `undefined`.
-  - **dom:** `HTML Element` the HTML element of the canvas. Optional; defaults to `undefined`.
+  - **id:** `String | undefined` the id of the canvas HTML tag. Optional; defaults to `undefined`.
+  - **dom:** `HTMLElement` the HTML element of the canvas. Optional; defaults to `undefined`.
   - **width:** `Number` the width of the canvas . Optional; defaults to `300`.
   - **height:** `Number` the height of the canvas . Optional; defaults to `150`.
   - **ratio:** `Number` the pixel ratio of the canvas. Optional; defaults to `1`.
@@ -74,4 +74,82 @@ type: api
   ``` 
   this.scene = new Scene({ name: 'root_group', root: this })
   ```
+
+### Group
+* **Extends:** [Shape](#Shape)
+
+* **Construction:** `( params : Object ) `  
+  Create a new instance of Group.
+
+* **Members:** 
+  the same as `Shape`
+
+* **Methods:** 
+  - **render:** `(): null`  
+  render the children of this group.
+
+### Shape
+* **Extends:** [BaseObject](#BaseObject) && [EventTarget](#EventTarget)
+
+* **Construction:** `( params : Object ) `  
+  Create a new instance of Group where `params` is a object with several optional parameters listed below.
+  The constructor also accepts no parameters at all.
+  - **fill:** `Boolean` Defines whether fill the shape. Optional; defaults to `true`.
+  - **stroke:** `Boolean` Defines whether stroke the shape. Optional; defaults to `true`.
+  - **closed:** `Boolean` Defines whether close the path of shape. Optional; defaults to `false`.
+  - **fillStyle:** `String` The fillStyle property specifies the color, gradient, or pattern to use inside shapes. Optional; defaults to `#fff`.
+  - **strokeStyle:** `String` The strokeStyle property specifies the color, gradient, or pattern to use for the strokes (outlines) around shapes. Optional; defaults to `#000`.
+  - **lineWidth:** `Number` The lineWidth property sets the thickness of lines. Optional; defaults to `1`.
+  - **opacity:** `Number` The opacity property specifies the alpha (transparency) value that is applied to shapes and images before they are drawn onto the canvas. Optional; defaults to `1`.
+  - **shadowColor:** `String` The shadowColor property specifies the color of shadows. Optional; defaults to `rgba(0, 0, 0, 0)`.
+  - **shadowOffsetX:** `Number` The shadowOffsetX property specifies the distance that shadows will be offset horizontally. Optional; defaults to `0`.
+  - **shadowOffsetY:** `Number` The shadowOffsetX property specifies the distance that shadows will be offset vertically. Optional; defaults to `0`.
+  - **shadowBlur:** `Number` The shadowBlur property specifies the amount of blur applied to shadows. Optional; defaults to `0`.
+  - **lineCap:** `String` The lineCap `("butt" || "round" || "square")` property determines the shape used to draw the end points of lines. Optional; defaults to `butt`.
+  - **lineJoin:** `String` The lineJoin `("bevel" || "round" || "miter")` property determines the shape used to join two line segments where they meet. Optional; defaults to `miter`.
+  - **miterLimit:** `Number` The miterLimit property sets the miter limit ratio. Optional; defaults to `10`.
+  - **lineDash:** `Array | undefined` Used as arguments of the setLineDash() method of the Canvas 2D API. Sets the line dash pattern used when stroking lines. It uses an array of values that specify alternating lengths of lines and gaps which describe the pattern. Optional; defaults to `undefined`.
+  - **lineDashOffset:** `Number` The lineDashOffset property sets the line dash offset. Optional; defaults to `0`.
+  - **penetrable:** `Boolean` Defines whether target has effect when event occured. like `pointer-events: none` in css. Optional; defaults to `false`.
+  - **onBeforeRender:** `Function` hook execute before render.  Optional; defaults to ` () => {}`.
+  - **onAfterRender:** `Function` hook execute after render.  Optional; defaults to ` () => {}`.
+
+* **Members:** 
+  - **fill:** `Boolean` the same as above
+  - **stroke:** `Boolean` the same as above
+  - **closed:** `Boolean` the same as above
+  - **fillStyle:** `String` the same as above
+  - **strokeStyle:** `String` the same as above
+  - **lineWidth:** `Number` the same as above
+  - **opacity:** `Number` the same as above
+  - **shadowColor:** `String` the same as above
+  - **shadowOffsetX:** `Number` the same as above
+  - **shadowOffsetY:** `Number` the same as above
+  - **shadowBlur:** `Number` the same as above
+  - **lineCap:** `String` the same as above
+  - **lineJoin:** `String` the same as above
+  - **miterLimit:** `Number` the same as above
+  - **lineDash:** `Array | undefined` the same as above
+  - **lineDashOffset:** `Number` the same as above
+  - **penetrable:** `Boolean` the same as above
+  - **onBeforeRender:** `Function` the same as above
+  - **onAfterRender:** `Function` the same as above
+  - **matrix:** `Matrix` a new instance of [Matrix](#matrix), calculated by `_translation && _rotation && _scale`
+  - **_translation:** `Vector` a new instance of [Vector](#vector), determines the distance of translation
+  - **_scale:** `Vector` a new instance of [Vector](#vector), determines the amount of scale
+  - **_rotation:** `Number` determines the amount of rotation
+
+* **Methods:** 
+  - **calcFinalMatrix:** `(): Matrix`  
+    render this shape final matrix.
+  - **calcCanvasToPixelCoordinatePoint:** `(targetPoint：[Number, Number]): relativePos:[Number, Number]`  
+    converts a point in the canvas coordinate system to the pixel coordinate system
+  - **calcPixelToCanvasCoordinatePoint:** `(targetPoint：[Number, Number]): relativePos:[Number, Number]`  
+    converts a point in the pixel coordinate system to the canvas coordinate system
+  - **calcPixelToParentCoordinatePoint:** `(targetPoint：[Number, Number]): relativePos:[Number, Number]`  
+    converts a point in the pixel coordinate system to the parent object coordinate system
+  - **calcParentToPixelCoordinatePoint:** `(targetPoint：[Number, Number]): relativePos:[Number, Number]`  
+    converts a point in the parent object coordinate system to the pixel coordinate system
+
+
 

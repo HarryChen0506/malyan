@@ -3,8 +3,6 @@ import Shape from './Shape'
 export class Group extends Shape {
   constructor(options = {}) {
     super(options)
-    this.children = []
-    this.parent = null
   }
   render(ctx) {
     this.onBeforeRender && this.onBeforeRender(ctx)

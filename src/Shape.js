@@ -28,7 +28,7 @@ const defaultConfig = {
   onAfterRender: () => {},
 }
 
-class Shape extends mix(EventTarget, BaseObject) {
+class Shape extends mix(BaseObject, EventTarget) {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }

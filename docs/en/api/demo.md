@@ -43,7 +43,7 @@ type: api
 
   
 
-``` 
+  ``` 
   console.log(123)
   ```
 
@@ -59,28 +59,6 @@ This is the base class for creating all drawable shapes in two.js. Unless specif
   Create a new instance of Two where params is a JavaScript object with several optional parameters listed below:
     - `{Function} [callback]` 
     - `{Object} [context]` 
-
-    ```
-    fill: true,
-    stroke: true,
-    closed: false,
-    fillStyle: '#fff',
-    strokeStyle: '#000',
-    lineWidth: 1,
-    opacity: 1,
-    shadowColor: 'rgba(0, 0, 0, 0)',
-    shadowOffsetX: 0,
-    shadowOffsetY: 0,
-    shadowBlur: 0,
-    lineCap: 'butt',
-    lineJoin: 'miter',
-    miterLimit: 10,
-    lineDash: undefined,
-    lineDashOffset: 0,
-    penetrable: false,
-    onBeforeRender: () => {},
-    onAfterRender: () => {},
-    ```
 
 * **Properties:** 
   - **name:** `{Function} [callback]`  

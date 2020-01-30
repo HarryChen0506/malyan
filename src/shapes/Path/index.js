@@ -7,16 +7,18 @@ import ArcToPath from './ArcToPath'
 import math from '../../utils/math'
 
 const defaultConfig = {
-  center: false
+  center: false,
+  paths: []
 }
 export class Path extends Shape {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }
-    const { paths, center } = config
-    this.paths = paths || []
-    if (center) {
-      this.center()
+    Object.keys(defaultConfig).forEach(key => {
+      this[key] = config[key]
+    })
+    if (this.center) {
+      this.setCenter()
     }
   }
   render(ctx) {
@@ -95,7 +97,7 @@ export class Path extends Shape {
     }
     return res
   }
-  center() {
+  setCenter() {
     const { width, height, left, top } = this.getBoundingClientRect()
     const originPoint = this.calcPixelToParentCoordinatePoint([0, 0])
     this.translation.x = originPoint.x - (left + 0.5 * width)

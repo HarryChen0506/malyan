@@ -158,6 +158,25 @@ type: api
   - **off:** `(type: String, callback: Function): null`  
     remove event listener
 
+### Vector
+
+* **Construction:** `( params : Object ) `  
+  Create a new instance of Vector.
+  - **x:** `Number` the amount of x-axis. Optional; defaults to `0`.
+  - **y:** `Number` the amount of y-axis.  Optional; defaults to `0`.
+  - **onChange:** `Function` callback excute when x or y changed. Optional; defaults to `undefined`.
+
+* **Members:** 
+  - **x:** `Number` the same as above
+  - **y:** `Number` the same as above
+  - **onChange:** `Function` the same as above
+
+* **Methods:** 
+  - **set:** `(x: Number, y: Number): null`  
+    set the value of x and y
+  - **static formatPointIntoVector:** `(point: Array | Obeject): Vector`  
+    return a Vector instance from a point ( `[0, 0]` or `{x: 0, y: 0}`).
+
 ### BaseObject
 * **Construction:** `() ` 
 
@@ -185,3 +204,33 @@ type: api
     trigger event
   - **removeEventListener:** `(type: String, callback: Function): null`  
     remove event listener
+
+---
+### shapes
+#### Rect
+* **Construction:** `( params : Object ) `  
+  Create a new instance of Vector.
+  - **x:** `Number` the x-axis value of left-top vertex. Optional; defaults to `0`.
+  - **y:** `Number` the y-axis value of left-top vertex.  Optional; defaults to `0`.
+  - **width:** `Number` the width of rect. Optional; defaults to `0`.
+  - **height:** `Number` the height of rect. Optional; defaults to `0`.
+  - **center:** `Boolean` Defines whether the position of rect is in the center. Optional; defaults to `true`.
+
+* **Members:** 
+  - **x:** `Number` the same as above
+  - **y:** `Number` the same as above
+  - **width:** `Number` the same as above
+  - **height:** `Number` the same as above
+  - **center:** `Boolean` the same as above
+
+* **Methods:** 
+  - **render:** `(ctx: CanvasRenderContext): null`  
+    render rect.
+  - **containPoint:** `(ctx: CanvasRenderContext, point: {x: Number, y: Number}): Boolean`  
+    whether a point is inside of this rect.
+  - **getBoundingClientRect:** `(): Object`  
+    return this rect bounding client params. (width, height, top, bottom, left, right)
+  - **getVertices:** `(): Object`  
+    return this rect vertices. `[[0,0], [1,1],...]`
+  - **setCenter:** `(): null`  
+    let this rect position to be in center.

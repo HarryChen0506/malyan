@@ -12,7 +12,8 @@
   * [Malyan](api/index.md#malyan)
   * [Scene](api/index.md#scene)
   * [Group](api/index.md#group)
-  * [Shape](api/index.md#shape)o
+  * [Shape](api/index.md#shape)
+  * [Vector](api/index.md#vector)
   * [BaseObject](api/index.md#baseobject)
   * [EventTarget](api/index.md#eventtarget)
   * [shapes](api/index.md#shapes)

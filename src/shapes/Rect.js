@@ -2,19 +2,21 @@ import Shape from '../Shape'
 import math from '../utils/math'
 
 const defaultConfig = {
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
   center: true
 }
 export class Rect extends Shape {
   constructor(options = {}) {
     super(options)
     const config = { ...defaultConfig, ...options }
-    const { x, y, width, height, center } = config
-    this.x = x || 0
-    this.y = y || 0
-    this.width = width || 0
-    this.height = height || 0
-    if (center) {
-      this.center()
+    Object.keys(defaultConfig).forEach(key => {
+      this[key] = config[key]
+    })
+    if (this.center) {
+      this.setCenter()
     }
   }
   render(ctx) {
@@ -69,7 +71,7 @@ export class Rect extends Shape {
       [this.x, this.y + this.height]
     ]
   }
-  center() {
+  setCenter() {
     this.translation.x = - this.width * 0.5
     this.translation.y = - this.height * 0.5
   }

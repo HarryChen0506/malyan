@@ -2,11 +2,6 @@ malyan
 ========
 
 [![NPM package][npm]][npm-url]
-[![Build Size][build-size]][build-size-url]
-[![Build Status][build-status]][build-status-url]
-[![Dependencies][dependencies]][dependencies-url]
-[![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
-[![Language Grade][lgtm]][lgtm-url]
 
 #### JavaScript 2D library ####
 The aim of the project is to create an easy to use, lightweight, 3D library with a default WebGL renderer. The library also provides Canvas 2D, SVG and CSS3D renderers in the examples.
@@ -31,4 +26,4 @@ This code creates a scene, a camera, and a geometric cube, and it adds the cube 
 ```
 
 [npm]: https://img.shields.io/npm/v/three.svg
-[npm-url]: https://www.npmjs.com/package/three
+[npm-url]: https://www.npmjs.com/package/malyan

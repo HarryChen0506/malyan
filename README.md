@@ -3,22 +3,53 @@ malyan
 
 [![NPM package][npm]][npm-url]
 
-#### JavaScript 2D library ####
-The aim of the project is to create an easy to use, lightweight, 3D library with a default WebGL renderer. The library also provides Canvas 2D, SVG and CSS3D renderers in the examples.
+#### JavaScript Canvas 2D library ####
 
-[Examples](http://threejs.org/examples/) &mdash;
-[Documentation](http://threejs.org/docs/) &mdash;
-[Wiki](https://github.com/mrdoob/three.js/wiki) &mdash;
-[Migrating](https://github.com/mrdoob/three.js/wiki/Migration-Guide) &mdash;
-[Questions](http://stackoverflow.com/questions/tagged/three.js) &mdash;
-[Forum](https://discourse.threejs.org/) &mdash;
-[Gitter](https://gitter.im/mrdoob/three.js) &mdash;
-[Slack](https://join.slack.com/t/threejs/shared_invite/enQtMzYxMzczODM2OTgxLTQ1YmY4YTQxOTFjNDAzYmQ4NjU2YzRhNzliY2RiNDEyYjU2MjhhODgyYWQ5Y2MyZTU3MWNkOGVmOGRhOTQzYTk)
+ **Malyan** is a lightweight canvas 2D library that makes it easy to work with HTML5 canvas element.
+
+ Benefit from **interactive object model**，Malyan allows you to easily create simple geometrical shapes like rectangles, circles and other polygons or more complex shapes made up of many paths in `<canvas>` HTML element. It also allows you to manipulate the size, position and rotation of these objects. It’s also possible to change some of the attributes of these objects such as their color, opacity, etc.
+
+ **Malyan** also provides an extensive event system, starting from low-level "mouse" events (click, mousedrag, mouseEnter, etc) to high-level objects ones (object:mousemove, object:mousedrag).
+
+ [Home](https://malyanjs.github.io/) • 
+ [Examples](https://malyanjs.github.io/examples/) • 
+ [Documentation](https://malyanjs.github.io/docs/en/) • 
+ [中文文档](https://malyanjs.github.io/docs/cn/) • 
+ [Help](https://github.com/HarryChen0506/malyan/issues?labels=question)
 
 ### Usage ###
 
-This code creates a scene, a camera, and a geometric cube, and it adds the cube to the scene. It then creates a `WebGL` renderer for the scene and camera, and it adds that viewport to the `document.body` element. Finally, it animates the cube within the scene for the camera.
+This code creates a scene, and it adds the rect to the scene.
 
+```javascript
+import * as Malyan from 'malyan'
+
+var canvas = new Malyan({
+  id: 'canvas',
+  width: 500,
+  height: 500,
+})
+
+var rect = new Malyan.Rect({
+  name: 'rect',
+  x: 0,
+  y: 0,
+  width: 60,
+  height: 80,
+  fillStyle: 'rgba(64, 196, 255, 0.2)',
+  strokeStyle: '#40c4ff',
+  lineWidth: 2,
+})
+rect.translation = { x: 100, y: 100 }
+canvas.add(rect)
+
+function animateLoop() {
+  canvas.render()
+  requestAnimationFrame(animateLoop)
+}
+animateLoop()
+
+```
 ### development ###
 - update docs
 ```

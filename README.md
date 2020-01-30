@@ -29,3 +29,6 @@ This code creates a scene, a camera, and a geometric cube, and it adds the cube 
 ```
   $ npm run docs
 ```
+
+[npm]: https://img.shields.io/npm/v/three.svg
+[npm-url]: https://www.npmjs.com/package/three

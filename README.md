@@ -19,42 +19,80 @@ malyan
 
 ### Usage ###
 
+  + Download the latest [minified library](https://github.com/HarryChen0506/malyan/releases) and include it in your html.
+
+``` html
+  // Direct Download
+  <script src="js/malyan.min.js"></script>
+```
+
+  + [Unpkg.com](https://unpkg.com) provides NPM-based CDN links. The above link will always point to the latest release on NPM.
+
+``` html
+    // CDN
+    <script src="https://unpkg.com/malyan"></script>
+    // or use a specific version/tag via URLs
+    <script src="https://unpkg.com/malyan@0.0.3/dist/malyan.min.js"></script>
+```
+
+  + Install with npm
+
+  
+
+``` bash
+    npm install malyan --save
+```
+
+### Example ###
+
 This code creates a scene, and it adds the rect to the scene.
 
-```javascript
+``` javascript
 import * as Malyan from 'malyan'
 
 var canvas = new Malyan({
-  id: 'canvas',
-  width: 500,
-  height: 500,
+    id: 'canvas',
+    width: 500,
+    height: 500,
 })
 
 var rect = new Malyan.Rect({
-  name: 'rect',
-  x: 0,
-  y: 0,
-  width: 60,
-  height: 80,
-  fillStyle: 'rgba(64, 196, 255, 0.2)',
-  strokeStyle: '#40c4ff',
-  lineWidth: 2,
+    name: 'rect',
+    x: 0,
+    y: 0,
+    width: 60,
+    height: 80,
+    fillStyle: 'rgba(64, 196, 255, 0.2)',
+    strokeStyle: '#40c4ff',
+    lineWidth: 2,
 })
-rect.translation = { x: 100, y: 100 }
+rect.translation = {
+    x: 100,
+    y: 100
+}
+rect.on('mousedrag', function(e) {
+    rect.translation = {
+        x: rect.translation.x + e.detail.deltaPoint.canvas.x,
+        y: rect.translation.y + e.detail.deltaPoint.canvas.y
+    }
+})
 canvas.add(rect)
 
 function animateLoop() {
-  canvas.render()
-  requestAnimationFrame(animateLoop)
+    canvas.render()
+    requestAnimationFrame(animateLoop)
 }
 animateLoop()
+```
 
-```
 ### development ###
-- update docs
-```
+
+* update docs
+
+``` 
   $ npm run docs
 ```
 
 [npm]: https://img.shields.io/npm/v/malyan.svg
 [npm-url]: https://www.npmjs.com/package/malyan
+

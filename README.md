@@ -1,7 +1,9 @@
-malyan
+Malyan
 ========
 
 [![NPM package][npm]][npm-url]
+[![NPM downloads][npm-downloads-image]][npm-url]
+[![MIT License][license-image]][license-url]
 
 ### JavaScript Canvas 2D library ###
 
@@ -35,7 +37,7 @@ malyan
     <script src="https://unpkg.com/malyan@0.0.3/dist/malyan.min.js"></script>
 ```
 
-  + Install with npm
+  + Install with NPM
 
 ``` bash
     npm install malyan --save
@@ -49,13 +51,9 @@ Here is a HTML boilerplate for rendering a rectangle in malyan:
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="UTF-8" />
-    <script src="https://unpkg.com/malyan"></script>
-</head>
-
 <body>
     <canvas id="canvas"></canvas>
+    <script src="https://unpkg.com/malyan"></script>
     <script>
         var canvas = new Malyan({
             id: 'canvas',
@@ -102,7 +100,7 @@ Here is a HTML boilerplate for rendering a rectangle in malyan:
 
 ### Development ###
 
-* dev build
+* Dev build
 
 You will have to clone directly from GitHub and build `malyan` yourself if you want to use the latest dev build.
 
@@ -113,10 +111,10 @@ npm install
 npm run build
 ```
 
-* update docs
+* Update docs
 
 ``` 
-  $ npm run docs
+npm run docs
 ```
 
 ### Change log ###
@@ -129,5 +127,7 @@ npm run build
 
 [npm]: https://img.shields.io/npm/v/malyan.svg
 [npm-url]: https://www.npmjs.com/package/malyan
-
+[npm-downloads-image]: http://img.shields.io/npm/dm/malyan.svg?style=flat
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
 

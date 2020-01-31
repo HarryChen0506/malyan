@@ -1,13 +1,15 @@
 {
   "name": "malyan",
   "version": "0.0.5",
-  "description": "a canvas library",
+  "description": "JavaScript canvas 2D engine library",
   "main": "dist/malyan.cjs.js",
   "module": "dist/malyan.esm.js",
   "unpkg": "dist/malyan.min.js",
   "files": [
     "dist",
-    "src"
+    "src",
+    "README.md",
+    "package.json"
   ],
   "scripts": {
     "docs": "cd docs && npm run dev",
@@ -25,7 +27,12 @@
     "url": "git+https://github.com/HarryChen0506/malyan.git"
   },
   "keywords": [
-    "canvas"
+    "JavaScript",
+    "canvas",
+    "2D",
+    "graphic",
+    "engine",
+    "library"
   ],
   "author": "",
   "license": "MIT",

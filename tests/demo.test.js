@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { assert } from 'chai'
 import {test, add, multi } from '../src/demo.js'
 

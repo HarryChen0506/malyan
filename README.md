@@ -3,13 +3,13 @@ malyan
 
 [![NPM package][npm]][npm-url]
 
-#### JavaScript Canvas 2D library ####
+### JavaScript Canvas 2D library ###
 
- **Malyan** is a lightweight canvas 2D library that makes it easy to work with HTML5 canvas element.
+ Malyan is a lightweight canvas 2D library that makes it easy to work with HTML5 canvas element.
 
  Benefit from **interactive object model**，Malyan allows you to easily create simple geometrical shapes like rectangles, circles and other polygons or more complex shapes made up of many paths in `<canvas>` HTML element. It also allows you to manipulate the size, position and rotation of these objects. It’s also possible to change some of the attributes of these objects such as their color, opacity, etc.
 
- **Malyan** also provides an extensive event system, starting from low-level "mouse" events (click, mousedrag, mouseEnter, etc) to high-level objects ones (object:mousemove, object:mousedrag).
+ Malyan also provides an extensive event system, starting from low-level "mouse" events (click, mousedrag, mouseEnter, etc) to high-level objects ones (object:mousemove, object:mousedrag).
 
  [Home](https://malyanjs.github.io/) • 
  [Examples](https://malyanjs.github.io/examples/) • 
@@ -37,55 +37,81 @@ malyan
 
   + Install with npm
 
-  
-
 ``` bash
     npm install malyan --save
 ```
 
 ### Example ###
 
-This code creates a scene, and it adds the rect to the scene.
+Here is a HTML boilerplate for rendering a rectangle in malyan:
 
-``` javascript
-import * as Malyan from 'malyan'
+``` html
+<!DOCTYPE html>
+<html>
 
-var canvas = new Malyan({
-    id: 'canvas',
-    width: 500,
-    height: 500,
-})
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/malyan"></script>
+</head>
 
-var rect = new Malyan.Rect({
-    name: 'rect',
-    x: 0,
-    y: 0,
-    width: 60,
-    height: 80,
-    fillStyle: 'rgba(64, 196, 255, 0.2)',
-    strokeStyle: '#40c4ff',
-    lineWidth: 2,
-})
-rect.translation = {
-    x: 100,
-    y: 100
-}
-rect.on('mousedrag', function(e) {
-    rect.translation = {
-        x: rect.translation.x + e.detail.deltaPoint.canvas.x,
-        y: rect.translation.y + e.detail.deltaPoint.canvas.y
-    }
-})
-canvas.add(rect)
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = new Malyan({
+            id: 'canvas',
+            width: 500,
+            height: 500,
+        })
 
-function animateLoop() {
-    canvas.render()
-    requestAnimationFrame(animateLoop)
-}
-animateLoop()
+        var rect = new Malyan.Rect({
+            name: 'rect',
+            x: 0,
+            y: 0,
+            width: 60,
+            height: 80,
+            fillStyle: 'rgba(64, 196, 255, 0.2)',
+            strokeStyle: '#40c4ff',
+            lineWidth: 2,
+        })
+        rect.translation = {
+            x: 100,
+            y: 100
+        }
+        rect.on('mousedrag', function(e) {
+            rect.translation = {
+                x: rect.translation.x + e.detail.deltaPoint.canvas.x,
+                y: rect.translation.y + e.detail.deltaPoint.canvas.y
+            }
+        })
+        canvas.add(rect)
+
+        function animateLoop() {
+            canvas.render()
+            requestAnimationFrame(animateLoop)
+        }
+        animateLoop()
+    </script>
+</body>
+
+</html>
 ```
 
-### development ###
+### Complex Examples ###
+
+[more examples](https://malyanjs.github.io/examples/)
+
+### Development ###
+
+* dev build
+
+You will have to clone directly from GitHub and build `malyan` yourself if you want to use the latest dev build.
+
+``` bash
+git clone https://github.com/HarryChen0506/malyan.git
+cd malyan
+npm install
+npm run build
+```
 
 * update docs
 
@@ -93,6 +119,15 @@ animateLoop()
   $ npm run docs
 ```
 
+### Change log ###
+
+[Change Log](https://github.com/HarryChen0506/malyan/blob/master/CHANGELOG.md)
+
+### License ###
+
+[MIT](https://github.com/HarryChen0506/malyan/blob/master/LICENSE)
+
 [npm]: https://img.shields.io/npm/v/malyan.svg
 [npm-url]: https://www.npmjs.com/package/malyan
+
 

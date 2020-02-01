@@ -1,12 +1,7 @@
 language: node_js
 node_js:
-  - node
+  - "lts/*"
 script:
   - npm run travis
 addons:
   chrome: stable
-
-before_install:
-  - npm install
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0

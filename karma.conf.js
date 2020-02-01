@@ -104,13 +104,6 @@ module.exports = function (config) {
       }
     },
 
-    customLaunchers: {
-      Chrome_travis_ci: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
-
     // web server port
     port: 9876,
 
@@ -141,10 +134,18 @@ module.exports = function (config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   }
-  
+
   if (process.env.TRAVIS) {
-    configuration.browsers = ['Chrome_travis_ci']
+    console.log('process.env.TRAVIS', process.env.TRAVIS)
+    configuration.browsers = ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox']
+    // you can define custom flags
+    configuration.customLaunchers = {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    }
   }
-  
+
   config.set(configuration)
 }

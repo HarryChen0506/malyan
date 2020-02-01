@@ -1,7 +1,13 @@
 language: node_js
 node_js:
   - "lts/*"
+cache:
+  directories:
+    - node_modules
 script:
   - npm run travis
+os: osx #指定跑的测试脚本的环境
+dist: trusty # needs Ubuntu Trusty
+sudo: required 
 addons:
   chrome: stable

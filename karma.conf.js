@@ -135,8 +135,8 @@ module.exports = function (config) {
     concurrency: Infinity
   }
 
+  console.log('process.env.TRAVIS', process.env.TRAVIS)
   if (process.env.TRAVIS) {
-    console.log('process.env.TRAVIS', process.env.TRAVIS)
     configuration.browsers = ['Chrome', 'ChromeHeadless', 'ChromeHeadlessNoSandbox']
     // you can define custom flags
     configuration.customLaunchers = {
@@ -145,7 +145,7 @@ module.exports = function (config) {
         flags: ['--no-sandbox']
       }
     }
-    // configuration.singleRun = true
+    configuration.singleRun = true
   }
 
   config.set(configuration)

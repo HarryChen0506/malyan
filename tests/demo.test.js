@@ -11,6 +11,6 @@ describe('运算功能测试', function () {
   })
   it('乘法multi测试', function () {
     var multis = multi(1)
-    assert.equal(multis(5), 5)
+    assert.equal(multis(5), 6)
   })
 })

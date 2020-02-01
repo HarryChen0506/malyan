@@ -145,7 +145,7 @@ module.exports = function (config) {
         flags: ['--no-sandbox']
       }
     }
-    configuration.singleRun = true
+    // configuration.singleRun = true
   }
 
   config.set(configuration)

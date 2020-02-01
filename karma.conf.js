@@ -28,7 +28,7 @@ const webpack_config = {
 }
 
 module.exports = function (config) {
-  config.set({
+  const configuration = {
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -90,7 +90,7 @@ module.exports = function (config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: [ 'progress', 'coverage-istanbul' ],
+    reporters: ['progress', 'coverage-istanbul'],
 
     coverageIstanbulReporter: {
       reports: ['html', 'text-summary'],
@@ -101,6 +101,13 @@ module.exports = function (config) {
         html: {
           subdir: 'html'
         }
+      }
+    },
+
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
       }
     },
 
@@ -133,5 +140,11 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
+  }
+  
+  if (process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci']
+  }
+  
+  config.set(configuration)
 }

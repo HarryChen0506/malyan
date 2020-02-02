@@ -24,7 +24,6 @@
     "build:docs": "cd docs && npm run build",
     "build:gh-pages": "npm run clean:gh-pages && node scripts/build_gh_pages.js",
     "test": "karma start karma.conf.js",
-    "cover": "cross-env NODE_ENV=test istanbul cover --report lcov node_modules/mocha/bin/_mocha -- -R spec tests/**/*.test.js --exit",
     "release": "standard-version",
     "travis": "npm run lint && npm run test"
   },

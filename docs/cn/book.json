@@ -13,6 +13,9 @@
     "sharing": {
       "facebook": false,
       "twitter": false
+    },
+    "sidebar": {
+      "案例": "/malyan/examples"
     }
   }
 }

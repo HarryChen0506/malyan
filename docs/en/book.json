@@ -13,6 +13,9 @@
     "sharing": {
       "facebook": false,
       "twitter": false
+    },
+    "sidebar": {
+      "examples": "/malyan/examples"
     }
   }
 }

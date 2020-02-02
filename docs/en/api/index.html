@@ -1,0 +1,750 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>API · Malyan docs</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="HarryChen">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+    <link rel="prev" href="../advanced/coordinate-system.md" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"HarryChen0506","repo":"malyan","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    essenstials
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../essentials/install.html">
+            
+                <a href="../essentials/install.html">
+            
+                    
+                    install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../essentials/what-is-malyan.html">
+            
+                <a href="../essentials/what-is-malyan.html">
+            
+                    
+                    what is malyan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../essentials/start.html">
+            
+                <a href="../essentials/start.html">
+            
+                    
+                    start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../core/concepts/enabledElement.md">
+            
+                <span>
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    advanced
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../advanced/coordinate-system.md">
+            
+                <span>
+            
+                    
+                    how to ...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="./">
+            
+                <a href="./#malyan">
+            
+                    
+                    Malyan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="./">
+            
+                <a href="./#scene">
+            
+                    
+                    Scene
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="./">
+            
+                <a href="./#group">
+            
+                    
+                    Group
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="./">
+            
+                <a href="./#shape">
+            
+                    
+                    Shape
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="./">
+            
+                <a href="./#vector">
+            
+                    
+                    Vector
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="./">
+            
+                <a href="./#baseobject">
+            
+                    
+                    BaseObject
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="./">
+            
+                <a href="./#eventtarget">
+            
+                    
+                    EventTarget
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="./">
+            
+                <a href="./#shapes">
+            
+                    
+                    shapes
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.8.1" data-path="./">
+            
+                <a href="./#rect">
+            
+                    
+                    rect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="malyan">Malyan</h3>
+<ul>
+<li><p><strong>Construction:</strong> <code>( params : Object )</code><br>Create a new instance of Malyan where <code>params</code> is a object with several optional parameters listed below.
+The constructor also accepts no parameters at all.</p>
+<ul>
+<li><strong>id:</strong> <code>String | undefined</code> the id of the canvas HTML tag. Optional; defaults to <code>undefined</code>.</li>
+<li><strong>dom:</strong> <code>HTMLElement</code> the HTML element of the canvas. Optional; defaults to <code>undefined</code>.</li>
+<li><strong>width:</strong> <code>Number</code> the width of the canvas . Optional; defaults to <code>300</code>.</li>
+<li><strong>height:</strong> <code>Number</code> the height of the canvas . Optional; defaults to <code>150</code>.</li>
+<li><strong>ratio:</strong> <code>Number</code> the pixel ratio of the canvas. Optional; defaults to <code>1</code>.</li>
+<li><strong>autoRatio:</strong> <code>Boolean</code> if autoRatio is <code>true</code>, the value of ratio will be computed by devicePixelRatio. Optional; defaults to <code>true</code>.</li>
+<li><strong>autoClear:</strong> <code>Boolean</code> Defines whether the renderer should automatically clear its output before rendering a frame. Optional; defaults to <code>true</code>.</li>
+<li><strong>background:</strong> <code>String | undefined</code> the property of canvas style. Optional; defaults to <code>undefined</code>.</li>
+</ul>
+</li>
+<li><p><strong>Members:</strong> </p>
+<ul>
+<li><strong>id:</strong> <code>Number</code> the same as above</li>
+<li><strong>dom:</strong> <code>Number</code> the same as above</li>
+<li><strong>width:</strong> <code>Number</code> the same as above</li>
+<li><strong>height:</strong> <code>Number</code> the same as above</li>
+<li><strong>ratio:</strong> <code>Number</code> the same as above</li>
+<li><strong>autoClear:</strong> <code>Boolean</code> the same as above</li>
+<li><strong>background:</strong> <code>String | undefined</code> the same as above</li>
+<li><strong>ctx:</strong> <code>Object</code>  canvas context</li>
+<li><strong>config:</strong> <code>Object</code> construction arguments (width, height, ratio, autoRatio, autoClear, background...)</li>
+<li><strong>scene:</strong> <code>Object</code>  a new instance of <a href="#Scene">Scene</a></li>
+<li><strong>tree:</strong> <code>Object</code>  a new instance of <a href="#Tree">Tree</a></li>
+<li><strong>eventManager:</strong> <code>Object</code>  a new instance of <a href="#EventManager">EventManager</a></li>
+</ul>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>getSize:</strong> <code>(): {width: Number, height: Number}</code><br>return width and height of canvas.</li>
+<li><strong>setSize:</strong> <code>(width: Number, height: Number): null</code><br>set width and height of canvas.</li>
+<li><strong>getPixelRatio:</strong> <code>(): Number</code><br>return current device pixel ratio used.</li>
+<li><strong>add:</strong> <code>(object: Object, ...): null</code>
+add one or many shapes / groups to the instance. Objects can be added as arguments, new Malyan().add(o1, o2, oN), or as an array depicted above.  </li>
+<li><strong>render:</strong> <code>(): null</code><br>render a scene.</li>
+<li><strong>forEach:</strong> <code>(callback: Function): null</code><br>traverse objects Deep First by the way of preOrder.</li>
+</ul>
+</li>
+<li><p><strong>Example:</strong></p>
+<pre><code>var canvas = new Malyan({
+  id: &apos;canvas&apos;,
+  width: 500,
+  height: 500,
+  background: &apos;#fff
+})
+</code></pre></li>
+</ul>
+<h3 id="scene">Scene</h3>
+<ul>
+<li><p><strong>Extends:</strong> <a href="#group">Group</a></p>
+</li>
+<li><p><strong>Construction:</strong> <code>( params : Object )</code><br>Create a new instance of Scene.</p>
+<ul>
+<li><strong>root:</strong> <code>Malyan</code> the instance of Malyan.</li>
+</ul>
+</li>
+<li><p><strong>Members:</strong> </p>
+<ul>
+<li><strong>root:</strong> <code>Malyan</code> the same as above</li>
+</ul>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>render:</strong> <code>(): null</code><br>render objects.</li>
+</ul>
+</li>
+<li><p><strong>Example:</strong></p>
+<pre><code>this.scene = new Scene({ name: &apos;root_group&apos;, root: this })
+</code></pre></li>
+</ul>
+<h3 id="group">Group</h3>
+<ul>
+<li><p><strong>Extends:</strong> <a href="#shape">Shape</a></p>
+</li>
+<li><p><strong>Construction:</strong> <code>( params : Object )</code><br>Create a new instance of Group.</p>
+</li>
+<li><p><strong>Members:</strong> 
+the same as <code>Shape</code></p>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>render:</strong> <code>(): null</code><br>render the children of this group.</li>
+</ul>
+</li>
+</ul>
+<h3 id="shape">Shape</h3>
+<ul>
+<li><p><strong>Extends:</strong> <a href="#baseobject">BaseObject</a> &amp;&amp; <a href="#eventtarget">EventTarget</a></p>
+</li>
+<li><p><strong>Construction:</strong> <code>( params : Object )</code><br>Create a new instance of Group where <code>params</code> is a object with several optional parameters listed below.
+The constructor also accepts no parameters at all.</p>
+<ul>
+<li><strong>fill:</strong> <code>Boolean</code> Defines whether fill the shape. Optional; defaults to <code>true</code>.</li>
+<li><strong>stroke:</strong> <code>Boolean</code> Defines whether stroke the shape. Optional; defaults to <code>true</code>.</li>
+<li><strong>closed:</strong> <code>Boolean</code> Defines whether close the path of shape. Optional; defaults to <code>false</code>.</li>
+<li><strong>fillStyle:</strong> <code>String</code> The fillStyle property specifies the color, gradient, or pattern to use inside shapes. Optional; defaults to <code>#fff</code>.</li>
+<li><strong>strokeStyle:</strong> <code>String</code> The strokeStyle property specifies the color, gradient, or pattern to use for the strokes (outlines) around shapes. Optional; defaults to <code>#000</code>.</li>
+<li><strong>lineWidth:</strong> <code>Number</code> The lineWidth property sets the thickness of lines. Optional; defaults to <code>1</code>.</li>
+<li><strong>opacity:</strong> <code>Number</code> The opacity property specifies the alpha (transparency) value that is applied to shapes and images before they are drawn onto the canvas. Optional; defaults to <code>1</code>.</li>
+<li><strong>shadowColor:</strong> <code>String</code> The shadowColor property specifies the color of shadows. Optional; defaults to <code>rgba(0, 0, 0, 0)</code>.</li>
+<li><strong>shadowOffsetX:</strong> <code>Number</code> The shadowOffsetX property specifies the distance that shadows will be offset horizontally. Optional; defaults to <code>0</code>.</li>
+<li><strong>shadowOffsetY:</strong> <code>Number</code> The shadowOffsetX property specifies the distance that shadows will be offset vertically. Optional; defaults to <code>0</code>.</li>
+<li><strong>shadowBlur:</strong> <code>Number</code> The shadowBlur property specifies the amount of blur applied to shadows. Optional; defaults to <code>0</code>.</li>
+<li><strong>lineCap:</strong> <code>String</code> The lineCap <code>(&quot;butt&quot; || &quot;round&quot; || &quot;square&quot;)</code> property determines the shape used to draw the end points of lines. Optional; defaults to <code>butt</code>.</li>
+<li><strong>lineJoin:</strong> <code>String</code> The lineJoin <code>(&quot;bevel&quot; || &quot;round&quot; || &quot;miter&quot;)</code> property determines the shape used to join two line segments where they meet. Optional; defaults to <code>miter</code>.</li>
+<li><strong>miterLimit:</strong> <code>Number</code> The miterLimit property sets the miter limit ratio. Optional; defaults to <code>10</code>.</li>
+<li><strong>lineDash:</strong> <code>Array | undefined</code> Used as arguments of the setLineDash() method of the Canvas 2D API. Sets the line dash pattern used when stroking lines. It uses an array of values that specify alternating lengths of lines and gaps which describe the pattern. Optional; defaults to <code>undefined</code>.</li>
+<li><strong>lineDashOffset:</strong> <code>Number</code> The lineDashOffset property sets the line dash offset. Optional; defaults to <code>0</code>.</li>
+<li><strong>penetrable:</strong> <code>Boolean</code> Defines whether target has effect when event occured. like <code>pointer-events: none</code> in css. Optional; defaults to <code>false</code>.</li>
+<li><strong>onBeforeRender:</strong> <code>Function</code> hook execute before render.  Optional; defaults to <code>() =&gt; {}</code>.</li>
+<li><strong>onAfterRender:</strong> <code>Function</code> hook execute after render.  Optional; defaults to <code>() =&gt; {}</code>.</li>
+</ul>
+</li>
+<li><p><strong>Members:</strong> </p>
+<ul>
+<li><strong>fill:</strong> <code>Boolean</code> the same as above</li>
+<li><strong>stroke:</strong> <code>Boolean</code> the same as above</li>
+<li><strong>closed:</strong> <code>Boolean</code> the same as above</li>
+<li><strong>fillStyle:</strong> <code>String</code> the same as above</li>
+<li><strong>strokeStyle:</strong> <code>String</code> the same as above</li>
+<li><strong>lineWidth:</strong> <code>Number</code> the same as above</li>
+<li><strong>opacity:</strong> <code>Number</code> the same as above</li>
+<li><strong>shadowColor:</strong> <code>String</code> the same as above</li>
+<li><strong>shadowOffsetX:</strong> <code>Number</code> the same as above</li>
+<li><strong>shadowOffsetY:</strong> <code>Number</code> the same as above</li>
+<li><strong>shadowBlur:</strong> <code>Number</code> the same as above</li>
+<li><strong>lineCap:</strong> <code>String</code> the same as above</li>
+<li><strong>lineJoin:</strong> <code>String</code> the same as above</li>
+<li><strong>miterLimit:</strong> <code>Number</code> the same as above</li>
+<li><strong>lineDash:</strong> <code>Array | undefined</code> the same as above</li>
+<li><strong>lineDashOffset:</strong> <code>Number</code> the same as above</li>
+<li><strong>penetrable:</strong> <code>Boolean</code> the same as above</li>
+<li><strong>onBeforeRender:</strong> <code>Function</code> the same as above</li>
+<li><strong>onAfterRender:</strong> <code>Function</code> the same as above</li>
+<li><strong>matrix:</strong> <code>Matrix</code> a new instance of <a href="#matrix">Matrix</a>, calculated by <code>_translation &amp;&amp; _rotation &amp;&amp; _scale</code></li>
+<li><strong>_translation:</strong> <code>Vector</code> a new instance of <a href="#vector">Vector</a>, determines the distance of translation</li>
+<li><strong>_scale:</strong> <code>Vector</code> a new instance of <a href="#vector">Vector</a>, determines the amount of scale</li>
+<li><strong>_rotation:</strong> <code>Number</code> determines the amount of rotation</li>
+</ul>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>calcFinalMatrix:</strong> <code>(): Matrix</code><br>return this shape final matrix.</li>
+<li><strong>calcCanvasToPixelCoordinatePoint:</strong> <code>(targetPoint&#xFF1A;[Number, Number]): relativePos:[Number, Number]</code><br>converts a point in the canvas coordinate system to the pixel coordinate system</li>
+<li><strong>calcPixelToCanvasCoordinatePoint:</strong> <code>(targetPoint&#xFF1A;[Number, Number]): relativePos:[Number, Number]</code><br>converts a point in the pixel coordinate system to the canvas coordinate system</li>
+<li><strong>calcPixelToParentCoordinatePoint:</strong> <code>(targetPoint&#xFF1A;[Number, Number]): relativePos:[Number, Number]</code><br>converts a point in the pixel coordinate system to the parent object coordinate system</li>
+<li><strong>calcParentToPixelCoordinatePoint:</strong> <code>(targetPoint&#xFF1A;[Number, Number]): relativePos:[Number, Number]</code><br>converts a point in the parent object coordinate system to the pixel coordinate system</li>
+<li><strong>getRoot:</strong> <code>(): Malyan</code><br>return a Malyan instance (new Scene().root).</li>
+<li><strong>on:</strong> <code>(type: String, callback: Function): null</code><br>add event listener</li>
+<li><strong>dispatch:</strong> <code>(type: String, detail: Object): null</code><br>trigger event</li>
+<li><strong>off:</strong> <code>(type: String, callback: Function): null</code><br>remove event listener</li>
+</ul>
+</li>
+</ul>
+<h3 id="vector">Vector</h3>
+<ul>
+<li><p><strong>Construction:</strong> <code>( params : Object )</code><br>Create a new instance of Vector.</p>
+<ul>
+<li><strong>x:</strong> <code>Number</code> the amount of x-axis. Optional; defaults to <code>0</code>.</li>
+<li><strong>y:</strong> <code>Number</code> the amount of y-axis.  Optional; defaults to <code>0</code>.</li>
+<li><strong>onChange:</strong> <code>Function</code> callback excute when x or y changed. Optional; defaults to <code>undefined</code>.</li>
+</ul>
+</li>
+<li><p><strong>Members:</strong> </p>
+<ul>
+<li><strong>x:</strong> <code>Number</code> the same as above</li>
+<li><strong>y:</strong> <code>Number</code> the same as above</li>
+<li><strong>onChange:</strong> <code>Function</code> the same as above</li>
+</ul>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>set:</strong> <code>(x: Number, y: Number): null</code><br>set the value of x and y</li>
+<li><strong>static formatPointIntoVector:</strong> <code>(point: Array | Obeject): Vector</code><br>return a Vector instance from a point ( <code>[0, 0]</code> or <code>{x: 0, y: 0}</code>).</li>
+</ul>
+</li>
+</ul>
+<h3 id="baseobject">BaseObject</h3>
+<ul>
+<li><p><strong>Construction:</strong> <code>()</code> </p>
+</li>
+<li><p><strong>Members:</strong> </p>
+<ul>
+<li><strong>uuid:</strong> <code>String</code> unique identifier</li>
+<li><strong>children:</strong> <code>Array</code> </li>
+<li><strong>parent:</strong> <code>Object</code></li>
+</ul>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>add:</strong> <code>(object: Object, ...): null</code>
+add one or many shapes to the instance. Objects can be added as arguments, new BaseObject().add(o1, o2, oN), or as an array depicted above.</li>
+<li><strong>remove:</strong> <code>(object: Object, ...): null</code>
+ remove one or many shapes to the instance. Objects can be added as arguments, new BaseObject().remove(o1, o2, oN), or as an array depicted above.</li>
+</ul>
+</li>
+</ul>
+<h3 id="eventtarget">EventTarget</h3>
+<ul>
+<li><p><strong>Construction:</strong> <code>()</code> </p>
+</li>
+<li><p><strong>Members:</strong> </p>
+<ul>
+<li><strong>listeners:</strong> <code>Object</code></li>
+</ul>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>addEventListener:</strong> <code>(type: String, callback: Function): null</code><br>add event listener</li>
+<li><strong>dispatchEvent:</strong> <code>(type: String, event: CustomEvent): null</code><br>trigger event</li>
+<li><strong>removeEventListener:</strong> <code>(type: String, callback: Function): null</code><br>remove event listener</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="shapes">shapes</h3>
+<h4 id="rect">Rect</h4>
+<ul>
+<li><p><strong>Construction:</strong> <code>( params : Object )</code><br>Create a new instance of Vector.</p>
+<ul>
+<li><strong>x:</strong> <code>Number</code> the x-axis value of left-top vertex. Optional; defaults to <code>0</code>.</li>
+<li><strong>y:</strong> <code>Number</code> the y-axis value of left-top vertex.  Optional; defaults to <code>0</code>.</li>
+<li><strong>width:</strong> <code>Number</code> the width of rect. Optional; defaults to <code>0</code>.</li>
+<li><strong>height:</strong> <code>Number</code> the height of rect. Optional; defaults to <code>0</code>.</li>
+<li><strong>center:</strong> <code>Boolean</code> Defines whether the position of rect is in the center. Optional; defaults to <code>true</code>.</li>
+</ul>
+</li>
+<li><p><strong>Members:</strong> </p>
+<ul>
+<li><strong>x:</strong> <code>Number</code> the same as above</li>
+<li><strong>y:</strong> <code>Number</code> the same as above</li>
+<li><strong>width:</strong> <code>Number</code> the same as above</li>
+<li><strong>height:</strong> <code>Number</code> the same as above</li>
+<li><strong>center:</strong> <code>Boolean</code> the same as above</li>
+</ul>
+</li>
+<li><p><strong>Methods:</strong> </p>
+<ul>
+<li><strong>render:</strong> <code>(ctx: CanvasRenderContext): null</code><br>render rect.</li>
+<li><strong>containPoint:</strong> <code>(ctx: CanvasRenderContext, point: {x: Number, y: Number}): Boolean</code><br>whether a point is inside of this rect.</li>
+<li><strong>getBoundingClientRect:</strong> <code>(): Object</code><br>return this rect bounding client params. (width, height, top, bottom, left, right)</li>
+<li><strong>getVertices:</strong> <code>(): Object</code><br>return this rect vertices. <code>[[0,0], [1,1],...]</code></li>
+<li><strong>setCenter:</strong> <code>(): null</code><br>let this rect position to be in center.</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../advanced/coordinate-system.md" class="navigation navigation-prev " aria-label="Previous page: how to ...">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="./#malyan" class="navigation navigation-next " aria-label="Next page: Malyan">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"API","type":"api","level":"1.4","depth":1,"next":{"title":"Malyan","level":"1.4.1","depth":2,"anchor":"#malyan","path":"api/index.md","ref":"api/index.md#malyan","articles":[]},"previous":{"title":"how to ...","level":"1.3.1","depth":2,"path":"advanced/coordinate-system.md","ref":"advanced/coordinate-system.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github-buttons","livereload","donate","flexible-alerts"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"title":"","button":"donate","wechat":"","alipay":"/source/images/alipay.png","wechatText":"微信打赏","alipayText":"alipay * 支付宝"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"showLevel":false},"favicon":{"shortcut":"./source/images/favicon.jpg","bookmark":"./source/images/favicon.jpg","appleTouch":"./source/images/apple-touch-icon.jpg","appleTouchMore":{"120x120":"./source/images/apple-touch-icon.jpg","180x180":"./source/images/apple-touch-icon.jpg"}},"github-buttons":{"buttons":[{"user":"HarryChen0506","repo":"malyan","type":"star","size":"small","count":true}]},"flexible-alerts":{"style":"callout","note":{"label":"Note","icon":"fa fa-info-circle","className":"info"},"tip":{"label":"Tip","icon":"fa fa-lightbulb-o","className":"tip"},"warning":{"label":"Warning","icon":"fa fa-exclamation-triangle","className":"warning"},"danger":{"label":"Attention","icon":"fa fa-ban","className":"danger"}},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"HarryChen","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Malyan docs","language":"en","links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":"*","description":"how to use malyan"},"file":{"path":"api/index.md","mtime":"2020-02-02T04:00:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-02T04:03:22.027Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

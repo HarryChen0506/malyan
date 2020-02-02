@@ -14,10 +14,10 @@ Malyan
 
  Malyan also provides an extensive event system, starting from low-level "mouse" events (click, mousedrag, mouseEnter, etc) to high-level objects ones (object:mousemove, object:mousedrag).
 
- [Home](https://malyanjs.github.io/) • 
- [Examples](https://malyanjs.github.io/examples/) • 
- [Documentation](https://malyanjs.github.io/docs/en/) • 
- [中文文档](https://malyanjs.github.io/docs/cn/) • 
+ [Home](https://harrychen0506.github.io/malyan/) • 
+ [Examples](https://harrychen0506.github.io/malyan/examples/) • 
+ [Documentation](https://harrychen0506.github.io/malyan/docs/en/) • 
+ [中文文档](https://harrychen0506.github.io/malyan/docs/cn/) • 
  [Help](https://github.com/HarryChen0506/malyan/issues?labels=question)
 
 ### Usage ###

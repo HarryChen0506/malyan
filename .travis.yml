@@ -15,6 +15,9 @@ branches:
   - dev
 script:
   - npm run travis
+after_success:
+  - test $TRAVIS_BRANCH = "master" && echo 'master 分支'
+before_deploy:
   - npm run build:gh-pages
 deploy:
   provider: pages # 解析支持者为 github pages
@@ -25,4 +28,4 @@ deploy:
   target-branch: gh-pages
   verbose: true
   on:
-    branch: dev
+    branch: mater

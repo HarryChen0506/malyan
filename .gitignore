@@ -30,3 +30,7 @@ coverage/*
 # docs
 docs/_book/
 docs/_book/*
+
+# github pages
+gh_pages/
+gh_pages/*

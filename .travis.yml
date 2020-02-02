@@ -15,7 +15,7 @@ branches:
   - dev
 script:
   - npm run travis
-  - npm run docs
+  - npm run build:gh-pages
 deploy:
   provider: pages # 解析支持者为 github pages
   keep-history: true # 禁止travis对你对项目进行强制推送

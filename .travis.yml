@@ -4,10 +4,25 @@ node_js:
 cache:
   directories:
     - node_modules
-script:
-  - npm run travis
 os: osx #指定跑的测试脚本的环境
 dist: trusty # needs Ubuntu Trusty
 sudo: required 
 addons:
   chrome: stable
+branches:
+  only:
+  - master
+  - dev
+script:
+  - npm run travis
+  - npm run docs
+deploy:
+  provider: pages # 解析支持者为 github pages
+  keep-history: true # 禁止travis对你对项目进行强制推送
+  skip-cleanup: true # 必须打开，如果在trivis构建期间你正在推代码，很可能会误删掉你最新上传的代码
+  github-token: $GITHUB_TOKEN # github 上的token环境变量
+  local-dir: ./examples/ ## 根据情况自定义到静态文件输出目录
+  target-branch: gh-pages
+  verbose: true
+  on:
+    branch: dev

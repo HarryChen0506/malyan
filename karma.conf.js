@@ -83,20 +83,20 @@ module.exports = function (config) {
     },
 
     // optionally, configure the reporter
-    coverageReporter: {
-      dir: './coverage/',
-      reporters: [
-        {type: 'html', subdir: 'html'},
-        {type: 'lcov', subdir: '.'},
-        {type: 'text', subdir: '.', file: 'text.txt'},
-        {type: 'text-summary', subdir: '.', file: 'text-summary.txt'}
-      ]
-    },
+    // coverageReporter: {
+    //   dir: './coverage/',
+    //   reporters: [
+    //     {type: 'html', subdir: 'html'},
+    //     {type: 'lcov', subdir: '.'},
+    //     {type: 'text', subdir: '.', file: 'text.txt'},
+    //     {type: 'text-summary', subdir: '.', file: 'text-summary.txt'}
+    //   ]
+    // },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage-istanbul', 'coveralls'],
+    reporters: ['progress',  'coverage-istanbul', 'coveralls'],
 
     coverageIstanbulReporter: {
       reports: ['html', 'text-summary'],
@@ -106,6 +106,9 @@ module.exports = function (config) {
       'report-config': {
         html: {
           subdir: 'html'
+        },
+        lcov: {
+          subdir: '.'
         }
       }
     },

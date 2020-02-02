@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Malyan examples</title>
+  <link rel="stylesheet" type="text/css" href="./styles/base.css">
+  <link rel="stylesheet" type="text/css" href="./styles/main.css">
+</head>
+
+<body>
+  <div id="panel">
+    <div id="header">
+      <div class="title"><a href="https://github.com/HarryChen0506/malyan">MALYAN</a></div>
+      <div id="sections">
+        <a href="../docs/index.html">docs</a>
+        <span class="selected">examples</span>
+      </div>
+      <div id="expandButton"></div>
+    </div>
+    <div id="panelScrim"></div>
+    <div id="contentWrapper">
+      <div id="inputWrapper">
+        <input placeholder="" type="text" id="filter" autocorrect="off" autocapitalize="off" spellcheck="false" />
+        <div id="exitSearchButton"></div>
+      </div>
+      <div id="content">
+        <div>
+          <h2 data-category='shapes'>shapes</h2>
+          <a class="link" href="shape_rect.html" target="viewer"><b></b>rect</a>
+          <a class="link" href="shape_circle.html" target="viewer"><b></b>circle</a>
+          <a class="link" href="shape_polygon.html" target="viewer"><b></b>polygon</a>
+          <a class="link" href="shape_line.html" target="viewer"><b></b>line</a>
+          <a class="link" href="shape_curve.html" target="viewer"><b></b>curve</a>
+          <a class="link" href="shape_path.html" target="viewer"><b></b>path</a>
+          <a class="link" href="shape_text.html" target="viewer"><b></b>text</a>
+          <a class="link" href="shape_image.html" target="viewer"><b></b>image</a>
+
+          <h2 data-category='feature'>feature</h2>
+          <a class="link" href="feature_clip.html" target="viewer"><b></b>clip</a>
+
+          <h2 data-category='event'>event</h2>
+          <a class="link" href="event_click.html" target="viewer"><b></b>click</a>
+          <a class="link" href="event_mouseenter.html" target="viewer"><b></b>mouseenter/mouseleave</a>
+          <a class="link" href="event_mousedrag.html" target="viewer"><b></b>mousedrag</a>
+
+          <h2 data-category='motion'>motion</h2>
+          <a class="link" href="motion_orbit.html" target="viewer"><b></b>orbit</a>
+
+          <h2 data-category='more'>more</h2>
+          <a class="link" href="event.html" target="viewer"><b></b>event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <iframe id="viewer" name="viewer" allowfullscreen allowvr onmousewheel="" src='shape_rect.html'></iframe>
+  <script>
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>malyan examples</title>
+  <script src="../temp/malyan.js"></script>
+  <!-- <script src='../dist/malyan.min.js'></script> -->
+  <script src='./js/base.js'></script>
+</head>
+
+<body>
+  <div class='page-header'>
+    <div class='title'>line</div>
+  </div>
+  <div class="page-main">
+    <div class='panel-left'>
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="log-wrap">
+        <div id='logger'></div>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class='right-wrap'>
+        <textarea class="form-control" id="code" name="code"></textarea>
+      </div>
+    </div>
+  </div>
+  <script>
+    var text = `    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var line_1 = new Malyan.Line({
+      name: 'line-1',
+      start: [0, 0],
+      end: [200, 0],
+      strokeStyle: '#40c4ff',
+      lineWidth: 3,
+    })
+    line_1.translation = { x: 150, y: 150 }
+    canvas.add(line_1)
+
+    var line_2 = new Malyan.Line({
+      name: 'line-2',
+      start:  [0, 0],
+      end:  [200, 0],
+      strokeStyle: '#BA55D3',
+      lineWidth: 3,
+      lineDash: [20, 10],
+    })
+    line_2.translation = { x: 150, y: 250 }
+    canvas.add(line_2)
+
+    var line_3 = new Malyan.Line({
+      name: 'line-3',
+      start:  [0, 0],
+      end:  [200, 0],
+      strokeStyle: '#FF4500',
+      lineWidth: 5,
+      lineCap: 'round',
+      shadowColor: 'rgba(0, 0, 0, 0.3)',
+      shadowOffsetX: 10,
+      shadowOffsetY: 10,
+      shadowBlur: 10,
+      opacity: 0.6
+    })
+    line_3.translation = { x: 150, y: 350 }
+    canvas.add(line_3)
+
+    canvas.render()
+  `
+    var codeEditor = new CodeEditor('code')
+    codeEditor.setCode(text).showCode()
+    var logger = new Logger({ id: 'logger' })
+    logger.log("welcome to malyan's world")
+  </script>
+  <script>
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var line_1 = new Malyan.Line({
+      name: 'line-1',
+      start: [0, 0],
+      end: [200, 0],
+      strokeStyle: '#40c4ff',
+      lineWidth: 3,
+    })
+    line_1.translation = { x: 150, y: 150 }
+    canvas.add(line_1)
+
+    var line_2 = new Malyan.Line({
+      name: 'line-2',
+      start:  [0, 0],
+      end:  [200, 0],
+      strokeStyle: '#BA55D3',
+      lineWidth: 3,
+      lineDash: [20, 10],
+    })
+    line_2.translation = { x: 150, y: 250 }
+    canvas.add(line_2)
+
+    var line_3 = new Malyan.Line({
+      name: 'line-3',
+      start:  [0, 0],
+      end:  [200, 0],
+      strokeStyle: '#FF4500',
+      lineWidth: 5,
+      lineCap: 'round',
+      shadowColor: 'rgba(0, 0, 0, 0.3)',
+      shadowOffsetX: 10,
+      shadowOffsetY: 10,
+      shadowBlur: 10,
+      opacity: 0.6
+    })
+    line_3.translation = { x: 150, y: 350 }
+    canvas.add(line_3)
+
+    canvas.render()
+  </script>
+</body>
+
+</html>

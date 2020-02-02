@@ -34,9 +34,9 @@
       ]
     },
     "donate": {
-      "alipay": "../source/images/alipay.png",
+      "alipay": "/malyan/docs/source/images/alipay.png",
       "title": "",
-      "button": "donate",
+      "button": "Donate",
       "alipayText": "alipay * 支付宝"
     },
     "anchor-navigation-ex": {

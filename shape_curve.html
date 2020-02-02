@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>malyan examples</title>
+  <script src="../temp/malyan.js"></script>
+  <!-- <script src='../dist/malyan.min.js'></script> -->
+  <script src='./js/base.js'></script>
+</head>
+
+<body>
+  <div class='page-header'>
+    <div class='title'>curve</div>
+  </div>
+  <div class="page-main">
+    <div class='panel-left'>
+      <div class="canvas-wrap">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="log-wrap">
+        <div id='logger'></div>
+      </div>
+    </div>
+    <div class="panel-right">
+      <div class='right-wrap'>
+        <textarea class="form-control" id="code" name="code"></textarea>
+      </div>
+    </div>
+  </div>
+  <script>
+    var text = `    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var arc_1 = new Malyan.Arc({
+      name: 'arc_1',
+      x: 0,
+      y: 0,
+      radius: 40,
+      anticlockwise: false,
+      startAngle: 0,
+      endAngle: Math.PI * 1.5,
+      fill: false,
+      strokeStyle: '#40c4ff',
+      lineWidth: 2,
+    })
+    arc_1.translation = { x: 140, y: 150 }
+    canvas.add(arc_1)
+
+    var arc_2 = new Malyan.Arc({
+      name: 'arc_2',
+      x: 0,
+      y: 0,
+      radius: 40,
+      anticlockwise: false,
+      startAngle: 0,
+      endAngle: Math.PI * 1.5,
+      closed: true,
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 2,
+    })
+    arc_2.translation = { x: 360, y: 150 }
+    canvas.add(arc_2)
+
+    var curve_1 = new Malyan.Curve({
+      name: 'curve_1',
+      start: [0, -10],
+      end: [100, 10],
+      controls: [[35, 100], [65, -100]],
+      fill: false,
+      strokeStyle: '#54bca9',
+      lineWidth: 2,
+    })
+    curve_1.translation = { x: 100, y: 350 }
+    canvas.add(curve_1)
+
+    var curve_2 = new Malyan.Curve({
+      name: 'curve_2',
+      start: [-20, 0],
+      end: [20, 0],
+      controls: [[90, -120], [-90, -120]],
+      closed: true,
+      fillStyle: 'rgba(186, 85, 211, 0.2)',
+      strokeStyle: '#BA55D3',
+      lineWidth: 2,
+    })
+    curve_2.translation = { x: 360, y: 380 }
+    canvas.add(curve_2)
+
+    canvas.render()
+  `
+    var codeEditor = new CodeEditor('code')
+    codeEditor.setCode(text).showCode()
+    var logger = new Logger({ id: 'logger' })
+    logger.log("welcome to malyan's world")
+  </script>
+  <script>
+    var canvas = new Malyan({
+      id: 'canvas',
+      width: 500,
+      height: 500,
+    })
+
+    var arc_1 = new Malyan.Arc({
+      name: 'arc_1',
+      x: 0,
+      y: 0,
+      radius: 40,
+      anticlockwise: false,
+      startAngle: 0,
+      endAngle: Math.PI * 1.5,
+      fill: false,
+      strokeStyle: '#40c4ff',
+      lineWidth: 2,
+    })
+    arc_1.translation = { x: 140, y: 150 }
+    canvas.add(arc_1)
+
+    var arc_2 = new Malyan.Arc({
+      name: 'arc_2',
+      x: 0,
+      y: 0,
+      radius: 40,
+      anticlockwise: false,
+      startAngle: 0,
+      endAngle: Math.PI * 1.5,
+      closed: true,
+      fillStyle: 'rgba(255, 69, 0, 0.2)',
+      strokeStyle: '#FF4500',
+      lineWidth: 2,
+    })
+    arc_2.translation = { x: 360, y: 150 }
+    canvas.add(arc_2)
+
+    var curve_1 = new Malyan.Curve({
+      name: 'curve_1',
+      start: [0, -10],
+      end: [100, 10],
+      controls: [[35, 100], [65, -100]],
+      fill: false,
+      strokeStyle: '#54bca9',
+      lineWidth: 2,
+    })
+    curve_1.translation = { x: 100, y: 350 }
+    canvas.add(curve_1)
+
+    var curve_2 = new Malyan.Curve({
+      name: 'curve_2',
+      start: [-20, 0],
+      end: [20, 0],
+      controls: [[90, -120], [-90, -120]],
+      closed: true,
+      fillStyle: 'rgba(186, 85, 211, 0.2)',
+      strokeStyle: '#BA55D3',
+      lineWidth: 2,
+    })
+    curve_2.translation = { x: 360, y: 380 }
+    canvas.add(curve_2)
+
+    canvas.render()
+  </script>
+</body>
+
+</html>

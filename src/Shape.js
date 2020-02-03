@@ -211,6 +211,22 @@ class Shape extends mix(BaseObject, EventTarget) {
   off(type, callback) {
     this.removeEventListener(type, callback)
   }
+  copy() {
+    const instance = super.copy()
+    instance.name = this.name
+    instance.matrix = this.matrix.copy()
+    instance._translation = this._translation.copy({
+      onChange: this.onChange.bind(instance)
+    })
+    instance._scale = this._scale.copy({
+      onChange: this.onChange.bind(instance)
+    })
+    instance._rotation = this._rotation
+    Object.keys(defaultConfig).forEach(key => {
+      instance[key] = this[key]
+    })
+    return instance
+  }
 }
 
 export default Shape

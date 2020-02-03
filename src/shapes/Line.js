@@ -22,6 +22,12 @@ export class Line extends Shape {
     ctx.restore()
     this.onAfterRender && this.onAfterRender(ctx)
   }
+  copy() {
+    const instance = super.copy()
+    instance.start = this.start.copy()
+    instance.end = this.end.copy()
+    return instance
+  }
 }
 
 export default Line

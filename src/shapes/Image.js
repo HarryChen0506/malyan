@@ -72,6 +72,13 @@ export class Image extends Shape {
       }
     }
   }
+  copy() {
+    const instance = super.copy()
+    Object.keys(defaultConfig).forEach(key => {
+      instance[key] = this[key]
+    })
+    return instance
+  }
 }
 
 export default Image

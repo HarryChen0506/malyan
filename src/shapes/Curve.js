@@ -5,7 +5,7 @@ import Vector from '../Vector'
 export class Curve extends Shape {
   constructor(options = {}) {
     super(options)
-    const { start, end, controls } = options
+    const { start, end, controls = [] } = options
     this.start = start ? Vector.formatPointIntoVector(start) : new Vector({ x: 0, y: 0 })
     this.end = end ? Vector.formatPointIntoVector(end) : new Vector({ x: 20, y: 20 })
     if (!Array.isArray(controls)) {
@@ -35,6 +35,13 @@ export class Curve extends Shape {
     this.fill && ctx.fill()
     ctx.restore()
     this.onAfterRender && this.onAfterRender(ctx)
+  }
+  copy() {
+    const instance = super.copy()
+    instance.start = this.start.copy()
+    instance.end = this.end.copy()
+    instance.controls = this.controls.map(v => v.copy())
+    return instance
   }
 }
 

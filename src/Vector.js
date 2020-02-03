@@ -1,6 +1,6 @@
 
 class Vector {
-  constructor({ x, y, onChange }) {
+  constructor({ x, y, onChange } = {}) {
     this.x = x || 0
     this.y = y || 0
     this.onChange = onChange
@@ -22,6 +22,11 @@ class Vector {
   set(x, y) {
     this.x = x
     this.y = y
+  }
+  copy({ onChange } = {}) {
+    const instance = new Vector({ onChange })
+    instance.set(this.x, this.y)
+    return instance
   }
   static formatPointIntoVector = function (point) {
     if (Array.isArray(point)) {

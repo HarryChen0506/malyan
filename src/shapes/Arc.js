@@ -1,15 +1,20 @@
 import Shape from '../Shape'
 
+const defaultConfig = {
+  x: 0,
+  y: 0,
+  radius: 0,
+  anticlockwise: false,
+  startAngle: 0,
+  endAngle: Math.PI * 2
+}
 export class Arc extends Shape {
   constructor(options = {}) {
     super(options)
-    const { x, y, radius, startAngle, endAngle, anticlockwise} = options
-    this.x = x || 0
-    this.y = y || 0
-    this.radius = radius
-    this.anticlockwise = anticlockwise || false
-    this.startAngle = startAngle || 0
-    this.endAngle = endAngle || Math.PI * 2
+    const config = { ...defaultConfig, ...options }
+    Object.keys(defaultConfig).forEach(key => {
+      this[key] = config[key]
+    })
   }
   render(ctx) {
     this.onBeforeRender && this.onBeforeRender(ctx)
@@ -24,6 +29,13 @@ export class Arc extends Shape {
     this.stroke && ctx.stroke()
     ctx.restore()
     this.onAfterRender && this.onAfterRender(ctx)
+  }
+  copy() {
+    const instance = super.copy()
+    Object.keys(defaultConfig).forEach(key => {
+      instance[key] = this[key]
+    })
+    return instance
   }
 }
 

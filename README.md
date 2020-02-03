@@ -132,8 +132,8 @@ npm run docs
 [npm-downloads-image]: http://img.shields.io/npm/dm/malyan.svg?style=flat
 [build-status]: https://www.travis-ci.org/HarryChen0506/malyan.svg?branch=master
 [build-status-url]: https://www.travis-ci.org/HarryChen0506/malyan
-[coverage-status]: https://coveralls.io/repos/github/HarryChen0506/malyan/badge.svg?branch=dev
-[coverage-status-url]: https://coveralls.io/github/HarryChen0506/malyan?branch=dev
+[coverage-status]: https://coveralls.io/repos/github/HarryChen0506/malyan/badge.svg?branch=master
+[coverage-status-url]: https://coveralls.io/github/HarryChen0506/malyan?branch=master
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 

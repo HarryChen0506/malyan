@@ -17,7 +17,7 @@ script:
   - npm run travis
 after_success:
   - cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
-  - test $TRAVIS_BRANCH == "dev" && echo "dev 分支"
+  - test $TRAVIS_BRANCH == "dev" && echo "dev branch"
 before_deploy:
   - npm run build:gh-pages
 deploy:

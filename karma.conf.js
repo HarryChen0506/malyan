@@ -7,18 +7,18 @@ const webpack_config = {
   module: {
     rules: [
       {
+        test: /\.(js)$/,
+        loader: 'babel-loader',
+        exclude: /(node_modules)/,
+      },
+      {
         test: /\.js$/,
         use: {
           loader: 'istanbul-instrumenter-loader',
           options: { esModules: true }
         },
-        enforce: 'pre',
+        enforce: 'post',
         exclude: /(node_modules)/
-      },
-      {
-        test: /\.(js)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules)/,
       },
     ]
   },

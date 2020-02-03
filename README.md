@@ -4,6 +4,7 @@ Malyan
 [![NPM package][npm]][npm-url]
 [![NPM downloads][npm-downloads-image]][npm-url]
 [![Build Status][build-status]][build-status-url]
+[![Coverage Status][coverage-status]][coverage-status-url]
 [![MIT License][license-image]][license-url]
 
 ### JavaScript Canvas 2D library ###
@@ -131,6 +132,8 @@ npm run docs
 [npm-downloads-image]: http://img.shields.io/npm/dm/malyan.svg?style=flat
 [build-status]: https://www.travis-ci.org/HarryChen0506/malyan.svg?branch=master
 [build-status-url]: https://www.travis-ci.org/HarryChen0506/malyan
+[coverage-status]: https://coveralls.io/repos/github/HarryChen0506/malyan/badge.svg?branch=master
+[coverage-status-url]: https://coveralls.io/github/HarryChen0506/malyan?branch=master
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
 

@@ -7,18 +7,18 @@ const webpack_config = {
   module: {
     rules: [
       {
+        test: /\.(js)$/,
+        loader: 'babel-loader',
+        exclude: /(node_modules)/,
+      },
+      {
         test: /\.js$/,
         use: {
           loader: 'istanbul-instrumenter-loader',
           options: { esModules: true }
         },
-        enforce: 'pre',
+        enforce: 'post',
         exclude: /(node_modules)/
-      },
-      {
-        test: /\.(js)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules)/,
       },
     ]
   },
@@ -45,6 +45,7 @@ module.exports = function (config) {
       'karma-chrome-launcher',
       'karma-sourcemap-loader',
       'karma-coverage',
+      'karma-coveralls'
     ],
 
 
@@ -82,24 +83,32 @@ module.exports = function (config) {
     },
 
     // optionally, configure the reporter
-    coverageReporter: {
-      dir: './coverage/',
-      type: 'html',
-    },
+    // coverageReporter: {
+    //   dir: './coverage/',
+    //   reporters: [
+    //     {type: 'html', subdir: 'html'},
+    //     {type: 'lcov', subdir: '.'},
+    //     {type: 'text', subdir: '.', file: 'text.txt'},
+    //     {type: 'text-summary', subdir: '.', file: 'text-summary.txt'}
+    //   ]
+    // },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage-istanbul'],
+    reporters: ['progress', 'coverage-istanbul', 'coveralls'],
 
     coverageIstanbulReporter: {
-      reports: ['html', 'text-summary'],
+      reports: ['html', 'lcov', 'text-summary'],
       dir: 'coverage/',
       fixWebpackSourcePaths: true,
       skipFilesWithNoCoverage: true,
       'report-config': {
         html: {
           subdir: 'html'
+        },
+        lcov: {
+          subdir: '.'
         }
       }
     },

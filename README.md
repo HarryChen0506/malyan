@@ -33,16 +33,16 @@ Malyan
   + [Unpkg.com](https://unpkg.com) provides NPM-based CDN links. The above link will always point to the latest release on NPM.
 
 ``` html
-    // CDN
-    <script src="https://unpkg.com/malyan"></script>
-    // or use a specific version/tag via URLs
-    <script src="https://unpkg.com/malyan@0.0.4/dist/malyan.min.js"></script>
+  // CDN
+  <script src="https://unpkg.com/malyan"></script>
+  // or use a specific version/tag via URLs
+  <script src="https://unpkg.com/malyan@0.0.4/dist/malyan.min.js"></script>
 ```
 
   + Install with NPM
 
 ``` bash
-    npm install malyan --save
+  npm install malyan --save
 ```
 
 ### Example ###

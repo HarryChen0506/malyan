@@ -23,7 +23,7 @@ class Vector {
     this.x = x
     this.y = y
   }
-  copy({ onChange } = {}) {
+  clone({ onChange } = {}) {
     const instance = new Vector({ onChange })
     instance.set(this.x, this.y)
     return instance

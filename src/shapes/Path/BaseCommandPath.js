@@ -11,6 +11,12 @@ export class BaseCommandPath {
   }
   render() {
   }
+  clone() {
+    const instance = new this.constructor()
+    instance.name = this.name
+    instance.id = this.id
+    return instance
+  }
 }
 
 export default BaseCommandPath

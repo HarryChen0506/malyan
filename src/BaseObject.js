@@ -49,7 +49,7 @@ export class BaseObject {
     }
     this.parent = null
   }
-  copy() {
+  clone() {
     const instance = new this.constructor()
     instance.parent = this.parent
     return instance

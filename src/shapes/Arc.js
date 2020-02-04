@@ -30,8 +30,8 @@ export class Arc extends Shape {
     ctx.restore()
     this.onAfterRender && this.onAfterRender(ctx)
   }
-  copy() {
-    const instance = super.copy()
+  clone() {
+    const instance = super.clone()
     Object.keys(defaultConfig).forEach(key => {
       instance[key] = this[key]
     })

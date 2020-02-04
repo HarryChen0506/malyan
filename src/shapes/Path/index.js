@@ -103,6 +103,14 @@ export class Path extends Shape {
     this.translation.x = originPoint.x - (left + 0.5 * width)
     this.translation.y = originPoint.y - (top + 0.5 * height)
   }
+  clone() {
+    const instance = super.clone()
+    Object.keys(defaultConfig).forEach(key => {
+      instance[key] = this[key]
+    })
+    instance.paths = this.paths.map(v => v.clone())
+    return instance
+  }
   static PATH_TYPE = {
     LINE: 'line',
     CURVE: 'curve',

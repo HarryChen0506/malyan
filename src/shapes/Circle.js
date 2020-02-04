@@ -28,12 +28,12 @@ export class Circle extends Arc {
       top: this.y - this.radius,
       bottom: this.y + this.radius,
       width: 2 * this.radius,
-      height:2 * this.radius
+      height: 2 * this.radius
     }
     return res
   }
-  clone() {
-    const instance = super.clone()
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
     Object.keys(defaultConfig).forEach(key => {
       instance[key] = this[key]
     })

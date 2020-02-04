@@ -36,8 +36,8 @@ export class Curve extends Shape {
     ctx.restore()
     this.onAfterRender && this.onAfterRender(ctx)
   }
-  clone() {
-    const instance = super.clone()
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
     instance.start = this.start.clone()
     instance.end = this.end.clone()
     instance.controls = this.controls.map(v => v.clone())

@@ -57,8 +57,8 @@ export class Text extends Shape {
   containPoint() {
     return false
   }
-  clone() {
-    const instance = super.clone()
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
     Object.keys(defaultConfig).forEach(key => {
       instance[key] = this[key]
     })

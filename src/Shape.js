@@ -211,8 +211,8 @@ class Shape extends mix(BaseObject, EventTarget) {
   off(type, callback) {
     this.removeEventListener(type, callback)
   }
-  clone() {
-    const instance = super.clone()
+  clone(options) {
+    const instance = super.clone(options)
     instance.name = this.name
     instance.matrix = this.matrix.clone()
     instance._translation = this._translation.clone({

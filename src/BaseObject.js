@@ -49,9 +49,12 @@ export class BaseObject {
     }
     this.parent = null
   }
-  clone() {
+  clone(options = {}) {
     const instance = new this.constructor()
     instance.parent = this.parent
+    if (options.deep) {
+      instance.children = this.children.map(v => v.clone && v.clone())
+    }
     return instance
   }
 }

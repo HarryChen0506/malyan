@@ -103,8 +103,8 @@ export class Path extends Shape {
     this.translation.x = originPoint.x - (left + 0.5 * width)
     this.translation.y = originPoint.y - (top + 0.5 * height)
   }
-  clone() {
-    const instance = super.clone()
+  clone({ deep = true } = {}) {
+    const instance = super.clone({deep})
     Object.keys(defaultConfig).forEach(key => {
       instance[key] = this[key]
     })

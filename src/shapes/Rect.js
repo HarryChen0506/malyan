@@ -75,8 +75,8 @@ export class Rect extends Shape {
     this.translation.x = - this.width * 0.5
     this.translation.y = - this.height * 0.5
   }
-  clone() {
-    const instance = super.clone()
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
     Object.keys(defaultConfig).forEach(key => {
       instance[key] = this[key]
     })

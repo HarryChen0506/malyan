@@ -1,11 +1,17 @@
 import Arc from './Arc'
 
+const defaultConfig = {
+  anticlockwise: true,
+  startAngle: 0,
+  endAngle: Math.PI * 2
+}
 export class Circle extends Arc {
   constructor(options = {}) {
     super(options)
-    this.anticlockwise = true
-    this.startAngle = 0
-    this.endAngle =  Math.PI * 2
+    const config = { ...defaultConfig, ...options }
+    Object.keys(defaultConfig).forEach(key => {
+      this[key] = config[key]
+    })
   }
   containPoint(ctx, point = { x: 0, y: 0 }) {
     const path = new Path2D()
@@ -22,9 +28,16 @@ export class Circle extends Arc {
       top: this.y - this.radius,
       bottom: this.y + this.radius,
       width: 2 * this.radius,
-      height:2 * this.radius
+      height: 2 * this.radius
     }
     return res
+  }
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
+    Object.keys(defaultConfig).forEach(key => {
+      instance[key] = this[key]
+    })
+    return instance
   }
 }
 

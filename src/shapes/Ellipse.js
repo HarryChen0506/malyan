@@ -1,17 +1,22 @@
 import Shape from '../Shape'
 
+const defaultConfig = {
+  x: 0,
+  y: 0,
+  radiusX: 0,
+  radiusY: 0,
+  anticlockwise: false,
+  startAngle: 0,
+  endAngle: Math.PI * 2,
+  rotation: 0
+}
 export class Ellipse extends Shape {
   constructor(options = {}) {
     super(options)
-    const { x, y, radiusX, radiusY, startAngle, endAngle, anticlockwise, rotation} = options
-    this.x = x || 0
-    this.y = y || 0
-    this.radiusX = radiusX || 0
-    this.radiusY = radiusY || 0
-    this.anticlockwise = anticlockwise || false
-    this.startAngle = startAngle || 0
-    this.endAngle = endAngle || Math.PI * 2
-    this.rotation = rotation || 0
+    const config = { ...defaultConfig, ...options }
+    Object.keys(defaultConfig).forEach(key => {
+      this[key] = config[key]
+    })
   }
   render(ctx) {
     this.onBeforeRender && this.onBeforeRender(ctx)
@@ -34,6 +39,13 @@ export class Ellipse extends Shape {
       return true
     }
     return false
+  }
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
+    Object.keys(defaultConfig).forEach(key => {
+      instance[key] = this[key]
+    })
+    return instance
   }
 }
 

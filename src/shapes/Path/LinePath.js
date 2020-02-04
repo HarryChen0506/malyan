@@ -4,8 +4,8 @@ import Vector from '../../Vector'
 export class LinePath extends BaseCommandPath{
   constructor(options = {}) {
     super(options)
-    const { start, end } = options
     LinePath.validateParams(options)
+    const { start, end } = options
     if (start) {
       this.start = start
     }
@@ -17,7 +17,7 @@ export class LinePath extends BaseCommandPath{
   static validateParams(options = {}) {
     const { end } = options
     if (!end || end.x === undefined || end.y === undefined) {
-      console.error('LinePath `end` props must be not null in Path.createElements function')
+      console.warn('LinePath `end` props must be not null in Path.createElements function')
       return false
     }
     return true
@@ -30,6 +30,14 @@ export class LinePath extends BaseCommandPath{
       this.moveTo(ctx)
     }
     ctx.lineTo(this.end.x, this.end.y)
+  }
+  clone() {
+    const instance = super.clone()
+    if (this.start) {
+      instance.start = this.start.clone()
+    }
+    instance.end = this.end.clone()
+    return instance
   }
 }
 

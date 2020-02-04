@@ -15,6 +15,10 @@ export class Group extends Shape {
     ctx.restore()
     this.onAfterRender && this.onAfterRender(ctx)
   }
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
+    return instance
+  }
 }
 
 export default Group

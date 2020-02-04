@@ -22,6 +22,12 @@ export class Line extends Shape {
     ctx.restore()
     this.onAfterRender && this.onAfterRender(ctx)
   }
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
+    instance.start = this.start.clone()
+    instance.end = this.end.clone()
+    return instance
+  }
 }
 
 export default Line

@@ -118,6 +118,11 @@ export class Matrix {
   toString() {
     return '[' + this.elements.join(',') + ']'
   }
+  clone() {
+    const instance = new Matrix()
+    instance.set(this.elements)
+    return instance
+  }
 }
 
 export default Matrix

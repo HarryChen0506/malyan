@@ -3,8 +3,8 @@ import BaseCommandPath from './BaseCommandPath'
 export class ArcToPath extends BaseCommandPath {
   constructor(options = {}) {
     super(options)
-    const { start, controls, radius } = options
     ArcToPath.validateParams(options)
+    const { start, controls, radius } = options
     this.controls = controls || []
     this.radius = radius
     if (start) {
@@ -14,11 +14,11 @@ export class ArcToPath extends BaseCommandPath {
   static validateParams(options = {}) {
     const { controls } = options
     if (!Array.isArray(controls)) {
-      console.error('ArcToPath `controls` props must be a array')
+      console.warn('ArcToPath `controls` props must be a array')
       return false
     }
     if (controls.length !== 2) {
-      console.error('ArcToPath `controls` props array length must be 2')
+      console.warn('ArcToPath `controls` props array length must be 2')
       return false
     }
     return true
@@ -37,6 +37,15 @@ export class ArcToPath extends BaseCommandPath {
       this.controls[1].y,
       this.radius
     )
+  }
+  clone() {
+    const instance = super.clone()
+    if (this.start) {
+      instance.start = this.start.clone()
+    }
+    instance.radius = this.radius
+    instance.controls = this.controls.map(v => v.clone())
+    return instance
   }
 }
 

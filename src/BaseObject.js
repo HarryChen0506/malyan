@@ -39,6 +39,24 @@ export class BaseObject {
       }
     })
   }
+  destroy() {
+    if (!this.parent) {
+      return
+    }
+    const index = this.parent.children.indexOf(this)
+    if (index > -1) {
+      this.parent.children.splice(index, 1)
+    }
+    this.parent = null
+  }
+  clone(options = {}) {
+    const instance = new this.constructor()
+    instance.parent = this.parent
+    if (options.deep) {
+      instance.children = this.children.map(v => v.clone && v.clone())
+    }
+    return instance
+  }
 }
 
 export default BaseObject

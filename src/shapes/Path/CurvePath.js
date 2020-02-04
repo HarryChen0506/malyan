@@ -4,8 +4,8 @@ import Vector from '../../Vector'
 export class CurvePath extends BaseCommandPath {
   constructor(options = {}) {
     super(options)
-    const { start, end, controls } = options
     CurvePath.validateParams(options)
+    const { start, end, controls } = options
     this.controls = controls || []
     if (start) {
       this.start = start
@@ -18,11 +18,11 @@ export class CurvePath extends BaseCommandPath {
   static validateParams(options = {}) {
     const { end, controls } = options
     if (!end || end.x === undefined || end.y === undefined) {
-      console.error('CurvePath `end` props must be not null in Path.createElements function')
+      console.warn('CurvePath `end` props must be not null in Path.createElements function')
       return false
     }
     if (!Array.isArray(controls)) {
-      console.error('CurvePath `controls` props must be a array')
+      console.warn('CurvePath `controls` props must be a array')
       return false
     }
     return true
@@ -49,6 +49,15 @@ export class CurvePath extends BaseCommandPath {
         this.end.x, 
         this.end.y)
     }
+  }
+  clone() {
+    const instance = super.clone()
+    if (this.start) {
+      instance.start = this.start.clone()
+    }
+    instance.end = this.end.clone()
+    instance.controls = this.controls.map(v => v.clone())
+    return instance
   }
 }
 

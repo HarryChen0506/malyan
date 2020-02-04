@@ -36,6 +36,11 @@ export class Polygon extends Path {
     const formatedPoints = Polygon.formatPolyPoints(points)
     this.paths = Path.createElements(formatedPoints)
   }
+  clone({ deep = true } = {}) {
+    const instance = super.clone({ deep })
+    instance.closed = this.closed
+    return instance
+  }
 }
 
 export default Polygon

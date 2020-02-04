@@ -11,6 +11,6 @@
   document.write('<script src="./js/code.js"><\/script>')
   document.write('<script src="./js/logger.js"><\/script>')
 
-  window.Malyan || document.write('<script src="https://unpkg.com/malyan@0.0.3/dist/malyan.min.js"><\/script>')
+  window.Malyan || document.write('<script src="https://unpkg.com/malyan/dist/malyan.min.js"><\/script>')
 
 })(this)

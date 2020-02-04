@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="JavaScript Canvas 2D library">
+  <meta name="keywords" content="malyan, graphics, canvas, 2D, html5, javascript, library">
+  <title>Malyan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?ltvh5f');
+      src: url('fonts/icomoon.eot?ltvh5f#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?ltvh5f') format('truetype'),
+        url('fonts/icomoon.woff?ltvh5f') format('woff'),
+        url('fonts/icomoon.svg?ltvh5f#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+      /* use !important to prevent issues with browser extensions that change fonts */
+      font-family: 'icomoon' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon-github:before {
+      content: "\e900";
+    }
+
+    .icon-npm:before {
+      content: "\e901";
+      color: #cb3837;
+    }
+
+    .icon-book:before {
+      content: "\f02d";
+    }
+
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    }
+
+    a,
+    a:hover,
+    a:visited {
+      text-decoration: none
+    }
+
+    a,
+    a:hover,
+    a:visited {
+      color: #000
+    }
+
+    .banner {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 40px 0 40px 0;
+      background-color: #282c34;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 36px;
+      color: #61dafb;
+      margin: 0;
+    }
+
+    .decs {
+      padding-top: 18px;
+      font-size: 18px;
+      font-weight: 200;
+      color: #ffffff;
+    }
+
+    .link {
+      margin-top: 20px;
+    }
+
+    .button-item {
+      height: 30px;
+      box-sizing: border-box;
+      display: inline-block;
+      margin-right: 25px;
+      font-size: 14px;
+      line-height: 30px;
+      background-color: #eee;
+      background: #fff;
+      background-repeat: no-repeat;
+      border: 1px solid #d5d5d5;
+      padding: 0px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .button-item.book {
+      margin-right: 0px;
+    }
+
+    .icon {
+      font-size: 16px;
+    }
+
+    .text {
+      margin-left: 6px
+    }
+
+    .npm {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .icon-npm {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      font-size: 24px;
+    }
+
+    .canvas-wrap {
+      margin: 0px auto;
+      height: calc(100vh - 212px);
+      /* border: 1px solid #999; */
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAATUlEQVRYR+3VMQoAMAhD0Xq3HNs75QgtdOqsg1C+u5C8JWF7r8ELAiCAAAIIIIBARyAz75BLKg96a47HA5RrP48tAQIggAACCCDwhcABvG5/oRsc6n0AAAAASUVORK5CYII=") center center;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+  <script src="https://unpkg.com/malyan/dist/malyan.min.js"></script>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div class="banner">
+      <h3 class="title">Malyan</h3>
+      <p class="decs">JavaScript Canvas 2D library</p>
+      <div class="link">
+        <a class="button-item github" href="https://github.com/HarryChen0506/malyan" target="_blank">
+          <span class="icon icon-github"></span>
+          <span class="text">github</span>
+        </a>
+        <a class="button-item npm" href="https://www.npmjs.com/package/malyan" target="_blank">
+          <span class="icon icon-npm"></span>
+          <span class="text">npm</span>
+        </a>
+        <a class="button-item book" href="https://github.com/HarryChen0506/malyan/blob/master/README.md"
+          target="_blank">
+          <span class="icon icon-book"></span>
+          <span class="text">doc</span>
+        </a>
+      </div>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+</body>
+<script>
+  var CANVAS_WIDTH = document.body.clientWidth
+  var CANVAS_HEIGHT = document.body.clientHeight - 212
+
+  var COLOR_PRIMARY = '#61dafb'
+  var COLOR_PRIMARY_20 = 'rgba(97, 218, 251, 0.2)'
+  var COLOR_PRIMARY_50 = 'rgba(97, 218, 251, 0.5)'
+  var COLOR_BLUE = '#40c4ff'
+  var COLOR_BLUE_20 = 'rgba(64, 196, 255, 0.2)'
+  var COLOR_GRAY = '#666'
+  var COLOR_GRAY_20 = 'rgba(102, 102, 102, 0.2)'
+  var COLOR_ORANGE = '#FF4500'
+  var COLOR_ORANGE_20 = 'rgba(255, 69, 0, 0.2)'
+  var COLOR_GREEN = '#4fc08d'
+  var COLOR_GREEN_20 = 'rgba(79, 192, 141, 0.2)'
+  var COLOR_PURPLE = '#BA55D3'
+  var COLOR_PURPLE_20 = 'rgba(186, 85, 211, 0.2)'
+
+  var canvas = new Malyan({
+    id: 'canvas',
+    width: CANVAS_WIDTH,
+    height: CANVAS_HEIGHT,
+  })
+
+  var text_1 = new Malyan.Text({
+    text: 'MALYAN',
+    font: '50px PingFang SC',
+    textAlign: 'center',
+    x: 0,
+    y: 0,
+    fillText: false,
+    fillStyle: '#fff',
+    strokeText: true,
+    strokeStyle: '#000',
+    textAlign: 'center',
+  })
+  text_1.translation = { x: CANVAS_WIDTH * 0.5, y: 120 }
+  canvas.add(text_1)
+
+  // 矩形
+  var group_rect = new Malyan.Group({
+    name: 'group_rect'
+  })
+  group_rect.translation = { x: CANVAS_WIDTH * 0.15, y: 280 }
+  canvas.add(group_rect)
+  var rect_1 = new Malyan.Rect({
+    name: 'rect_1',
+    x: 0,
+    y: 0,
+    width: 60,
+    height: 80,
+    fillStyle: COLOR_PURPLE_20,
+    strokeStyle: COLOR_PURPLE,
+    lineWidth: 2,
+    center: true
+  })
+  group_rect.add(rect_1)
+
+  var box = new Malyan.Polygon({
+    points: getBoxPoints(),
+    strokeStyle: '#999',
+    lineDash: [10, 5],
+    fill: false
+  })
+  canvas.add(box)
+
+  function getBoxPoints() {
+    var vertices = rect_1.getVertices()
+    var canvasPoints = vertices.map(v => {
+      var vertex = rect_1.calcPixelToCanvasCoordinatePoint(v)
+      return [vertex.x, vertex.y]
+    })
+    var boundingRect = Malyan.math.calcPointsRect(canvasPoints)
+    return [
+      [boundingRect.left, boundingRect.top],
+      [boundingRect.right, boundingRect.top],
+      [boundingRect.right, boundingRect.bottom],
+      [boundingRect.left, boundingRect.bottom]
+    ]
+  }
+  function updateBox() {
+    var paths = getBoxPoints()
+    box.updatePaths(paths)
+  }
+
+  // 多边形
+  var polygon_1 = new Malyan.Polygon({
+    name: 'polygon-2',
+    points: [[2, 0], [1, 1.73], [-1, 1.73], [-2, 0], [-1, -1.73], [1, -1.73]],
+    fillStyle: COLOR_GRAY_20,
+    strokeStyle: COLOR_GRAY,
+    lineWidth: 0.08
+  })
+  polygon_1.scale = 25
+  polygon_1.translation = { x: CANVAS_WIDTH * 0.38, y: 280 }
+  polygon_1.on('mousedrag', function (e) {
+    polygon_1.translation = {
+      x: polygon_1.translation.x + e.detail.deltaPoint.canvas.x,
+      y: polygon_1.translation.y + e.detail.deltaPoint.canvas.y
+    }
+  })
+  polygon_1.on('mouseenter', function (e) {
+    canvas.ctx.canvas.style.cursor = 'move'
+  })
+  polygon_1.on('mouseleave', function (e) {
+    canvas.ctx.canvas.style.cursor = ''
+  })
+  canvas.add(polygon_1)
+
+  // 心
+  var pathElements_1 = Malyan.Path.createElements([
+    {
+      type: 'curve',
+      id: '1',
+      start: [0, 0],
+      end: [0, 50],
+      controls: [[50, -30], [30, 40]]
+    },
+    {
+      type: 'curve',
+      id: '2',
+      end: [0, 0],
+      controls: [[-30, 40], [-50, -30]]
+    },
+  ])
+  var path_1 = new Malyan.Path({
+    name: 'path-1',
+    paths: pathElements_1,
+    closed: false,
+    fillStyle: COLOR_ORANGE_20,
+    strokeStyle: COLOR_ORANGE,
+    lineWidth: 2,
+  })
+  path_1.scale = 1.5
+  path_1.translation = { x: CANVAS_WIDTH * 0.60, y: 250 }
+  canvas.add(path_1)
+
+  // 笑脸smile
+  var pathElements_2 = Malyan.Path.createElements([
+    {
+      type: 'arcTo',
+      id: '1-1',
+      start: [125, 75],
+      controls: [[125, 125], [75, 125]],
+      radius: 50,
+    },
+    {
+      type: 'arcTo',
+      id: '1-2',
+      controls: [[25, 125], [25, 75]],
+      radius: 50,
+    },
+    {
+      type: 'arcTo',
+      id: '1-3',
+      controls: [[25, 25], [75, 25]],
+      radius: 50,
+    },
+    {
+      type: 'arcTo',
+      id: '1-4',
+      controls: [[125, 25], [125, 75]],
+      radius: 50,
+    },
+    {
+      type: 'arc',
+      id: '2',
+      start: [75 + 30 * Math.cos(Math.PI * 0.25), 75 + 30 * Math.sin(Math.PI * 0.25)],
+      x: 75,
+      y: 75,
+      radius: 30,
+      startAngle: Math.PI * 0.25,
+      endAngle: Math.PI * 0.75,
+      anticlockwise: false,
+    },
+    {
+      type: 'arc',
+      id: '3',
+      start: [65, 65],
+      x: 60,
+      y: 65,
+      startAngle: 0,
+      endAngle: Math.PI * 2,
+      radius: 5,
+    },
+    {
+      type: 'arc',
+      id: '4',
+      start: [95, 65],
+      x: 90,
+      y: 65,
+      startAngle: 0,
+      endAngle: Math.PI * 2,
+      radius: 5,
+    }
+  ])
+  var path_2 = new Malyan.Path({
+    name: 'path-3',
+    paths: pathElements_2,
+    closed: false,
+    fillStyle: COLOR_GREEN_20,
+    strokeStyle: COLOR_GREEN,
+    lineWidth: 2,
+  })
+  path_2.scale = 1
+  path_2.translation = { x: CANVAS_WIDTH * 0.75, y: 210 }
+  canvas.add(path_2)
+
+  // button
+
+  var button = new Malyan.RoundRect({
+    name: 'button',
+    x: 0,
+    y: 0,
+    width: 120,
+    height: 60,
+    radius: 8,
+    fillStyle: COLOR_PRIMARY,
+    stroke: false,
+    lineWidth: 2,
+  })
+  button.translation = { x: -60, y: 0 }
+  button.on('mouseenter', function (e) {
+    button.strokeStyle = COLOR_PRIMARY
+    button.stroke = true
+    button.fill = true
+    button.fillStyle = '#fff'
+    button_tip.fillStyle = COLOR_PRIMARY
+  })
+  button.on('mouseleave', function (e) {
+    button.fillStyle = COLOR_PRIMARY
+    button.stroke = false
+    button.fill = true
+    button_tip.fillStyle = '#fff'
+  })
+  button.on('click', function (e) {
+    console.log('click')
+    window.open("https://harrychen0506.github.io/malyan/examples", '_blank');
+  })
+  var button_tip = new Malyan.Text({
+    text: 'start',
+    font: '30px PingFang SC',
+    textAlign: 'center',
+    x: 0,
+    y: 0,
+    fillStyle: '#fff',
+    strokeText: false,
+    fill: true,
+    textAlign: 'center',
+  })
+  button_tip.translation = { x: 0, y: 40 }
+  var group_button = new Malyan.Group({
+    name: 'group_button'
+  })
+  group_button.translation = { x: CANVAS_WIDTH * 0.5, y: 430 }
+  group_button.add(button)
+  group_button.add(button_tip)
+  canvas.add(group_button)
+
+  function animateLoop() {
+    group_rect.rotation = group_rect.rotation + 0.01
+    updateBox()
+    canvas.render()
+    requestAnimationFrame(animateLoop)
+  }
+  animateLoop()
+</script>
+
+</html>

@@ -36,7 +36,7 @@ Malyan
     // CDN
     <script src="https://unpkg.com/malyan"></script>
     // or use a specific version/tag via URLs
-    <script src="https://unpkg.com/malyan@0.0.3/dist/malyan.min.js"></script>
+    <script src="https://unpkg.com/malyan@0.0.4/dist/malyan.min.js"></script>
 ```
 
   + Install with NPM

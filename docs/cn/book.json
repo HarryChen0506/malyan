@@ -15,6 +15,7 @@
       "twitter": false
     },
     "sidebar": {
+      "English": "/malyan/docs/en",
       "案例": "/malyan/examples"
     }
   }

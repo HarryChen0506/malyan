@@ -1,6 +1,55 @@
 # start
 
-这一部分将对three.js来做一个简要的介绍；我们将开始搭建一个场景，其中包含一个正在旋转的立方体。页面下方有一个已经完成的例子，当你遇到麻烦，或者需要帮助的时候，可以看一看。
+### Example
+Here is a HTML boilerplate for rendering a rectangle in malyan:
 
-开始之前
-在开始使用three.js之前，你需要一个地方来显示它。将下列HTML代码保存为你电脑上的一个HTML文件，同时将three.js复制到该HTML文件所在的目录下的js/目录下，然后在你的浏览器中打开这个HTML文件。
+``` html
+<!DOCTYPE html>
+<html>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script src="https://unpkg.com/malyan"></script>
+    <script>
+        var canvas = new Malyan({
+            id: 'canvas',
+            width: 500,
+            height: 500,
+        })
+
+        var rect = new Malyan.Rect({
+            name: 'rect',
+            x: 0,
+            y: 0,
+            width: 60,
+            height: 80,
+            fillStyle: 'rgba(64, 196, 255, 0.2)',
+            strokeStyle: '#40c4ff',
+            lineWidth: 2,
+        })
+        rect.translation = {
+            x: 100,
+            y: 100
+        }
+        rect.on('mousedrag', function(e) {
+            rect.translation = {
+                x: rect.translation.x + e.detail.deltaPoint.canvas.x,
+                y: rect.translation.y + e.detail.deltaPoint.canvas.y
+            }
+        })
+        canvas.add(rect)
+
+        function animateLoop() {
+            canvas.render()
+            requestAnimationFrame(animateLoop)
+        }
+        animateLoop()
+    </script>
+</body>
+
+</html>
+```
+
+### Complex Examples ###
+
+[more examples](https://malyanjs.github.io/examples/)

@@ -163,7 +163,7 @@
           <span class="icon icon-npm"></span>
           <span class="text">npm</span>
         </a>
-        <a class="button-item book" href="https://github.com/HarryChen0506/malyan/blob/master/README.md"
+        <a class="button-item book" href="https://harrychen0506.github.io/malyan/docs"
           target="_blank">
           <span class="icon icon-book"></span>
           <span class="text">doc</span>
@@ -403,12 +403,14 @@
     button.fill = true
     button.fillStyle = '#fff'
     button_tip.fillStyle = COLOR_PRIMARY
+    canvas.ctx.canvas.style.cursor = 'pointer'
   })
   button.on('mouseleave', function (e) {
     button.fillStyle = COLOR_PRIMARY
     button.stroke = false
     button.fill = true
     button_tip.fillStyle = '#fff'
+    canvas.ctx.canvas.style.cursor = ''
   })
   button.on('click', function (e) {
     console.log('click')

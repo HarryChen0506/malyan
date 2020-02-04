@@ -14,7 +14,7 @@ description: malyan installation guide - How to use malyan in your project.
 // direct download
 <script src="/js/malyan.min.js"></script>
 // CDN
-<script src="https://unpkg.com/malyan@0.0.3/dist/malyan.min.js"></script>
+<script src="https://unpkg.com/malyan"></script>
 ```
 
 ### NPM

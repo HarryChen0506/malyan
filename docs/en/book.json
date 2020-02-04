@@ -15,6 +15,7 @@
       "twitter": false
     },
     "sidebar": {
+      "中文": "/malyan/docs/cn",
       "examples": "/malyan/examples"
     }
   }

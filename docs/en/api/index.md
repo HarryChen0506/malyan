@@ -208,6 +208,7 @@ type: api
 ---
 ### shapes
 #### Rect
+* **Extends:** [Shape](#shape)
 * **Construction:** `( params : Object ) `  
   Create a new instance of Vector.
   - **x:** `Number` the x-axis value of left-top vertex. Optional; defaults to `0`.

@@ -1,3 +1,9 @@
+[Home](https://harrychen0506.github.io/malyan/) • 
+[Examples](https://harrychen0506.github.io/malyan/examples/) • 
+[Documentation](https://harrychen0506.github.io/malyan/docs/en/) • 
+[中文文档](https://harrychen0506.github.io/malyan/docs/cn/) • 
+[Help](https://github.com/HarryChen0506/malyan/issues?labels=question)
+
 Malyan
 ========
 
@@ -15,11 +21,7 @@ Malyan
 
  Malyan also provides an extensive event system, starting from low-level "mouse" events (click, mousedrag, mouseEnter, etc) to high-level objects ones (object:mousemove, object:mousedrag).
 
- [Home](https://harrychen0506.github.io/malyan/) • 
- [Examples](https://harrychen0506.github.io/malyan/examples/) • 
- [Documentation](https://harrychen0506.github.io/malyan/docs/en/) • 
- [中文文档](https://harrychen0506.github.io/malyan/docs/cn/) • 
- [Help](https://github.com/HarryChen0506/malyan/issues?labels=question)
+ 
 
 ### Usage ###
 
@@ -36,7 +38,7 @@ Malyan
   // CDN
   <script src="https://unpkg.com/malyan"></script>
   // or use a specific version/tag via URLs
-  <script src="https://unpkg.com/malyan@0.0.4/dist/malyan.min.js"></script>
+  <script src="https://unpkg.com/malyan@0.0.7/dist/malyan.min.js"></script>
 ```
 
   + Install with NPM

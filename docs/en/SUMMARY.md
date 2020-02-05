@@ -16,4 +16,4 @@
   * [BaseObject](api/index.md#baseobject)
   * [EventTarget](api/index.md#eventtarget)
   * [shapes](api/index.md#shapes)
-   - [rect](api/index.md#rect)
+   - [Rect](api/index.md#rect)
